@@ -19,12 +19,15 @@ import {
 	mdiClose
 } from '@mdi/js'
 
+import Clipboard from 'react-clipboard.js';
+
 import he from 'he'
 
 
 const Html = () => {
 	const [mode, setMode] = useState('encode')
 	const [input, setInput] = useState('')
+	let output = he[mode](input)
 
 	return (
 		<Page>
@@ -59,9 +62,11 @@ const Html = () => {
 				<Segment
 					title='Output'
 					controls={<>
-						<Button icon={mdiContentCopy} hint="Copy" />
+						<Clipboard data-clipboard-text={output}>
+							<Button icon={mdiContentCopy} hint="Copy" />
+						</Clipboard>
 					</>}
-					body={<Textarea value={he[mode](input)} disabled={true} rows={5} />}
+					body={<Textarea value={output} disabled={true} rows={5} />}
 				/>
 			</Section>
 		</Page>
