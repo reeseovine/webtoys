@@ -1,7 +1,7 @@
 import {
 	mdiSync,
 	mdiBarcode,
-	mdiFormatAlignLeft,
+	mdiFormatIndentIncrease,
 	mdiAutoFix,
 	mdiStickerTextOutline,
 	mdiImageMultipleOutline,
@@ -40,7 +40,7 @@ export default {
 		}, {
 			"name": "Formatters",
 			"id": "formatters",
-			"icon": mdiFormatAlignLeft
+			"icon": mdiFormatIndentIncrease
 		}, {
 			"name": "Generators",
 			"id": "generators",

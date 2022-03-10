@@ -3,7 +3,7 @@ import Icon from '@mdi/react'
 
 import Page from '@/components/page'
 import Section from '@/components/section'
-import tools from '@/shared/tools'
+import tools from '@/shared/tools.ts'
 
 const Tile = ({ name, icon, description, url }: Props) => {
 	return (

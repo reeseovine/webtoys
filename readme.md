@@ -13,3 +13,13 @@ Because not everyone is a Windows user :)
 ## note
 
 This is in the very early stages of development. Currently the only thing that sort of works is the HTML encoder/decoder. I am aiming for 1:1 feature parity with DevToys (aside from the CLI) eventually.
+
+## to do
+
+- [x] generalize components like buttons and sections for quick reusability
+- [ ] make styles easier to read
+- [ ] finish making all the tools
+- [ ] ensure responsiveness on every component
+- [ ] ensure accessibility on every component
+- [ ] ensure everything looks good in light and dark mode
+- [ ] test PWA and make sure it works offline
