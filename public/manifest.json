@@ -1,7 +1,7 @@
 {
-	"name": "Rice Bowl",
-	"short_name": "Rice Bowl",
-	"description": "Fluffless jasmine rice for those cold winter nights",
+	"name": "WebToys",
+	"short_name": "WebToys",
+	"description": "A Swiss Army knife for developers.",
 	"icons": [
 		{
 			"src": "/images/icon-192.png",
@@ -27,9 +27,9 @@
 		}
 	],
 	"start_url": "/?source=pwa",
-	"background_color": "#1d2020",
+	"background_color": "#823DC0",
 	"orientation": "portrait",
 	"display": "standalone",
 	"scope": "/",
-	"theme_color": "#1d2020"
+	"theme_color": "#823DC0"
 }

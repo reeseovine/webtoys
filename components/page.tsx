@@ -1,6 +1,5 @@
 import Head from 'next/head'
-import Appbar from '@/components/appbar'
-import BottomNav from '@/components/bottom-nav'
+import Drawer from '@/components/drawer'
 
 interface Props {
 	title?: string
@@ -11,23 +10,16 @@ const Page = ({ title, children }: Props) => (
 	<>
 		{title ? (
 			<Head>
-				<title>Rice Bowl | {title}</title>
+				<title>{title} - WebToys</title>
 			</Head>
 		) : null}
 
-		<Appbar />
-
-		<main
-			/**
-			 * Padding top = `appbar` height
-			 * Padding bottom = `bottom-nav` height
-			 */
-			className='mx-auto px-safe pt-20 pb-16 sm:pb-0 max-w-screen-md'
-		>
-			<div className='p-6'>{children}</div>
-		</main>
-
-		<BottomNav />
+		<div className="h-screen flex items-stretch">
+			<Drawer className='basis-96 shrink-0' />
+			<main className='grow bg-white dark:bg-slate-900'>
+				{children}
+			</main>
+		</div>
 	</>
 )
 

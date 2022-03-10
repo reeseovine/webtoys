@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 const Meta = () => (
 	<Head>
-		<title>Rice Bowl</title>
+		<title>WebToys</title>
 		<meta charSet='utf-8' />
 		<meta name='mobile-web-app-capable' content='yes' />
 		<meta name='apple-mobile-web-app-capable' content='yes' />

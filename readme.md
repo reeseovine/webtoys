@@ -1,54 +1,15 @@
-<p align="center">
-	<img alt="Rice Bowl" src="public/images/icon-512.png" width="90">
-	<h2 align="center">Next PWA Template</h2>
-</p>
+# WebToys
 
-<p align="center">Fluffless app template to inspire less</p>
+A static web implementation of [DevToys](https://github.com/veler/DevToys) built with Next.js
 
-<p align="center">
-	<a href="https://next-pwa-template.now.sh">Live demo</a>
-</p>
+## what is it?
 
-<p align="center">
-	<a href="https://web.dev/measure">
-		<img alt="100% lighthouse scores" src="https://img.shields.io/badge/lighthouse-100%25-845EF7.svg?logo=lighthouse&logoColor=white&style=flat-square" />
-	</a>
-</p>
+A handy and easy-to-use collection of tools every developer needs at one point or another.
 
-## Features
+## why?
 
-- ✨ Fluffless PWA using Next 12
-- 🌗 Lovely night/day themes
-- 🦄 Easily removable [nice-to-haves](#use-only-what-you-need)
-- 📱 Native-like mobile experience
-- 📦 Neatly wrapped like that avocado you got for christmas
+Because not everyone is a Windows user :)
 
-## Getting started
+## note
 
-1. [Use this template](https://github.com/mvllow/next-pwa-template/generate)
-2. Replace `public/images` with your own
-3. Enjoy ✨
-
-## Use only what you need
-
-Fluffless doesn't mean "start with nothing". The goal of this template is to be an entry into maintainable apps.
-
-**The essentials**
-
-- Typescript, made easy with Next.js
-- [tailwindcss](https://github.com/tailwindlabs/tailwindcss) for utility-first styling
-- [next-pwa](https://github.com/shadowwalker/next-pwa) for offline support
-
-**Nice to haves**
-
-- [next-themes](https://github.com/pacocoursey/next-themes) or similar for low stress theming
-
-## Gallery
-
-### Desktop
-
-<img alt="" src="public/images/macos.png" width="500" />
-
-### Mobile
-
-<img alt="" src="public/images/ios.png" width="500" />
+This is in the very early stages of development. Currently the only thing that sort of works is the HTML encoder/decoder. I am aiming for 1:1 feature parity with DevToys (aside from the CLI) eventually.

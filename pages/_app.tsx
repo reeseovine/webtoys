@@ -8,8 +8,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 		<ThemeProvider
 			attribute='class'
 			defaultTheme='system'
-			disableTransitionOnChange
-		>
+			disableTransitionOnChange>
 			<Meta />
 			<Component {...pageProps} />
 		</ThemeProvider>
