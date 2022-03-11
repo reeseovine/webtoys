@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Icon from '@mdi/react'
 
 import Page from '@/components/page'
-import Section from '@/components/section'
 
 import tools from '@/shared/tools.ts'
 import classes from '@/shared/classes.ts'
@@ -49,10 +48,12 @@ const Index = () => (
 		<div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
 			{tools.tools.map(tool => (
 				<Tile
+					key={tool.id}
 					name={tool.name}
 					icon={tool.icon}
 					description={tool.description}
-					url={`/${tool.category}/${tool.id}`} />
+					url={`/${tool.category}/${tool.id}`}
+				/>
 			))}
 		</div>
 	</Page>

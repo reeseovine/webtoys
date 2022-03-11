@@ -13,7 +13,7 @@ const NavEntry = ({ name, icon, id, url, children }: Props) => {
 
 	return (
 		<>
-			<Link key={id} href={url}>
+			<Link href={url}>
 				<div className="cursor-pointer text-slate-800 dark:text-slate-100 hover:text-slate-900 hover:dark:text-slate-90 hover:bg-slate-200 hover:dark:bg-slate-700 transition-colors duration-100 py-2 px-3 mb-1 rounded-md flex justify-between items-center gap-4">
 					<Icon
 						path={icon}
@@ -25,11 +25,11 @@ const NavEntry = ({ name, icon, id, url, children }: Props) => {
 							path={mdiChevronDown}
 							size={.75}
 							onClick={() => collapse(!collapsed)}
-							className={`shrink-0 transition-transform duration-150 ${collapsed ? '' : 'rotate-180'}`} />
+							className={`shrink-0 transition-transform ${collapsed ? '' : 'rotate-180'}`} />
 					: null}
 				</div>
 			</Link>
-			<div key={id+'_children'} className={`pl-8 overflow-y-hidden ${Array.isArray(children) && !collapsed ? 'h-max' : 'h-0'}`}>
+			<div className={`pl-8 overflow-y-hidden ${Array.isArray(children) && !collapsed ? 'h-max' : 'h-0'}`}>
 				{children}
 			</div>
 		</>
@@ -96,14 +96,17 @@ const Drawer = () => {
 					<NavEntry
 						name="Home"
 						icon={mdiHomeOutline}
-						url='/' />
+						url='/'
+					/>
 					{tools.categories.map(category => (
 						<NavEntry
+							key={category.id}
 							name={category.name}
 							icon={category.icon}
 							url={'/'+category.id}
 							children={tools.tools.filter(tool => tool.category === category.id).map(tool => (
 								<NavEntry
+									key={tool.id}
 									name={tool.name}
 									icon={tool.icon}
 									url={`/${category.id}/${tool.id}`} />

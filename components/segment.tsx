@@ -1,9 +1,25 @@
 import Icon from '@mdi/react'
 
-const Controls = ({ children }: Props) => (
-	<div className="rounded-md border light:border-slate-700 dark:bg-slate-800 dark:border-slate-700">
+const Config = ({ children }: Props) => (
+	<div className="
+		rounded-md
+		border
+		border-slate-700
+		dark:bg-slate-800
+
+		divide-y
+		divide-slate-700
+	">
 		{children.map(child => (
-			<div className="py-4 px-6 flex items-center gap-8">
+			<div key={child.name} className="
+				flex
+				items-center
+				gap-4
+
+				p-4
+
+				text-sm
+			">
 				<Icon
 					path={child.icon}
 					size={1}
@@ -20,10 +36,20 @@ const Controls = ({ children }: Props) => (
 	</div>
 )
 
+const Inline = ({ input, controls }: Props) => (
+	<div className="flex justify-between gap-4">
+		{input}
+		{controls}
+	</div>
+)
+
 const Segment = ({ type, title, controls, body }: Props) => {
 	if (type === 'config'){
 		title = 'Configuration'
-		body = <Controls children={body} />
+		body = <Config children={body} />
+	} else if (type === 'inline'){
+		body = <Inline input={body} controls={controls} />
+		controls = null
 	}
 	return (
 		<div className='mb-6'>

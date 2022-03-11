@@ -4,11 +4,13 @@ import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
 	Button,
+	FileLoader,
 	Select,
 	Textarea
 } from '@/components/inputs'
 
 import classes from '@/shared/classes.ts'
+import { fileImport } from '@/shared/file.ts'
 
 import Icon from '@mdi/react'
 import {
@@ -52,7 +54,7 @@ const Html = () => {
 			<Segment
 				title='Input'
 				controls={<>
-					<Button icon={mdiFileOutline} hint="Load from file" />
+					<FileLoader cb={data => setInput(data)} />
 					<Button icon={mdiClose} hint="Clear" onClick={() => setInput('')} />
 				</>}
 				body={<Textarea value={input} onChange={e => setInput(e.target.value)} rows={5} />}

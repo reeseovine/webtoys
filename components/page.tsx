@@ -25,7 +25,7 @@ const Page = ({ title, children }: Props) => (
 			md:flex-row-reverse
 			md:items-stretch
 		'>
-			<input id="drawer-toggle" type="checkbox" class="hidden peer" />
+			<input id="drawer-toggle" type="checkbox" className="hidden peer" />
 			<section className='
 				h-full
 				overflow-y-auto
