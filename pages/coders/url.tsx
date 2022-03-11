@@ -28,12 +28,17 @@ import he from 'he'
 const Html = () => {
 	const [mode, setMode] = useState('encode')
 	const [input, setInput] = useState('')
-	let output = he[mode](input)
+	let output = (() => {
+		try {
+			if (mode === 'encode') return encodeURIComponent(input)
+			if (mode === 'decode') return decodeURIComponent(input)
+		} catch(e) {}
+	})()
 
 	return (
 		<Page>
 			<h1 className={`mb-6 ${classes.headings.h1}`}>
-				HTML Entity Encoder & Decoder
+				URL Encoder & Decoder
 			</h1>
 
 			<Segment

@@ -8,7 +8,7 @@ import {
 	Textfield
 } from '@/components/inputs'
 
-import classes from '@/shared/classes.ts'
+import classes from '@/shared/classes'
 
 import Icon from '@mdi/react'
 import {

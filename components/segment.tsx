@@ -1,6 +1,6 @@
 import Icon from '@mdi/react'
 
-const Config = ({ children }: Props) => (
+const Config = ({ children }) => (
 	<div className="
 		rounded-md
 		border
@@ -36,14 +36,14 @@ const Config = ({ children }: Props) => (
 	</div>
 )
 
-const Inline = ({ input, controls }: Props) => (
+const Inline = ({ input, controls }) => (
 	<div className="flex justify-between gap-4">
 		{input}
 		{controls}
 	</div>
 )
 
-const Segment = ({ type, title, controls, body }: Props) => {
+const Segment = ({ type, title, controls, body }) => {
 	if (type === 'config'){
 		title = 'Configuration'
 		body = <Config children={body} />

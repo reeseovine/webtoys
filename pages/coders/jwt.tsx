@@ -13,8 +13,6 @@ import classes from '@/shared/classes'
 
 import Icon from '@mdi/react'
 import {
-	mdiSwapHorizontal,
-	mdiSwapVertical,
 	mdiFileOutline,
 	mdiContentCopy,
 	mdiClose
@@ -22,33 +20,27 @@ import {
 
 import Clipboard from 'react-clipboard.js';
 
-import he from 'he'
 
+const parseToken = (input) => {
+	try {
+		let res = input.replaceAll('-','+').replaceAll('_','/')
+		res = res.split('.').slice(0,2).map(atob)
+		res = res.map(part => JSON.stringify(JSON.parse(part), null, '\t'))
+		return res
+	} catch(e) {
+		return ['','']
+	}
+}
 
 const Html = () => {
-	const [mode, setMode] = useState('encode')
 	const [input, setInput] = useState('')
-	let output = he[mode](input)
+	let [header, payload] = parseToken(input)
 
 	return (
 		<Page>
 			<h1 className={`mb-6 ${classes.headings.h1}`}>
-				HTML Entity Encoder & Decoder
+				JSON Web Token Decoder
 			</h1>
-
-			<Segment
-				type='config'
-				body={[
-					{
-						icon: mdiSwapHorizontal,
-						name: 'Conversion',
-						description: 'Select which conversion mode you want to use',
-						control: <Select options={{
-									encode: "Encode",
-									decode: "Decode"
-								}} onChange={e => setMode(e.target.value)} />
-					}
-				]} />
 
 			<Segment
 				title='Input'
@@ -56,17 +48,26 @@ const Html = () => {
 					<FileLoader cb={data => setInput(data)} />
 					<Button icon={mdiClose} hint="Clear" onClick={() => setInput('')} />
 				</>}
-				body={<Textarea value={input} onChange={e => setInput(e.target.value)} rows={5} />}
+				body={<Textarea value={input} onChange={e => setInput(e.target.value)} rows={3} />}
 			/>
 
 			<Segment
-				title='Output'
+				title='Header'
 				controls={<>
-					<Clipboard data-clipboard-text={output}>
+					<Clipboard data-clipboard-text={header}>
 						<Button icon={mdiContentCopy} hint="Copy" />
 					</Clipboard>
 				</>}
-				body={<Textarea value={output} disabled={true} rows={5} />}
+				body={<Textarea value={header} disabled={true} rows={5} />}
+			/>
+			<Segment
+				title='Payload'
+				controls={<>
+					<Clipboard data-clipboard-text={payload}>
+						<Button icon={mdiContentCopy} hint="Copy" />
+					</Clipboard>
+				</>}
+				body={<Textarea value={payload} disabled={true} rows={5} />}
 			/>
 		</Page>
 	)

@@ -34,7 +34,7 @@ const clickyClasses = `
 	dark:active:bg-slate-800
 `
 
-const Button = ({ icon, label, hint, className, onClick }: Props) => (
+const Button = ({ icon, label, hint, className, onClick }) => (
 	<div className="relative">
 		<button
 			onClick={onClick}
@@ -42,9 +42,9 @@ const Button = ({ icon, label, hint, className, onClick }: Props) => (
 			className={`
 				${className}
 				${clickyClasses}
+				z-10
 				p-2.5
 				peer
-				z-10
 			`}>
 			<Icon path={icon} size={.75} />
 			{label}
@@ -54,7 +54,7 @@ const Button = ({ icon, label, hint, className, onClick }: Props) => (
 	</div>
 )
 
-const FileLoader = ({ className, cb }: Props) => {
+const FileLoader = ({ className, cb }) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	let fileReader;
@@ -85,7 +85,7 @@ const FileLoader = ({ className, cb }: Props) => {
 	)
 }
 
-const Select = ({ value, options, hint, onChange }: Props) => (
+const Select = ({ value, options, hint, onChange }) => (
 	<select
 		value={value}
 		onChange={onChange}
@@ -101,9 +101,11 @@ const Select = ({ value, options, hint, onChange }: Props) => (
 	</select>
 )
 
+
 const textClasses = `
 	${sharedClasses}
 	w-full
+	p-2.5
 
 	leading-normal
 
@@ -114,7 +116,7 @@ const textClasses = `
 	dark:focus:border-transparent
 `
 
-const Textarea = ({ value, rows, cols, disabled, onChange }: Props) => (
+const Textarea = ({ value, rows, cols, disabled, onChange }) => (
 	<textarea
 		value={value}
 		rows={rows} cols={cols}
@@ -131,7 +133,7 @@ const Textarea = ({ value, rows, cols, disabled, onChange }: Props) => (
 		`} />
 )
 
-const Textfield = ({ value, disabled, onChange }: Props) => (
+const Textfield = ({ value, disabled, onChange }) => (
 	<input
 		type="text"
 		value={value}

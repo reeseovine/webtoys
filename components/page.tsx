@@ -9,7 +9,7 @@ interface Props {
 	children: React.ReactNode
 }
 
-const Page = ({ title, children }: Props) => (
+const Page = ({ title, children }) => (
 	<>
 		{title ? (
 			<Head>
@@ -22,10 +22,10 @@ const Page = ({ title, children }: Props) => (
 			w-full
 
 			md:flex
-			md:flex-row-reverse
 			md:items-stretch
 		'>
 			<input id="drawer-toggle" type="checkbox" className="hidden peer" />
+			<Drawer />
 			<section className='
 				h-full
 				overflow-y-auto
@@ -57,7 +57,6 @@ const Page = ({ title, children }: Props) => (
 					{children}
 				</div>
 			</section>
-			<Drawer />
 		</div>
 	</>
 )

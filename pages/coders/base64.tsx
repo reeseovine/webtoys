@@ -14,7 +14,7 @@ import classes from '@/shared/classes'
 import Icon from '@mdi/react'
 import {
 	mdiSwapHorizontal,
-	mdiSwapVertical,
+	mdiFileCogOutline,
 	mdiFileOutline,
 	mdiContentCopy,
 	mdiClose
@@ -22,18 +22,24 @@ import {
 
 import Clipboard from 'react-clipboard.js';
 
-import he from 'he'
 
-
-const Html = () => {
+const Base64 = () => {
 	const [mode, setMode] = useState('encode')
+	const [encoding, setEncoding] = useState('utf-8')
 	const [input, setInput] = useState('')
-	let output = he[mode](input)
+	let output = (() => {
+		try {
+			if (mode === 'encode') return btoa(input)
+			if (mode === 'decode') return atob(input)
+		} catch(e) {
+			return ''
+		}
+	})()
 
 	return (
 		<Page>
-			<h1 className={`mb-6 ${classes.headings.h1}`}>
-				HTML Entity Encoder & Decoder
+			<h1 className={`mb-6 text-3xl ${classes.headings.h1}`}>
+				Base 64 Encoder & Decoder
 			</h1>
 
 			<Segment
@@ -47,6 +53,13 @@ const Html = () => {
 									encode: "Encode",
 									decode: "Decode"
 								}} onChange={e => setMode(e.target.value)} />
+					}, {
+						icon: mdiFileCogOutline,
+						name: 'Encoding',
+						description: 'Select which character encoding you want to use',
+						control: <Select options={{
+									'utf-8': 'UTF-8'
+								}} onChange={e => setEncoding(e.target.value)} />
 					}
 				]} />
 
@@ -72,4 +85,4 @@ const Html = () => {
 	)
 }
 
-export default Html
+export default Base64

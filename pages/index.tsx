@@ -3,10 +3,10 @@ import Icon from '@mdi/react'
 
 import Page from '@/components/page'
 
-import tools from '@/shared/tools.ts'
-import classes from '@/shared/classes.ts'
+import tools from '@/shared/tools'
+import classes from '@/shared/classes'
 
-const Tile = ({ name, icon, description, url }: Props) => {
+const Tile = ({ name, icon, description, url }) => {
 	return (
 		<Link key={url} href={url}>
 			<div className='
