@@ -34,7 +34,7 @@ export default {
 			"id": "converters",
 			"icon": mdiSync
 		}, {
-			"name": "Encoders/Decoders",
+			"name": "Encoders & Decoders",
 			"id": "coders",
 			"icon": mdiBarcode
 		}, {

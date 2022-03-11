@@ -44,12 +44,13 @@ const textClasses = `
 	dark:focus:border-transparent
 `
 
-const Button = ({ icon, label, hint, onClick }: Props) => (
+const Button = ({ icon, label, hint, className, onClick }: Props) => (
 	<div className="relative">
 		<button
 			onClick={onClick}
 			aria-label={hint}
 			className={`
+				${className}
 				${clickyClasses}
 				p-2.5
 				peer
@@ -58,7 +59,7 @@ const Button = ({ icon, label, hint, onClick }: Props) => (
 			<Icon path={icon} size={.75} />
 			{label}
 		</button>
-		<div aria-hidden="true" className="opacity-0 peer-hover:opacity-100 transition-opacity duration-150 delay-150 absolute -top-9 left-1/2 -translate-x-1/2 z-20 p-2 text-xs leading-none text-white whitespace-no-wrap bg-slate-600 shadow-lg rounded-md">{hint}</div>
+		<div aria-hidden="true" className="opacity-0 peer-hover:opacity-100 transition-opacity duration-150 delay-150 absolute -top-9 left-1/2 -translate-x-1/2 z-20 p-2 text-xs leading-none text-white whitespace-nowrap bg-slate-600 shadow-lg rounded-md">{hint}</div>
 		<div aria-hidden="true" className="opacity-0 peer-hover:opacity-100 transition-opacity duration-150 delay-150 absolute -top-3 left-1/2 -translate-x-1/2 z-30 w-2 h-2 rotate-45 bg-slate-600"></div>
 	</div>
 )

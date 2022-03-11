@@ -6,7 +6,8 @@ const Controls = ({ children }: Props) => (
 			<div className="py-4 px-6 flex items-center gap-8">
 				<Icon
 					path={child.icon}
-					size={1} />
+					size={1}
+					className='hidden sm:block shrink-0' />
 				<div className="grow">
 					<div className="font-semibold">{child.name}</div>
 					<div>{child.description}</div>
