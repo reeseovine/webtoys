@@ -1,7 +1,6 @@
 <div align="center">
 	<img src="logo/logo-circle-128.png" alt="WebToys logo">
 	<h1>WebToys</h1>
-	<p></p>
 </div>
 
 ## what is it?
@@ -18,14 +17,49 @@ WebToys is in the very early stages of development. Most tools are not implement
 
 Below is a list of things to do; feel free to contribute if any of them appeal to you!
 
+### features
+
+- [x] responsive navigation drawer
+- [ ] tools
+  - [ ] converters
+    - [ ] json to yaml
+    - [x] number base
+  - [ ] encoders & decoders
+    - [x] html entities
+    - [x] url
+    - [x] base 64
+    - [ ] gzip
+    - [x] json web token
+  - [ ] formatters
+    - [ ] json
+    - [ ] sql
+    - [ ] xml
+  - [ ] generators
+    - [ ] hash
+    - [ ] uuid
+    - [x] lorem ipsum
+    - [ ] checksum
+  - [ ] text
+    - [ ] inspector / case converter
+    - [ ] regex tester
+    - [ ] text diff
+    - [ ] markdown preview
+  - [ ] graphic (use `sharp` maybe?)
+    - [ ] color blindness simulator
+    - [ ] png & jpeg compressor
+    - [ ] image converter
+- [ ] search
+- [ ] translations
+- [ ] automatically save preferences with cookies
+
+### code maintenance
+
 - [x] generalize components like buttons and sections for quick reusability
-- [ ] make styles easier to read
+- [ ] make `className`s easier to read
 - [ ] write type declarations where needed so that it can build
   - [ ] component props
-- [ ] finish making all the tools
 - [ ] remove unused imports (mdi icon paths, for example)
 - [ ] ensure responsiveness on every component
 - [ ] ensure accessibility on every component
 - [ ] ensure everything looks good in light and dark mode
 - [ ] test PWA and make sure it works offline
-- [ ] add support for translating

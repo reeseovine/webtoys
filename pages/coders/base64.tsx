@@ -8,8 +8,9 @@ import {
 	Select,
 	Textarea
 } from '@/components/inputs'
-
-import classes from '@/shared/classes'
+import {
+	H1
+} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
@@ -38,9 +39,7 @@ const Base64 = () => {
 
 	return (
 		<Page>
-			<h1 className={`mb-6 text-3xl ${classes.headings.h1}`}>
-				Base 64 Encoder & Decoder
-			</h1>
+			<H1 className='mb-6'>Base 64 Encoder & Decoder</H1>
 
 			<Segment
 				type='config'

@@ -14,8 +14,8 @@ const Tile = ({ name, icon, description, url }) => {
 				flex-col
 				items-stretch
 
-				p-4
-				rounded-md
+				p-5
+				rounded-lg
 				cursor-pointer
 				shadow
 				hover:shadow-lg

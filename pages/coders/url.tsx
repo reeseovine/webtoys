@@ -8,8 +8,9 @@ import {
 	Select,
 	Textarea
 } from '@/components/inputs'
-
-import classes from '@/shared/classes'
+import {
+	H1
+} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
@@ -37,9 +38,7 @@ const Html = () => {
 
 	return (
 		<Page>
-			<h1 className={`mb-6 ${classes.headings.h1}`}>
-				URL Encoder & Decoder
-			</h1>
+			<H1 className='mb-6'>URL Encoder & Decoder</H1>
 
 			<Segment
 				type='config'

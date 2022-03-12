@@ -5,12 +5,23 @@ import Icon from '@mdi/react'
 import {
 	mdiChevronDown,
 	mdiHomeOutline,
+	mdiCogOutline,
 	mdiInformationVariant
 } from '@mdi/js';
 
 import tools from '@/shared/tools'
 
-const Entry = ({ name, icon, url, caret, collapsed, onClick, className }) => {
+interface Entry {
+	name: string,
+	icon: string,
+	url?: string,
+	onClick,
+	caret?: boolean,
+	collapsed?: boolean,
+	className?: string
+}
+
+const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className=''}: Entry) => {
 	const router = useRouter()
 	let entry = (
 		<div
@@ -31,7 +42,7 @@ const Entry = ({ name, icon, url, caret, collapsed, onClick, className }) => {
 				text-slate-800
 				dark:text-slate-100
 
-				${url && router.pathname === url ? 'bg-slate-200 dark:bg-slate-700' : ''}
+				${router.pathname === url ? 'bg-slate-200 dark:bg-slate-700' : ''}
 
 				cursor-pointer
 				hover:text-slate-900
@@ -162,10 +173,15 @@ const Drawer = () => {
 							))} />
 					))}
 					<Entry
+						name="Settings"
+						icon={mdiCogOutline}
+						url='/settings'
+						className='mt-8'
+					/>
+					<Entry
 						name="About"
 						icon={mdiInformationVariant}
 						url='/about'
-						className='mt-8'
 					/>
 				</nav>
 			</div>

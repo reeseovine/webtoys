@@ -5,8 +5,8 @@ import {
 	mdiAutoFix,
 	mdiStickerTextOutline,
 	mdiImageMultipleOutline,
-	mdiDatabaseRefreshOutline,
-	mdiPoundBoxOutline,
+	mdiDatabaseSyncOutline,
+	mdiPound,
 	mdiAmpersand,
 	mdiLinkVariant,
 	mdiZipBoxOutline,
@@ -20,7 +20,7 @@ import {
 	mdiCheckboxMultipleOutline,
 	mdiFormatLetterCase,
 	mdiRegex,
-	mdiSelectCompare,
+	mdiFileCompare,
 	mdiLanguageMarkdownOutline,
 	mdiEyeCheckOutline,
 	mdiArrowCollapse,
@@ -57,17 +57,17 @@ export default {
 	],
 	"tools": [
 		{
-			"name": "Json <-> Yaml",
+			"name": "JSON to YAML",
 			"id": "json2yaml",
 			"category": "converters",
-			"icon": mdiDatabaseRefreshOutline,
+			"icon": mdiDatabaseSyncOutline,
 			"description": "Convert JSON data to YAML and vice versa",
 			"keywords": ""
 		}, {
 			"name": "Number Base",
 			"id": "base",
 			"category": "converters",
-			"icon": mdiPoundBoxOutline,
+			"icon": mdiPound,
 			"description": "Convert numbers from one base to another",
 			"keywords": "binary octal decimal hexadecimal"
 		}, {
@@ -172,7 +172,7 @@ export default {
 			"name": "Text Comparer",
 			"id": "compare",
 			"category": "text",
-			"icon": mdiSelectCompare,
+			"icon": mdiFileCompare,
 			"description": "Compare two pieces of text",
 			"keywords": "difference changes"
 		}, {

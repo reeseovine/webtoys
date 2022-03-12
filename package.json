@@ -26,6 +26,8 @@
 		"eslint-config-next": "^12.1.0",
 		"eslint-config-prettier": "^8.4.0",
 		"he": "^1.2.0",
+		"js-cookie": "^3.0.1",
+		"lorem-ipsum": "^2.0.4",
 		"postcss": "^8.4.6",
 		"prettier": "^2.5.1",
 		"react-clipboard.js": "^2.0.16",

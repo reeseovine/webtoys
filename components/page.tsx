@@ -41,6 +41,7 @@ const Page = ({ title, children }) => (
 				dark:bg-slate-900
 			'>
 				<div className='
+					h-full
 					2xl:max-w-5xl
 				'>
 					<label htmlFor='drawer-toggle' className='

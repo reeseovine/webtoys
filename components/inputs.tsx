@@ -108,46 +108,40 @@ const textClasses = `
 	p-2.5
 
 	leading-normal
-
+`
+const textClassesEnabled = `
+	${textClasses}
 	border-slate-600
 
 	dark:bg-slate-800
 	dark:border-slate-700
 	dark:focus:border-transparent
 `
+const textClassesDisabled = `
+	${textClasses}
+	bg-slate-50
+	border-slate-300
 
-const Textarea = ({ value, rows, cols, disabled, onChange }) => (
+	dark:bg-slate-900
+	dark:border-slate-700
+`
+
+const Textarea = ({ value, rows, cols, disabled, className, onChange }) => (
 	<textarea
 		value={value}
 		rows={rows} cols={cols}
 		disabled={disabled}
 		onChange={onChange}
-		className={`
-			${textClasses}
-			${disabled ? `
-				bg-slate-50
-				border-slate-400
-				dark:bg-slate-900
-				dark:border-slate-700
-			` : ''}
-		`} />
+		className={className +' '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
 )
 
-const Textfield = ({ value, disabled, onChange }) => (
+const Textfield = ({ value, disabled, className, onChange }) => (
 	<input
 		type="text"
 		value={value}
 		disabled={disabled}
 		onChange={onChange}
-		className={`
-			${textClasses}
-			${disabled ? `
-				bg-slate-50
-				border-slate-400
-				dark:bg-slate-900
-				dark:border-slate-700
-			` : ''}
-		`} />
+		className={className +' '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
 )
 
 export {

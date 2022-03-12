@@ -1,14 +1,21 @@
 import Icon from '@mdi/react'
+import {
+	H2
+} from '@/components/typography'
 
 const Config = ({ children }) => (
 	<div className="
 		rounded-md
 		border
-		border-slate-700
+		bg-slate-50
+		border-slate-300
+
 		dark:bg-slate-800
+		dark:border-slate-700
 
 		divide-y
-		divide-slate-700
+		divide-slate-300
+		dark:divide-slate-700
 	">
 		{children.map(child => (
 			<div key={child.name} className="
@@ -28,9 +35,7 @@ const Config = ({ children }) => (
 					<div className="font-semibold">{child.name}</div>
 					<div>{child.description}</div>
 				</div>
-				<div>
-					{child.control}
-				</div>
+				{child.control}
 			</div>
 		))}
 	</div>
@@ -45,7 +50,7 @@ const Inline = ({ input, controls }) => (
 
 const Segment = ({ type, title, controls, body }) => {
 	if (type === 'config'){
-		title = 'Configuration'
+		if (typeof title === 'undefined') title = 'Configuration'
 		body = <Config children={body} />
 	} else if (type === 'inline'){
 		body = <Inline input={body} controls={controls} />
@@ -54,7 +59,7 @@ const Segment = ({ type, title, controls, body }) => {
 	return (
 		<div className='mb-6'>
 			<div className="mb-2 flex items-end justify-between gap-2">
-				<h2 className='text-xl grow'>{title}</h2>
+				<H2 className='grow'>{title}</H2>
 				{controls}
 			</div>
 			{body}

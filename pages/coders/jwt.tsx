@@ -8,8 +8,9 @@ import {
 	Select,
 	Textarea
 } from '@/components/inputs'
-
-import classes from '@/shared/classes'
+import {
+	H1
+} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
@@ -38,9 +39,7 @@ const Html = () => {
 
 	return (
 		<Page>
-			<h1 className={`mb-6 ${classes.headings.h1}`}>
-				JSON Web Token Decoder
-			</h1>
+			<H1 className='mb-6'>JSON Web Token Decoder</H1>
 
 			<Segment
 				title='Input'

@@ -1,6 +1,9 @@
 import Link from 'next/link'
 
 import Page from '@/components/page'
+import {
+	P, A
+} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
@@ -10,15 +13,15 @@ import {
 
 const About = () => (
 	<Page>
-		<div className='text-center leading-relaxed'>
+		<div className='h-full flex flex-col justify-center items-center'>
 			<img
 				src='/images/logo-circular.svg'
 				alt='circular logo'
-				className='w-32 mt-10 mb-16 mx-auto' />
+				className='w-32 mb-10 mx-auto' />
 
-			<p className='mb-6 text-lg'>
-				WebToys is made with <Icon path={mdiHeart} alt='love' size={1} className='inline-block text-pink-500' /> by <a href="https://github.com/katacarbix">Reese Sapphire</a>
-			</p>
+			<P className='mb-10'>
+				WebToys is made with <Icon path={mdiHeart} alt='love' size={1} className='inline-block text-pink-500' /> by <A href="https://github.com/katacarbix">Reese Sapphire</A>
+			</P>
 
 			<a href="https://github.com/katacarbix">
 				<Icon path={mdiGithub} alt='github' size={1.5} className='inline-block text-slate-400 dark:text-slate-500' />
