@@ -2,23 +2,15 @@ import { useState } from 'react'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
-import {
-	Button,
-	Select,
-	Textarea
-} from '@/components/inputs'
-import {
-	H1, P
-} from '@/components/typography'
+import { Select } from '@/components/inputs'
+import { P } from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
 	mdiText,
-	mdiNumeric,
-	mdiContentCopy
+	mdiNumeric
 } from '@mdi/js'
 
-import Clipboard from 'react-clipboard.js';
 
 import { LoremIpsum } from "lorem-ipsum";
 const lorem = new LoremIpsum({
@@ -33,7 +25,7 @@ const lorem = new LoremIpsum({
 })
 
 
-const Html = () => {
+const Tool = () => {
 	const [unit, setUnit] = useState('paragraphs')
 	const [count, setCount] = useState(1)
 	let output = (() => {
@@ -45,9 +37,7 @@ const Html = () => {
 	})()
 
 	return (
-		<Page>
-			<H1 className='mb-6'>Lorem Ipsum Generator</H1>
-
+		<Page title='Lorem Ipsum Generator'>
 			<Segment
 				type='config'
 				body={[
@@ -55,7 +45,7 @@ const Html = () => {
 						icon: mdiText,
 						name: 'Units',
 						description: 'Generate words, sentences, or paragraphs',
-						control: <Select options={{
+						control: <Select value={unit} options={{
 									words: "Words",
 									sentences: "Sentences",
 									paragraphs: "Paragraphs"
@@ -67,23 +57,16 @@ const Html = () => {
 						control: <input
 							type='number'
 							min={1}
+							value={count}
 							onChange={e => setCount(parseInt(e.target.value))} />
 					}
 				]} />
 
 			<Segment
 				title='Output'
-				controls={<>
-					<Clipboard data-clipboard-text={output}>
-						<Button icon={mdiContentCopy} hint="Copy" />
-					</Clipboard>
-				</>}
+				controls={[{type: 'copy', data: output}]}
 				body={
-					<div
-						className={`
-							mt-8
-						`}
-					>
+					<div className='mt-8'>
 						{unit === 'words' ? output :
 							output.split('\n').map((text, i) => (
 								<P key={i} className='indent-8 mb-2'>
@@ -98,4 +81,4 @@ const Html = () => {
 	)
 }
 
-export default Html
+export default Tool

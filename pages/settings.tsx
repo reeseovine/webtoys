@@ -6,8 +6,6 @@ import {
 	Select
 } from '@/components/inputs'
 
-import classes from '@/shared/classes'
-
 import Icon from '@mdi/react'
 import {
 	mdiTranslate
@@ -18,11 +16,7 @@ import Cookies from 'js-cookie'
 
 const Settings = () => {
 	return (
-		<Page>
-			<h1 className={`mb-6 text-3xl ${classes.headings.h1}`}>
-				Settings
-			</h1>
-
+		<Page title='Settings'>
 			<Segment
 				type='config'
 				title=''

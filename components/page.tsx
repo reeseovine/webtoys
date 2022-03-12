@@ -1,5 +1,9 @@
 import Head from 'next/head'
+
 import Drawer from '@/components/drawer'
+import {
+	H1
+} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import { mdiMenu } from '@mdi/js';
@@ -55,6 +59,7 @@ const Page = ({ title, children }) => (
 							size={1}
 							className='cursor-pointer' />
 					</label>
+					<H1 className='mb-6'>{title}</H1>
 					{children}
 				</div>
 			</section>

@@ -48,6 +48,7 @@ Below is a list of things to do; feel free to contribute if any of them appeal t
     - [ ] color blindness simulator
     - [ ] png & jpeg compressor
     - [ ] image converter
+- [ ] syntax highlighting and line numbering for code-related tools
 - [ ] search
 - [ ] translations
 - [ ] automatically save preferences with cookies

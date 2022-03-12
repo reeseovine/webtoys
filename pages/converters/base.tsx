@@ -3,23 +3,15 @@ import { useState } from 'react'
 import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
-	Button,
 	Select,
 	Textfield
 } from '@/components/inputs'
-import {
-	H1
-} from '@/components/typography'
 
 import Icon from '@mdi/react'
 import {
 	mdiNumeric,
-	mdiHexadecimal,
-	mdiContentCopy,
-	mdiClose
+	mdiHexadecimal
 } from '@mdi/js'
-
-import Clipboard from 'react-clipboard.js';
 
 
 const baseLookup = {
@@ -40,7 +32,7 @@ const convert = (number, base) => {
 	]
 }
 
-const Html = () => {
+const Tool = () => {
 	const [pretty, setPretty] = useState(true)
 	const [base, setBase] = useState('dec')
 	const [input, setInput] = useState('')
@@ -48,9 +40,7 @@ const Html = () => {
 	let [resultBin, resultOct, resultDec, resultHex] = convert(input, base)
 
 	return (
-		<Page>
-			<H1 className='mb-6'>Number Base Converter</H1>
-
+		<Page title='Number Base Converter'>
 			<Segment
 				type='config'
 				body={[
@@ -75,52 +65,36 @@ const Html = () => {
 			<Segment
 				type='inline'
 				title='Input'
-				controls={<Button icon={mdiClose} hint="Clear" />}
-				body={<Textfield onChange={e => setInput(e.target.value)} />}
+				controls={[{type: 'clear', onClick: () => setInput('')}]}
+				body={<Textfield value={input} onChange={e => setInput(e.target.value)} />}
 			/>
 
 			<Segment
 				type='inline'
 				title='Hexadecimal'
-				controls={
-					<Clipboard data-clipboard-text={resultHex}>
-						<Button icon={mdiContentCopy} hint="Copy" />
-					</Clipboard>
-				}
+				controls={[{type: 'copy', data: resultHex}]}
 				body={<Textfield value={resultHex} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Decimal'
-				controls={
-					<Clipboard data-clipboard-text={resultDec}>
-						<Button icon={mdiContentCopy} hint="Copy" />
-					</Clipboard>
-				}
+				controls={[{type: 'copy', data: resultDec}]}
 				body={<Textfield value={resultDec} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Octal'
-				controls={
-					<Clipboard data-clipboard-text={resultOct}>
-						<Button icon={mdiContentCopy} hint="Copy" />
-					</Clipboard>
-				}
+				controls={[{type: 'copy', data: resultOct}]}
 				body={<Textfield value={resultOct} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Binary'
-				controls={
-					<Clipboard data-clipboard-text={resultBin}>
-						<Button icon={mdiContentCopy} hint="Copy" />
-					</Clipboard>
-				}
+				controls={[{type: 'copy', data: resultBin}]}
 				body={<Textfield value={resultBin} disabled={true} />}
 			/>
 		</Page>
 	)
 }
 
-export default Html
+export default Tool

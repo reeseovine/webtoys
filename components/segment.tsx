@@ -1,7 +1,18 @@
 import Icon from '@mdi/react'
 import {
+	mdiContentCopy,
+	mdiClose
+} from '@mdi/js'
+
+import {
+	Button,
+	FileLoader
+} from '@/components/inputs'
+import {
 	H2
 } from '@/components/typography'
+
+import Clipboard from 'react-clipboard.js';
 
 const Config = ({ children }) => (
 	<div className="
@@ -49,6 +60,25 @@ const Inline = ({ input, controls }) => (
 )
 
 const Segment = ({ type, title, controls, body }) => {
+	if (Array.isArray(controls)){
+		controls = controls.map(control => {
+			switch (control.type){
+				case 'clear':
+					return <Button icon={mdiClose} hint="Clear" onClick={control.onClick} />
+				case 'copy':
+					return (
+						<Clipboard data-clipboard-text={control.data}>
+							<Button icon={mdiContentCopy} hint="Copy" />
+						</Clipboard>
+					)
+				case 'file':
+					return (
+						<FileLoader cb={control.callback} />
+					)
+			}
+		})
+	}
+
 	if (type === 'config'){
 		if (typeof title === 'undefined') title = 'Configuration'
 		body = <Config children={body} />
