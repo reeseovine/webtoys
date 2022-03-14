@@ -35,7 +35,7 @@ Below is a list of things to do; feel free to contribute if any of them appeal t
     - [ ] sql
     - [ ] xml
   - [ ] generators
-    - [ ] hash
+    - [x] hash
     - [ ] uuid
     - [x] lorem ipsum
     - [ ] checksum
@@ -59,6 +59,7 @@ Below is a list of things to do; feel free to contribute if any of them appeal t
 - [ ] make `className`s easier to read
 - [ ] write type declarations where needed so that it can build
   - [ ] component props
+  - [ ] helper functions
 - [ ] remove unused imports (mdi icon paths, for example)
 - [ ] ensure responsiveness on every component
 - [ ] ensure accessibility on every component

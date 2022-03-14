@@ -2,7 +2,10 @@ import { useState } from 'react'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
-import { Select } from '@/components/inputs'
+import {
+	Select,
+	Number
+} from '@/components/inputs'
 import { P } from '@/components/typography'
 
 import Icon from '@mdi/react'
@@ -33,7 +36,9 @@ const Tool = () => {
 			if (unit === 'words') return lorem.generateWords(count)
 			if (unit === 'sentences') return lorem.generateSentences(count)
 			if (unit === 'paragraphs') return lorem.generateParagraphs(count)
-		} catch(e) {}
+		} catch(e) {
+			return ''
+		}
 	})()
 
 	return (
@@ -54,11 +59,10 @@ const Tool = () => {
 						icon: mdiNumeric,
 						name: 'Count',
 						description: 'How many of the unit to generate?',
-						control: <input
-							type='number'
-							min={1}
-							value={count}
-							onChange={e => setCount(parseInt(e.target.value))} />
+						control: <Number
+									value={count}
+									min={1}
+									onChange={e => setCount(parseInt(e.target.value))} />
 					}
 				]} />
 
@@ -67,13 +71,11 @@ const Tool = () => {
 				controls={[{type: 'copy', data: output}]}
 				body={
 					<div className='mt-8'>
-						{unit === 'words' ? output :
-							output.split('\n').map((text, i) => (
-								<P key={i} className='indent-8 mb-2'>
-									{text}
-								</P>
-							))
-						}
+						{output.split('\n').map((text, i) => (
+							<P key={i} className='indent-8 mb-2'>
+								{text}
+							</P>
+						))}
 					</div>
 				}
 			/>

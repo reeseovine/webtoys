@@ -20,7 +20,9 @@ const Tool = () => {
 		try {
 			if (mode === 'encode') return encodeURIComponent(input)
 			if (mode === 'decode') return decodeURIComponent(input)
-		} catch(e) {}
+		} catch(e) {
+			return ''
+		}
 	})()
 
 	return (

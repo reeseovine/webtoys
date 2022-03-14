@@ -61,7 +61,6 @@ const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className='
 				<Icon
 					path={mdiChevronDown}
 					size={.75}
-					onClick={() => collapse(!collapsed)}
 					className={`shrink-0 transition-transform ${collapsed ? '' : 'rotate-180'}`} />
 			: null}
 		</div>

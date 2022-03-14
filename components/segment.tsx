@@ -68,7 +68,7 @@ const Segment = ({ type, title, controls, body }) => {
 				case 'copy':
 					return (
 						<Clipboard data-clipboard-text={control.data}>
-							<Button icon={mdiContentCopy} hint="Copy" />
+							<Button icon={mdiContentCopy} hint="Copy" showSuccess={true} />
 						</Clipboard>
 					)
 				case 'file':
@@ -88,10 +88,12 @@ const Segment = ({ type, title, controls, body }) => {
 	}
 	return (
 		<div className='mb-6'>
-			<div className="mb-2 flex items-end justify-between gap-2">
-				<H2 className='grow'>{title}</H2>
-				{controls}
-			</div>
+			{title || controls ?
+				<div className="mb-2 flex items-end justify-between gap-2">
+					<H2 className='grow'>{title}</H2>
+					{controls}
+				</div>
+				: null}
 			{body}
 		</div>
 	)

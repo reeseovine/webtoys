@@ -131,8 +131,8 @@ export default {
 			"id": "hash",
 			"category": "generators",
 			"icon": mdiFingerprint,
-			"description": "Calculate MD5, SHA1, SHA256 and SHA512 hash from text data",
-			"keywords": ""
+			"description": "Calculate MD5 and SHA hashes from text data",
+			"keywords": "sha1 sha256 sha512"
 		}, {
 			"name": "UUID",
 			"id": "uuid",
