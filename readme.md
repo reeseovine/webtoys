@@ -13,13 +13,12 @@ Because not everyone is a Windows user :)
 
 ## status
 
-WebToys is in the very early stages of development. Most tools are not implemented. I am aiming for 1:1 feature parity with DevToys eventually, wherever that's feasible.
+WebToys is in the very early stages of development and most tools are not yet implemented. I am aiming for 1:1 feature parity with DevToys eventually, wherever that's feasible.
 
-Below is a list of things to do; feel free to contribute if any of them appeal to you!
+Below is a list of things to do. Feel free to contribute if any of them appeal to you and don't be afraid to ask for help! Make sure to read through [`contributing.md`](contributing.md) first before getting in too deep.
 
 ### features
 
-- [x] responsive navigation drawer
 - [ ] tools
   - [ ] converters
     - [ ] json to yaml
@@ -44,10 +43,11 @@ Below is a list of things to do; feel free to contribute if any of them appeal t
     - [ ] regex tester
     - [ ] text diff
     - [ ] markdown preview
-  - [ ] graphic (use `sharp` maybe?)
+  - [ ] graphic
     - [ ] color blindness simulator
-    - [ ] png & jpeg compressor
+    - [ ] image compressor
     - [ ] image converter
+- [x] responsive navigation drawer
 - [ ] syntax highlighting and line numbering for code-related tools
 - [ ] search
 - [ ] translations
@@ -56,7 +56,7 @@ Below is a list of things to do; feel free to contribute if any of them appeal t
 ### code maintenance
 
 - [x] generalize components like buttons and sections for quick reusability
-- [ ] make `className`s easier to read
+- [x] make `className`s easier to read
 - [ ] write type declarations where needed so that it can build
   - [ ] component props
   - [ ] helper functions
