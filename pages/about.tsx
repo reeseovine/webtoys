@@ -20,10 +20,10 @@ const About = () => (
 				className='w-32 mb-10 mx-auto' />
 
 			<P className='mb-10'>
-				WebToys is made with <Icon path={mdiHeart} alt='love' size={1} className='inline-block text-pink-500' /> by <A href="https://github.com/katacarbix">Reese Sapphire</A>
+				WebToys is made with <Icon path={mdiHeart} alt='love' size={1} className='inline-block text-pink-500' /> by <A href="https://github.com/reeseovine">Reese Sapphire</A>
 			</P>
 
-			<a href="https://github.com/katacarbix">
+			<a href="https://github.com/reeseovine/webtoys">
 				<Icon path={mdiGithub} alt='github' size={1.5} className='inline-block text-slate-400 dark:text-slate-500' />
 			</a>
 		</div>

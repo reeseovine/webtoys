@@ -14,7 +14,7 @@ import {
 } from '@mdi/js'
 
 
-const baseLookup = {
+const baseMap = {
 	bin: 2,
 	oct: 8,
 	dec: 10,
@@ -22,7 +22,7 @@ const baseLookup = {
 }
 
 const convert = (number, base) => {
-	let input = parseInt(number, baseLookup[base])
+	let input = parseInt(number, baseMap[base])
 	if (isNaN(input)) return ['','','','']
 	else return [
 		input.toString(2),

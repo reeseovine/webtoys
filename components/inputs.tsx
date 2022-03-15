@@ -109,14 +109,30 @@ const Button = ({ style='normal', icon, label, hint, className='', showSuccess=f
 	}
 }
 
-const FileLoader = ({ accept='*', className='', cb }) => {
+const FileLoader = ({ accept='*', readAs='text', multiple=false, className='', cb }) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	let fileReader;
 	const handleFileChosen = (file) => {
+		if (readAs === 'objectURL'){
+			return cb(URL.createObjectURL(file), file)
+		}
 		fileReader = new FileReader()
-		fileReader.onloadend = () => cb(fileReader.result)
-		fileReader.readAsText(file)
+		fileReader.onloadend = () => cb(fileReader.result, file)
+		switch (readAs){
+			case 'text':
+				fileReader.readAsText(file)
+				break
+			case 'dataURL':
+				fileReader.readAsDataURL(file)
+				break
+			case 'binary':
+				fileReader.readAsBinaryString(file)
+				break
+			case 'buffer':
+				fileReader.readAsArrayBuffer(file)
+				break
+		}
 	}
 
 	return (
@@ -127,8 +143,9 @@ const FileLoader = ({ accept='*', className='', cb }) => {
 			<input
 				type='file'
 				accept={accept}
+				multiple={multiple}
 				ref={inputRef}
-				onChange={e => handleFileChosen(e.target.files[0])}
+				onChange={e => Array.from(e.target.files).map(file => handleFileChosen(file))}
 				className={`
 					absolute
 					w-full
@@ -145,16 +162,32 @@ const FileLoader = ({ accept='*', className='', cb }) => {
 	)
 }
 
-const FileDrop = ({ accept='*', multiple=true, message, className='', cb }) => {
+const FileDrop = ({ accept='*', readAs='text', multiple=true, message, className='', cb }) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 	const targetRef = useRef<HTMLLabelElement>(null)
 	const [dragging, setDragging] = useState(false)
 
 	let fileReader;
 	const handleFileChosen = (file) => {
+		if (readAs === 'objectURL'){
+			return cb(URL.createObjectURL(file), file)
+		}
 		fileReader = new FileReader()
-		fileReader.onloadend = () => cb(fileReader.result)
-		fileReader.readAsText(file)
+		fileReader.onloadend = () => cb(fileReader.result, file)
+		switch (readAs){
+			case 'text':
+				fileReader.readAsText(file)
+				break
+			case 'dataURL':
+				fileReader.readAsDataURL(file)
+				break
+			case 'binary':
+				fileReader.readAsBinaryString(file)
+				break
+			case 'buffer':
+				fileReader.readAsArrayBuffer(file)
+				break
+		}
 	}
 
 	useEffect(() => {
@@ -205,8 +238,9 @@ const FileDrop = ({ accept='*', multiple=true, message, className='', cb }) => {
 			<input
 				type='file'
 				accept={accept}
+				multiple={multiple}
 				ref={inputRef}
-				onChange={e => handleFileChosen(e.target.files[0])}
+				onChange={e => Array.from(e.target.files).map(file => handleFileChosen(file))}
 				className={`
 					absolute
 					w-full
@@ -231,8 +265,8 @@ const Select = ({ value, options, hint, onChange }) => (
 			pr-8
 			py-3
 		`}>
-		{Object.keys(options).map(key => (
-			<option key={key} value={key}>{options[key]}</option>
+		{options.map(opt => (
+			<option key={opt.key} value={opt.key}>{opt.value}</option>
 		))}
 	</select>
 )

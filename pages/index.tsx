@@ -40,7 +40,7 @@ const Tile = ({ name, icon, description, url }) => {
 
 const Index = () => (
 	<Page title='All tools'>
-		<div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+		<div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-6'>
 			{tools.tools.map(tool => (
 				<Tile
 					key={tool.id}

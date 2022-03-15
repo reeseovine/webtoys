@@ -3,9 +3,7 @@
 	<h1>WebToys</h1>
 </div>
 
-## what is it?
-
-A handy and easy-to-use collection of tools every developer needs at one point or another. It's a web-based implementation of [DevToys](https://github.com/veler/DevToys) built with Next.js.
+A handy and easy-to-use collection of tools every developer needs at one point or another. It's a web-based clone of [DevToys](https://github.com/veler/DevToys) built with Next.js.
 
 ## why?
 
