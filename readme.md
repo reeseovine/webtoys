@@ -40,11 +40,11 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] inspector / case converter
     - [ ] regex tester
     - [ ] text diff
-    - [ ] markdown preview
+    - [x] markdown preview
   - [ ] graphic
     - [ ] color blindness simulator
     - [ ] image compressor
-    - [ ] image converter
+    - [x] image converter
 - [x] responsive navigation drawer
 - [ ] syntax highlighting and line numbering for code-related tools
 - [ ] search
