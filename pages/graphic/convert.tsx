@@ -178,6 +178,7 @@ const Tool = () => {
 						name: 'Convert to',
 						description: 'Select an output image format',
 						control: <Select
+									value={outFormat}
 									options={validFormats.map(format => ({key: format.mime, value: format.name}))}
 									onChange={e => setOutFormat(e.target.value)} />
 					}

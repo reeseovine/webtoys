@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import storage from '@/shared/storage'
+
 import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
@@ -14,10 +16,16 @@ import {
 	mdiNumeric
 } from '@mdi/js'
 
-import Cookies from 'js-cookie'
-
 
 const Settings = () => {
+	const [language, setLanguage] = useState(storage.get('language', 'default'))
+	storage.set('language', language)
+
+	const [prismTheme, setPrismTheme] = useState(storage.get('prism-theme', 'duotoneDark'))
+	storage.set('prism-theme', prismTheme)
+	const [prismLineNumbers, setPrismLineNumbers] = useState(storage.get('prism-linenumbers', false))
+	storage.set('prism-linenumbers', prismLineNumbers)
+
 	return (
 		<Page title='Settings'>
 			<Segment
@@ -27,10 +35,10 @@ const Settings = () => {
 					{
 						icon: mdiTranslate,
 						name: 'Language',
-						control: <Select options={[
+						control: <Select value={language} options={[
 									{key: 'default', value: "System default"},
 									{key: 'en-US', value: "English (United States)"}
-								]} onChange={e => Cookies.set('language', e.target.value)} />
+								]} onChange={e => setLanguage(e.target.value)} />
 					}
 				]} />
 
@@ -46,20 +54,28 @@ const Settings = () => {
 					{
 						icon: mdiPaletteOutline,
 						name: 'Color scheme',
-						control: <Select options={[
-									{key: 'prism', value: "Default"},
-									{key: 'dark', value: "Dark"},
-									{key: 'funky', value: "Funky"},
+						control: <Select value={prismTheme} options={[
+									{key: 'dracula', value: "Dracula"},
+									{key: 'duotoneDark', value: "Duotone (Dark)"},
+									{key: 'duotoneLight', value: "Duotone (Light)"},
+									{key: 'github', value: "GitHub"},
+									{key: 'nightOwl', value: "Night Owl (Dark)"},
+									{key: 'nightOwlLight', value: "Night Owl (Light)"},
+									{key: 'oceanicNext', value: "Oceanic Next"},
 									{key: 'okaidia', value: "Okaidia"},
-									{key: 'twilight', value: "Twilight"},
-									{key: 'coy', value: "Coy"},
-									{key: 'solarizedlight', value: "Solarized Light"},
-									{key: 'tomorrow', value: "Tomorrow Night"},
-								]} onChange={e => Cookies.set('prism-theme', e.target.value)} />
+									{key: 'palenight', value: "Pale Night"},
+									{key: 'shadesOfPurple', value: "Shades of Purple"},
+									{key: 'synthwave84', value: "Synthwave 84"},
+									{key: 'ultramin', value: "Ultramin"},
+									{key: 'vsDark', value: "VSCode (Dark)"},
+									{key: 'vsLight', value: "VSCode (Light)"},
+								]} onChange={e => setPrismTheme(e.target.value)} />
 					}, {
 						icon: mdiNumeric,
 						name: 'Show line numbers',
-						control: <Toggle onChange={e => Cookies.set('prism-linenumbers', e.target.value)} />
+						control: <Toggle
+									value={prismLineNumbers}
+									onChange={e => setPrismLineNumbers(e.target.value)} />
 					}
 				]} />
 		</Page>

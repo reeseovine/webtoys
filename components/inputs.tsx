@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import storage from '@/shared/storage'
 
 import Icon from '@mdi/react'
 import {
@@ -14,9 +15,7 @@ import {
 	StatusBad
 } from '@/components/utility'
 
-import Cookies from 'js-cookie'
-import Prism from 'prismjs'
-
+import Highlight, { defaultProps } from 'prism-react-renderer'
 
 const sharedClasses = `
 	rounded-md
@@ -391,56 +390,29 @@ const Number = ({ value, min=0, max, step=1, disabled=false, className='', onCha
 const Code = ({ value='', language='', className='', onChange }) => {
 	const [input, setInput] = useState(value)
 	const preRef = useRef<HTMLPreElement>(null)
-	const codeRef = useRef<HTMLCodeElement>(null)
 
-	useEffect(() => {
-	    if (codeRef && codeRef.current) {
-			Prism.highlightElement(codeRef.current)
-		}
-	})
+	// TODO: Sanitize this value!!
+	const prismTheme = require('prism-react-renderer/themes/' + storage.get('prism-theme', 'duotoneDark')).default
 
-	const prismTheme = Cookies.get('prism-theme')
+	var caretColor = '#777'
+	if (typeof prismTheme !== undefined){
+		caretColor = prismTheme?.plain.color
+	}
 
 	return (
-		<>
-			<div className={`
-				${className}
-				relative
-			`}>
-				<textarea
-					value={input}
-					spellCheck={false}
-					onChange={(e) => {setInput(e.target.value); onChange(e)}}
-					onScroll={(e) => {
-						preRef.current?.scrollTop = e.target.scrollTop
-						preRef.current?.scrollLeft = e.target.scrollLeft
-					}}
-					className={`
-						w-full
-						h-full
-
-						absolute
-						top-0
-						left-0
-						right-0
-						bottom-0
-						z-20
-						overflow-y-auto
-
-						!m-0
-						!p-4
-
-						bg-transparent
-						border-0
-						!ring-0
-						whitespace-pre-wrap
-
-						!font-mono
-						!text-base
-						!text-transparent
-						caret-slate-50
-					`} />
-				<pre ref={preRef} className={`
+		<div className={`
+			${className}
+			relative
+		`}>
+			<textarea
+				value={input}
+				spellCheck={false}
+				onChange={(e) => {setInput(e.target.value); onChange(e)}}
+				onScroll={(e) => {
+					preRef.current?.scrollTop = e.target.scrollTop
+					preRef.current?.scrollLeft = e.target.scrollLeft
+				}}
+				className={`
 					w-full
 					h-full
 
@@ -449,33 +421,62 @@ const Code = ({ value='', language='', className='', onChange }) => {
 					left-0
 					right-0
 					bottom-0
-					z-10
+					z-20
 					overflow-y-auto
+					resize-none
 
 					!m-0
 					!p-4
 
-					rounded-md
-
-					!whitespace-pre-wrap
-					no-whitespace-normalization
+					bg-transparent
+					border-0
+					!ring-0
+					whitespace-pre-wrap
 
 					!font-mono
 					!text-base
-				`}>
-					<code ref={codeRef} aria-hidden='true' className={`
-						language-${language}
-						no-whitespace-normalization
+					!text-transparent
+				`}
+				style={{caretColor: caretColor}} />
+			<Highlight {...defaultProps} theme={prismTheme} code={input} language={language}>
+			    {({ className, style, tokens, getLineProps, getTokenProps }) => (
+					<pre ref={preRef} style={style} className={`
+						${className}
+						w-full
+						h-full
+
+						absolute
+						top-0
+						left-0
+						right-0
+						bottom-0
+						z-10
+						overflow-y-auto
+
+						!m-0
+						!p-4
+
+						border
+						rounded-md
+						border-slate-600
 
 						!whitespace-pre-wrap
+						no-whitespace-normalization
+
 						!font-mono
 						!text-base
 					`}>
-						{input}
-					</code>
-				</pre>
-			</div>
-		</>
+				        {tokens.map((line, i) => (
+							<div {...getLineProps({ line, key: i })}>
+								{line.map((token, key) => (
+									<span {...getTokenProps({ token, key })} />
+								))}
+							</div>
+						))}
+					</pre>
+			    )}
+			</Highlight>
+		</div>
 	)
 }
 

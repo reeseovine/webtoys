@@ -49,7 +49,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
 - [ ] syntax highlighting and line numbering for code-related tools
 - [ ] search
 - [ ] translations
-- [ ] automatically save preferences with cookies
+- [ ] automatically save preferences in localStorage
 
 ### code maintenance
 

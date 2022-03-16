@@ -44,7 +44,6 @@ const Tool = () => {
 					dark: githubMarkdownCSSDark,
 					light: githubMarkdownCSSLight
 				}[theme]}</style>
-				<style>${prismTheme}</style>
 			</head>
 			<body class="markdown-body" style="padding: 24px">${output}</body>
 		</html>`
@@ -58,11 +57,11 @@ const Tool = () => {
 						icon: mdiThemeLightDark,
 						name: 'Theme',
 						description: '',
-						control: <Select options={[
+						control: <Select value={theme} options={[
 									{key: 'light', value: "Light"},
 									{key: 'dark', value: "Dark"},
 									{key: 'auto', value: "Auto"}
-								]} value={theme} onChange={e => setTheme(e.target.value)} />
+								]} onChange={e => setTheme(e.target.value)} />
 					}
 				]} />
 

@@ -36,7 +36,7 @@ const Tool = () => {
 						icon: mdiSwapHorizontal,
 						name: 'Conversion',
 						description: 'Select which conversion mode you want to use',
-						control: <Select options={[
+						control: <Select value={mode} options={[
 									{key: 'encode', value: "Encode"},
 									{key: 'decode', value: "Decode"}
 								]} onChange={e => setMode(e.target.value)} />
@@ -46,7 +46,7 @@ const Tool = () => {
 						description: 'Select which character encoding you want to use',
 						control: <Select options={[
 									{key: 'utf-8', value: 'UTF-8'}
-								]} onChange={e => setEncoding(e.target.value)} />
+								]} value={encoding} onChange={e => setEncoding(e.target.value)} />
 					}
 				]} />
 
