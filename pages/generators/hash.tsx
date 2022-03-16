@@ -46,7 +46,7 @@ const Tool = () => {
 						icon: mdiFormatLetterCase,
 						name: 'Uppercase',
 						description: 'Show alphabetical digits as capital letters',
-						control: <Toggle onChange={(e) => setCaps(e.target.checked)} />
+						control: <Toggle checked={caps} onChange={(e) => setCaps(e.target.checked)} />
 					}
 				]} />
 

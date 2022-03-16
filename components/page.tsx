@@ -36,23 +36,23 @@ const Page = ({ title, children }) => (
 				grow
 				z-10
 
-				p-6
-				sm:p-12
-				md:p-8
-				lg:p-12
-
 				bg-white
 				dark:bg-slate-900
 			'>
 				<div className='
-					h-full
+					min-h-full
 					2xl:max-w-5xl
+					flex
+					flex-col
+
+					p-6
+					sm:p-12
 				'>
 					<label htmlFor='drawer-toggle' className='
 						block
 						mt-2
 						mb-6
-						md:hidden
+						lg:hidden
 					'>
 						<Icon
 							path={mdiMenu}

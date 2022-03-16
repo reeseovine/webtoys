@@ -4,6 +4,7 @@ import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
 	Select,
+	Toggle,
 	Textfield
 } from '@/components/inputs'
 
@@ -48,17 +49,17 @@ const Tool = () => {
 						icon: mdiNumeric,
 						name: 'Pretty print',
 						description: 'Nicely format the resulting numbers',
-						control: <input type="checkbox" checked={pretty} onChange={(e) => setPretty(e.target.checked)} />
+						control: <Toggle checked={pretty} onChange={(e) => setPretty(e.target.checked)} />
 					}, {
 						icon: mdiHexadecimal,
 						name: 'Input base',
 						description: 'Select which base your input is in',
-						control: <Select value={base} options={{
-									hex: 'Hexadecimal',
-									dec: 'Decimal',
-									oct: 'Octal',
-									bin: 'Binary'
-								}} onChange={e => setBase(e.target.value)} />
+						control: <Select value={base} options={[
+									{key: 'hex', value: 'Hexadecimal'},
+									{key: 'dec', value: 'Decimal'},
+									{key: 'oct', value: 'Octal'},
+									{key: 'bin', value: 'Binary'}
+								]} onChange={e => setBase(e.target.value)} />
 					}
 				]} />
 

@@ -36,17 +36,17 @@ const Tool = () => {
 						icon: mdiSwapHorizontal,
 						name: 'Conversion',
 						description: 'Select which conversion mode you want to use',
-						control: <Select options={{
-									encode: "Encode",
-									decode: "Decode"
-								}} onChange={e => setMode(e.target.value)} />
+						control: <Select options={[
+									{key: 'encode', value: "Encode"},
+									{key: 'decode', value: "Decode"}
+								]} onChange={e => setMode(e.target.value)} />
 					}, {
 						icon: mdiFileCogOutline,
 						name: 'Encoding',
 						description: 'Select which character encoding you want to use',
-						control: <Select options={{
-									'utf-8': 'UTF-8'
-								}} onChange={e => setEncoding(e.target.value)} />
+						control: <Select options={[
+									{key: 'utf-8', value: 'UTF-8'}
+								]} onChange={e => setEncoding(e.target.value)} />
 					}
 				]} />
 

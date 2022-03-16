@@ -84,10 +84,15 @@ const Job = ({ contents, file, outFormat, removeSelf }) => {
 	console.log(output)
 
 	useEffect(() => {
-		imgConvert(contents, outFormat, (data) => {
-			setOutput(data)
-			setDone(true)
-		})
+		try {
+			imgConvert(contents, outFormat, (data) => {
+				setOutput(data)
+				setDone(true)
+			})
+		} catch (e){
+			console.error(e)
+			setFailed(true)
+		}
 	}, [])
 
 	return (

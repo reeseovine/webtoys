@@ -34,10 +34,10 @@ const Tool = () => {
 						icon: mdiSwapHorizontal,
 						name: 'Conversion',
 						description: 'Select which conversion mode you want to use',
-						control: <Select options={{
-									encode: "Encode",
-									decode: "Decode"
-								}} onChange={e => setMode(e.target.value)} />
+						control: <Select options={[
+									{key: 'encode', value: "Encode"},
+									{key: 'decode', value: "Decode"}
+								]} onChange={e => setMode(e.target.value)} />
 					}
 				]} />
 

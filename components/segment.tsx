@@ -59,16 +59,16 @@ const Inline = ({ input, controls }) => (
 	</div>
 )
 
-const Segment = ({ type, title, controls, body }) => {
+const Segment = ({ type, title, controls, body, className='' }) => {
 	if (Array.isArray(controls)){
 		controls = controls.map(control => {
 			switch (control.type){
 				case 'clear':
-					return <Button icon={mdiClose} hint="Clear" onClick={control.onClick} />
+					return <Button icon={mdiClose} hint={control.hint ? control.hint : 'Clear'} onClick={control.onClick} />
 				case 'copy':
 					return (
 						<Clipboard data-clipboard-text={control.data}>
-							<Button icon={mdiContentCopy} hint="Copy" showSuccess={true} />
+							<Button icon={mdiContentCopy} hint={control.hint ? control.hint : 'Copy'} showSuccess={true} />
 						</Clipboard>
 					)
 				case 'file':
@@ -87,7 +87,7 @@ const Segment = ({ type, title, controls, body }) => {
 		controls = null
 	}
 	return (
-		<div className='mb-6'>
+		<div className={'mb-6 ' + className}>
 			{title || controls ?
 				<div className="mb-2 flex items-end justify-between gap-2">
 					<H2 className='grow'>{title}</H2>

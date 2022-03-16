@@ -55,6 +55,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
 
 - [x] generalize components like buttons and sections for quick reusability
 - [x] make `className`s easier to read
+- [ ] standardize language used in help text
 - [ ] write type declarations where needed so that it can build
   - [ ] component props
   - [ ] helper functions

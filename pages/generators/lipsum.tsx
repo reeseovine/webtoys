@@ -50,15 +50,15 @@ const Tool = () => {
 						icon: mdiText,
 						name: 'Units',
 						description: 'Generate words, sentences, or paragraphs',
-						control: <Select value={unit} options={{
-									words: "Words",
-									sentences: "Sentences",
-									paragraphs: "Paragraphs"
-								}} onChange={e => setUnit(e.target.value)} />
+						control: <Select value={unit} options={[
+									{key: 'words', value: "Words"},
+									{key: 'sentences', value: "Sentences"},
+									{key: 'paragraphs', value: "Paragraphs"}
+								]} onChange={e => setUnit(e.target.value)} />
 					}, {
 						icon: mdiNumeric,
 						name: 'Count',
-						description: 'How many of the unit to generate?',
+						description: 'How many of the unit to generate',
 						control: <Number
 									value={count}
 									min={1}

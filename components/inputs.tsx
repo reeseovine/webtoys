@@ -14,6 +14,10 @@ import {
 	StatusBad
 } from '@/components/utility'
 
+import Cookies from 'js-cookie'
+import Prism from 'prismjs'
+
+
 const sharedClasses = `
 	rounded-md
 	border
@@ -145,7 +149,7 @@ const FileLoader = ({ accept='*', readAs='text', multiple=false, className='', c
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.from(e.target.files).map(file => handleFileChosen(file))}
+				onChange={e => Array.from(e.target.files).forEach(file => handleFileChosen(file))}
 				className={`
 					absolute
 					w-full
@@ -240,7 +244,7 @@ const FileDrop = ({ accept='*', readAs='text', multiple=true, message, className
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.from(e.target.files).map(file => handleFileChosen(file))}
+				onChange={e => Array.from(e.target.files).forEach(file => handleFileChosen(file))}
 				className={`
 					absolute
 					w-full
@@ -266,7 +270,7 @@ const Select = ({ value, options, hint, onChange }) => (
 			py-3
 		`}>
 		{options.map(opt => (
-			<option key={opt.key} value={opt.key}>{opt.value}</option>
+			<option key={opt.key} value={opt.key} selected={!!opt.default}>{opt.value}</option>
 		))}
 	</select>
 )
@@ -380,9 +384,100 @@ const Number = ({ value, min=0, max, step=1, disabled=false, className='', onCha
 			w-24
 
 			pl-3
-			py-3
+			py-2
 		`} />
 )
+
+const Code = ({ value='', language='', className='', onChange }) => {
+	const [input, setInput] = useState(value)
+	const preRef = useRef<HTMLPreElement>(null)
+	const codeRef = useRef<HTMLCodeElement>(null)
+
+	useEffect(() => {
+	    if (codeRef && codeRef.current) {
+			Prism.highlightElement(codeRef.current)
+		}
+	})
+
+	const prismTheme = Cookies.get('prism-theme')
+
+	return (
+		<>
+			<div className={`
+				${className}
+				relative
+			`}>
+				<textarea
+					value={input}
+					spellCheck={false}
+					onChange={(e) => {setInput(e.target.value); onChange(e)}}
+					onScroll={(e) => {
+						preRef.current?.scrollTop = e.target.scrollTop
+						preRef.current?.scrollLeft = e.target.scrollLeft
+					}}
+					className={`
+						w-full
+						h-full
+
+						absolute
+						top-0
+						left-0
+						right-0
+						bottom-0
+						z-20
+						overflow-y-auto
+
+						!m-0
+						!p-4
+
+						bg-transparent
+						border-0
+						!ring-0
+						whitespace-pre-wrap
+
+						!font-mono
+						!text-base
+						!text-transparent
+						caret-slate-50
+					`} />
+				<pre ref={preRef} className={`
+					w-full
+					h-full
+
+					absolute
+					top-0
+					left-0
+					right-0
+					bottom-0
+					z-10
+					overflow-y-auto
+
+					!m-0
+					!p-4
+
+					rounded-md
+
+					!whitespace-pre-wrap
+					no-whitespace-normalization
+
+					!font-mono
+					!text-base
+				`}>
+					<code ref={codeRef} aria-hidden='true' className={`
+						language-${language}
+						no-whitespace-normalization
+
+						!whitespace-pre-wrap
+						!font-mono
+						!text-base
+					`}>
+						{input}
+					</code>
+				</pre>
+			</div>
+		</>
+	)
+}
 
 export {
 	Button,
@@ -392,5 +487,6 @@ export {
 	Toggle,
 	Textarea,
 	Textfield,
-	Number
+	Number,
+	Code
 }

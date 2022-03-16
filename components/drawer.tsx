@@ -105,7 +105,7 @@ const Drawer = () => {
 
 				bg-slate-900
 				opacity-0
-				peer-checked:opacity-50
+				peer-checked:opacity-60
 				invisible
 				peer-checked:visible
 				transition-all
@@ -113,11 +113,12 @@ const Drawer = () => {
 
 				cursor-pointer
 
-				md:hidden
+				lg:hidden
 			' />
 			<div className='
 				h-full
 				w-10/12
+				max-w-md
 				z-30
 				fixed
 				top-0 left-0
@@ -126,14 +127,16 @@ const Drawer = () => {
 				transition-transform
 				duration-300
 
-				md:w-auto
-				md:basis-80
-				md:shrink-0
-				md:transition-none
-				md:relative
-				md:translate-x-0
+				peer-checked:shadow-2xl
 
+				lg:w-auto
+				lg:max-w-none
+				lg:shrink-0
 				lg:basis-96
+				lg:transition-none
+				lg:relative
+				lg:translate-x-0
+				lg:!shadow-none
 
 				2xl:basis-1/3
 
@@ -141,13 +144,10 @@ const Drawer = () => {
 
 				bg-slate-100
 				dark:bg-slate-800
-				peer-checked:shadow-2xl
 			'>
 				<nav className='
 					p-6
 					sm:p-12
-					md:p-8
-					lg:p-12
 
 					2xl:max-w-sm
 					2xl:ml-auto
