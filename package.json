@@ -39,7 +39,8 @@
 		"sha.js": "github:crypto-browserify/sha.js#105bfe57c69e13c83fcf7a6ca660dd984cb291bf",
 		"tailwindcss": "3.0.23",
 		"tailwindcss-safe-area": "0.2.2",
-		"typescript": "4.5.5"
+		"typescript": "4.5.5",
+		"yaml": "^1.10.2"
 	},
 	"prettier": {
 		"semi": false,

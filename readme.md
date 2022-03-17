@@ -18,8 +18,8 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
 ### features
 
 - [ ] tools
-  - [ ] converters
-    - [ ] json to yaml
+  - [x] converters
+    - [x] json to yaml
     - [x] number base
   - [ ] encoders & decoders
     - [x] html entities
@@ -46,7 +46,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] image compressor
     - [x] image converter
 - [x] responsive navigation drawer
-- [ ] syntax highlighting and line numbering for code-related tools
+- [x] syntax highlighting and line numbering for code-related tools
 - [ ] search
 - [ ] translations
 - [ ] automatically save preferences in localStorage

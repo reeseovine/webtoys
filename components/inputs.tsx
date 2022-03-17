@@ -387,70 +387,83 @@ const Number = ({ value, min=0, max, step=1, disabled=false, className='', onCha
 		`} />
 )
 
-const Code = ({ value='', language='', className='', onChange }) => {
-	const [input, setInput] = useState(value)
+const Code = ({ value='', language='', editable=false, className='', onChange }) => {
 	const preRef = useRef<HTMLPreElement>(null)
 
 	// TODO: Sanitize this value!!
 	const prismTheme = require('prism-react-renderer/themes/' + storage.get('prism-theme', 'duotoneDark')).default
 
-	var caretColor = '#777'
+	let caretColor
 	if (typeof prismTheme !== undefined){
 		caretColor = prismTheme?.plain.color
 	}
 
+	const textbox = (
+		<textarea
+			value={value}
+			spellCheck={false}
+			onChange={onChange}
+			onScroll={(e) => {
+				preRef.current?.scrollTop = e.target.scrollTop
+				preRef.current?.scrollLeft = e.target.scrollLeft
+			}}
+			className={`
+				w-full
+				h-full
+
+				absolute
+				top-0
+				left-0
+				right-0
+				bottom-0
+				z-20
+				overflow-y-auto
+				resize-none
+
+				!m-0
+				!p-4
+
+				bg-transparent
+				border-0
+				!ring-0
+				whitespace-pre-wrap
+
+				!font-mono
+				!text-base
+				!text-transparent
+				caret-neutral-400
+			`}
+			style={{caretColor: caretColor+' !important'}} />
+	)
+
 	return (
 		<div className={`
 			${className}
-			relative
+			${editable ? `
+				relative
+			` : ''}
 		`}>
-			<textarea
-				value={input}
-				spellCheck={false}
-				onChange={(e) => {setInput(e.target.value); onChange(e)}}
-				onScroll={(e) => {
-					preRef.current?.scrollTop = e.target.scrollTop
-					preRef.current?.scrollLeft = e.target.scrollLeft
-				}}
-				className={`
-					w-full
-					h-full
-
-					absolute
-					top-0
-					left-0
-					right-0
-					bottom-0
-					z-20
-					overflow-y-auto
-					resize-none
-
-					!m-0
-					!p-4
-
-					bg-transparent
-					border-0
-					!ring-0
-					whitespace-pre-wrap
-
-					!font-mono
-					!text-base
-					!text-transparent
-				`}
-				style={{caretColor: caretColor}} />
-			<Highlight {...defaultProps} theme={prismTheme} code={input} language={language}>
+			{editable ? textbox : null}
+			<Highlight {...defaultProps}
+				theme={prismTheme}
+				code={value}
+				language={language}
+			>
 			    {({ className, style, tokens, getLineProps, getTokenProps }) => (
 					<pre ref={preRef} style={style} className={`
 						${className}
+						${editable ? `
+							absolute
+							top-0
+							left-0
+							right-0
+							bottom-0
+							z-10
+						` : ''}
+
 						w-full
 						h-full
 
-						absolute
-						top-0
-						left-0
-						right-0
-						bottom-0
-						z-10
 						overflow-y-auto
 
 						!m-0

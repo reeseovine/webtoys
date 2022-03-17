@@ -48,7 +48,7 @@ const Tool = () => {
 					{
 						icon: mdiNumeric,
 						name: 'Pretty print',
-						description: 'Nicely format the resulting numbers',
+						description: 'Format the results for readability',
 						control: <Toggle checked={pretty} onChange={(e) => setPretty(e.target.checked)} />
 					}, {
 						icon: mdiHexadecimal,

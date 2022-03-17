@@ -28,7 +28,7 @@ const Config = ({ children }) => (
 		divide-slate-300
 		dark:divide-slate-700
 	">
-		{children.map(child => (
+		{children.filter(c => c !== null && typeof c === 'object').map(child => (
 			<div key={child.name} className="
 				flex
 				items-center

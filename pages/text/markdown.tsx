@@ -82,7 +82,7 @@ const Tool = () => {
 						{type: 'file', callback: data => setInput(data)},
 						{type: 'clear', onClick: () => setInput('')}
 					]}
-					body={<Code value={input} language='markdown' onChange={e => setInput(e.target.value)} className='grow' />}
+					body={<Code value={input} language='markdown' editable={true} onChange={e => setInput(e.target.value)} className='grow' />}
 					className='grow flex flex-col basis-1/2 !m-0'
 				/>
 
