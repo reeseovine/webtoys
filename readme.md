@@ -28,7 +28,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] gzip
     - [x] json web token
   - [ ] formatters
-    - [ ] json
+    - [x] json
     - [ ] sql
     - [ ] xml
   - [ ] generators
