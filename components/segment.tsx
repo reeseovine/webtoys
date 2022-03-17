@@ -61,19 +61,19 @@ const Inline = ({ input, controls }) => (
 
 const Segment = ({ type, title, controls, body, className='' }) => {
 	if (Array.isArray(controls)){
-		controls = controls.map(control => {
+		controls = controls.map((control, i) => {
 			switch (control.type){
 				case 'clear':
-					return <Button icon={mdiClose} hint={control.hint ? control.hint : 'Clear'} onClick={control.onClick} />
+					return <Button key={i} icon={mdiClose} hint={control.hint ? control.hint : 'Clear'} onClick={control.onClick} />
 				case 'copy':
 					return (
-						<Clipboard data-clipboard-text={control.data}>
+						<Clipboard key={i} data-clipboard-text={control.data}>
 							<Button icon={mdiContentCopy} hint={control.hint ? control.hint : 'Copy'} showSuccess={true} />
 						</Clipboard>
 					)
 				case 'file':
 					return (
-						<FileLoader cb={control.callback} />
+						<FileLoader key={i} cb={control.callback} />
 					)
 			}
 		})

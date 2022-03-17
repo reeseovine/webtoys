@@ -42,8 +42,8 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] text diff
     - [x] markdown preview
   - [ ] graphic
-    - [ ] color blindness simulator
-    - [ ] image compressor
+    - [x] color blindness simulator
+    - [ ] lossless image optimizer (not really possible with just the browser)
     - [x] image converter
 - [x] responsive navigation drawer
 - [x] syntax highlighting and line numbering for code-related tools

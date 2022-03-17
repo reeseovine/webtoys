@@ -269,7 +269,7 @@ const Select = ({ value, options, hint, onChange }) => (
 			py-3
 		`}>
 		{options.map(opt => (
-			<option key={opt.key} value={opt.key} selected={!!opt.default}>{opt.value}</option>
+			<option key={opt.key} value={opt.key}>{opt.value}</option>
 		))}
 	</select>
 )
