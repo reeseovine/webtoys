@@ -91,7 +91,7 @@ const CBImage = ({ contents='', type=null, amount=0, title='' }: CBImageProps) =
 
 	useEffect(() => {
 		draw(canvasRef.current?.getContext('2d'), contents)
-	}, [draw])
+	}, [draw, contents])
 
 	return <canvas ref={canvasRef} title={title} className='max-w-full' />
 }

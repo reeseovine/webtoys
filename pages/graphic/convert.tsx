@@ -100,7 +100,7 @@ const Job = ({ contents, file, format, removeSelf }: JobProps) => {
 			console.error(e)
 			setFailed(true)
 		}
-	}, [])
+	}, [contents, format])
 
 	return (
 		<div className='

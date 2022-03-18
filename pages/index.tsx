@@ -3,7 +3,10 @@ import Icon from '@mdi/react'
 
 import Page from '@/components/page'
 
-import tools from '@/shared/tools'
+import {
+	tools,
+	ToolType
+} from '@/shared/tools'
 
 interface TileProps {
 	name: string,
@@ -13,7 +16,7 @@ interface TileProps {
 }
 const Tile = ({ name, icon, description, url }: TileProps) => {
 	return (
-		<Link key={url} href={url}>
+		<Link key={url} href={url} passHref>
 			<div className='
 				flex
 				flex-col
@@ -47,7 +50,7 @@ const Tile = ({ name, icon, description, url }: TileProps) => {
 const Index = () => (
 	<Page title='All tools'>
 		<div className='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-6'>
-			{tools.tools.map(tool => (
+			{tools.map(tool => (
 				<Tile
 					key={tool.id}
 					name={tool.name}

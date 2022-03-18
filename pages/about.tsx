@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Image from 'next/image'
 
 import Page from '@/components/page'
 import {
@@ -14,7 +14,7 @@ import {
 const About = () => (
 	<Page>
 		<div className='h-full flex flex-col justify-center items-center'>
-			<img
+			<Image
 				src='/images/logo-circular.svg'
 				alt='circular logo'
 				className='w-32 mb-10 mx-auto' />

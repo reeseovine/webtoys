@@ -9,7 +9,12 @@ import {
 	mdiInformationVariant
 } from '@mdi/js';
 
-import tools from '@/shared/tools'
+import {
+	categories,
+	tools,
+	CategoryType,
+	ToolType
+} from '@/shared/tools'
 
 interface EntryProps {
 	name: string,
@@ -163,18 +168,19 @@ const Drawer = () => {
 						url='/'
 						className='mb-8'
 					/>
-					{tools.categories.map(category => (
+					{categories.map((category: CategoryType) => (
 						<Category
 							key={category.id}
 							name={category.name}
-							icon={category.icon}
-							children={tools.tools.filter(tool => tool.category === category.id).map(tool => (
+							icon={category.icon}>
+							{tools.filter((tool: ToolType) => tool.category === category.id).map(tool => (
 								<Entry
 									key={tool.id}
 									name={tool.name}
 									icon={tool.icon}
 									url={`/${category.id}/${tool.id}`} />
-							))} />
+							))}
+						</Category>
 					))}
 					<Entry
 						name="Settings"
