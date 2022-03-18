@@ -431,10 +431,10 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 			value={value}
 			spellCheck={false}
 			onChange={onChange}
-			onScroll={(e) => {
-				if (preRef.current !== null){
-					preRef.current.scrollTop = 0 //e.target.scrollTop
-					preRef.current.scrollLeft = 0 //e.target.scrollLeft
+			onScroll={(e: React.UIEvent<HTMLTextAreaElement>) => {
+				if (preRef?.current){
+					preRef.current.scrollTop  = e.currentTarget.scrollTop
+					preRef.current.scrollLeft = e.currentTarget.scrollLeft
 				}
 			}}
 			className={`
