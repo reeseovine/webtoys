@@ -1,24 +1,29 @@
+interface Props {
+	className?: string,
+	children: React.ReactNode
+}
+
 const headingClasses = `
 	text-slate-800
 	dark:text-slate-200
 `
-const H1 = ({className, children}) => (
+const H1 = ({className, children}: Props) => (
 	<h1 className={`${className} ${headingClasses} text-3xl font-semibold`}>
 		{children}
 	</h1>
 )
-const H2 = ({className, children}) => (
+const H2 = ({className, children}: Props) => (
 	<h2 className={`${className} ${headingClasses} text-xl`}>
 		{children}
 	</h2>
 )
-const H3 = ({className, children}) => (
+const H3 = ({className, children}: Props) => (
 	<h3 className={`${className} ${headingClasses} text-lg`}>
 		{children}
 	</h3>
 )
 
-const P = ({className, children}) => (
+const P = ({className, children}: Props) => (
 	<p className={`
 		${className}
 		max-w-prose
@@ -31,7 +36,10 @@ const P = ({className, children}) => (
 	</p>
 )
 
-const A = ({href, className, children}) => (
+interface AProps extends Props {
+	href: string
+}
+const A = ({href, className, children}: AProps) => (
 	<a
 		href={href}
 		className={`

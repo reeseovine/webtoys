@@ -5,7 +5,13 @@ import Page from '@/components/page'
 
 import tools from '@/shared/tools'
 
-const Tile = ({ name, icon, description, url }) => {
+interface TileProps {
+	name: string,
+	icon: string,
+	description: string,
+	url: string
+}
+const Tile = ({ name, icon, description, url }: TileProps) => {
 	return (
 		<Link key={url} href={url}>
 			<div className='

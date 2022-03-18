@@ -8,12 +8,12 @@ import {
 import Icon from '@mdi/react'
 import { mdiMenu } from '@mdi/js';
 
-interface Props {
-	title?: string
+interface PageProps {
+	title?: string,
 	children: React.ReactNode
 }
 
-const Page = ({ title, children }) => (
+const Page = ({ title, children }: PageProps) => (
 	<>
 		{title ? (
 			<Head>

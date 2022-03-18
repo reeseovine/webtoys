@@ -5,7 +5,7 @@ import Segment from '@/components/segment'
 import {
 	Select,
 	Toggle,
-	Textfield
+	TextField
 } from '@/components/inputs'
 
 import Icon from '@mdi/react'
@@ -15,6 +15,7 @@ import {
 } from '@mdi/js'
 
 
+type Base = 'bin' | 'oct' | 'dec' | 'hex'
 const baseMap = {
 	bin: 2,
 	oct: 8,
@@ -22,7 +23,7 @@ const baseMap = {
 	hex: 16
 }
 
-const convert = (number, base) => {
+const convert = (number: string, base: Base) => {
 	let input = parseInt(number, baseMap[base])
 	if (isNaN(input)) return ['','','','']
 	else return [
@@ -35,7 +36,7 @@ const convert = (number, base) => {
 
 const Tool = () => {
 	const [pretty, setPretty] = useState(true)
-	const [base, setBase] = useState('dec')
+	const [base, setBase] = useState('dec' as Base)
 	const [input, setInput] = useState('')
 
 	let [resultBin, resultOct, resultDec, resultHex] = convert(input, base)
@@ -44,12 +45,12 @@ const Tool = () => {
 		<Page title='Number Base Converter'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiNumeric,
 						name: 'Pretty print',
 						description: 'Format the results for readability',
-						control: <Toggle checked={pretty} onChange={(e) => setPretty(e.target.checked)} />
+						control: <Toggle checked={pretty} onChange={(e: Event) => setPretty((e.target as HTMLInputElement).checked)} />
 					}, {
 						icon: mdiHexadecimal,
 						name: 'Input base',
@@ -59,7 +60,7 @@ const Tool = () => {
 									{key: 'dec', value: 'Decimal'},
 									{key: 'oct', value: 'Octal'},
 									{key: 'bin', value: 'Binary'}
-								]} onChange={e => setBase(e.target.value)} />
+								]} onChange={(e: Event) => setBase((e.target as HTMLSelectElement).value as Base)} />
 					}
 				]} />
 
@@ -67,32 +68,32 @@ const Tool = () => {
 				type='inline'
 				title='Input'
 				controls={[{type: 'clear', onClick: () => setInput('')}]}
-				body={<Textfield value={input} onChange={e => setInput(e.target.value)} />}
+				body={<TextField value={input} onChange={(e: Event) => setInput((e.target as HTMLInputElement).value)} />}
 			/>
 
 			<Segment
 				type='inline'
 				title='Hexadecimal'
 				controls={[{type: 'copy', data: resultHex}]}
-				body={<Textfield value={resultHex} disabled={true} />}
+				body={<TextField value={resultHex} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Decimal'
 				controls={[{type: 'copy', data: resultDec}]}
-				body={<Textfield value={resultDec} disabled={true} />}
+				body={<TextField value={resultDec} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Octal'
 				controls={[{type: 'copy', data: resultOct}]}
-				body={<Textfield value={resultOct} disabled={true} />}
+				body={<TextField value={resultOct} disabled={true} />}
 			/>
 			<Segment
 				type='inline'
 				title='Binary'
 				controls={[{type: 'copy', data: resultBin}]}
-				body={<Textfield value={resultBin} disabled={true} />}
+				body={<TextField value={resultBin} disabled={true} />}
 			/>
 		</Page>
 	)

@@ -11,17 +11,17 @@ import {
 
 import tools from '@/shared/tools'
 
-interface Entry {
+interface EntryProps {
 	name: string,
 	icon: string,
 	url?: string,
-	onClick,
+	onClick?: any,
 	caret?: boolean,
 	collapsed?: boolean,
 	className?: string
 }
 
-const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className=''}: Entry) => {
+const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className=''}: EntryProps) => {
 	const router = useRouter()
 	let entry = (
 		<div
@@ -77,7 +77,12 @@ const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className='
 	}
 }
 
-const Category = ({ name, icon, children }) => {
+interface CategoryProps {
+	name: string,
+	icon: string,
+	children: any
+}
+const Category = ({ name, icon, children }: CategoryProps) => {
 	const [collapsed, collapse] = useState(false);
 
 	return (<>

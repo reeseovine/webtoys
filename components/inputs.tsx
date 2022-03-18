@@ -15,7 +15,7 @@ import {
 	StatusBad
 } from '@/components/utility'
 
-import Highlight, { defaultProps } from 'prism-react-renderer'
+import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 
 const sharedClasses = `
 	rounded-md
@@ -54,7 +54,16 @@ const flatClasses = `
 	dark:active:bg-slate-700
 `
 
-const Button = ({ style='normal', icon, label, hint, className='', showSuccess=false, onClick }) => {
+interface ButtonProps {
+	style?: string,
+	icon: string,
+	label?: string,
+	hint?: string,
+	className?: string,
+	showSuccess?: boolean,
+	onClick?: any
+}
+const Button = ({ style='normal', icon, label, hint, className='', showSuccess=false, onClick }: ButtonProps) => {
 	const [success, setSuccess] = useState(false)
 
 	let button = (
@@ -112,31 +121,38 @@ const Button = ({ style='normal', icon, label, hint, className='', showSuccess=f
 	}
 }
 
-const FileLoader = ({ accept='*', readAs='text', multiple=false, className='', cb }) => {
-	const inputRef = useRef<HTMLInputElement>(null)
 
-	let fileReader;
-	const handleFileChosen = (file) => {
-		if (readAs === 'objectURL'){
-			return cb(URL.createObjectURL(file), file)
-		}
-		fileReader = new FileReader()
-		fileReader.onloadend = () => cb(fileReader.result, file)
-		switch (readAs){
-			case 'text':
-				fileReader.readAsText(file)
-				break
-			case 'dataURL':
-				fileReader.readAsDataURL(file)
-				break
-			case 'binary':
-				fileReader.readAsBinaryString(file)
-				break
-			case 'buffer':
-				fileReader.readAsArrayBuffer(file)
-				break
-		}
+const handleFileChosen = (file: File, readAs: string, cb: any) => {
+	if (readAs === 'objectURL'){
+		return cb(URL.createObjectURL(file), file)
 	}
+	const fileReader = new FileReader()
+	fileReader.onloadend = () => cb(fileReader.result, file)
+	switch (readAs){
+		case 'text':
+			fileReader.readAsText(file)
+			break
+		case 'dataURL':
+			fileReader.readAsDataURL(file)
+			break
+		case 'binary':
+			fileReader.readAsBinaryString(file)
+			break
+		case 'buffer':
+			fileReader.readAsArrayBuffer(file)
+			break
+	}
+}
+
+interface FileProps {
+	accept?: string,
+	readAs?: string,
+	multiple?: boolean,
+	className?: string,
+	cb: any,
+}
+const FileButton = ({ accept='*', readAs='text', multiple=false, className='', cb }: FileProps) => {
+	const inputRef = useRef<HTMLInputElement>(null)
 
 	return (
 		<div className={`
@@ -148,7 +164,7 @@ const FileLoader = ({ accept='*', readAs='text', multiple=false, className='', c
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.from(e.target.files).forEach(file => handleFileChosen(file))}
+				onChange={e => Array.prototype.every.call(e.target.files, file => handleFileChosen(file, readAs, cb))}
 				className={`
 					absolute
 					w-full
@@ -165,38 +181,18 @@ const FileLoader = ({ accept='*', readAs='text', multiple=false, className='', c
 	)
 }
 
-const FileDrop = ({ accept='*', readAs='text', multiple=true, message, className='', cb }) => {
+interface FileDropProps extends FileProps {
+	message?: string
+}
+const FileDrop = ({ accept='*', readAs='text', multiple=true, message='Drag and drop files here or click to select', className='', cb }: FileDropProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 	const targetRef = useRef<HTMLLabelElement>(null)
 	const [dragging, setDragging] = useState(false)
 
-	let fileReader;
-	const handleFileChosen = (file) => {
-		if (readAs === 'objectURL'){
-			return cb(URL.createObjectURL(file), file)
-		}
-		fileReader = new FileReader()
-		fileReader.onloadend = () => cb(fileReader.result, file)
-		switch (readAs){
-			case 'text':
-				fileReader.readAsText(file)
-				break
-			case 'dataURL':
-				fileReader.readAsDataURL(file)
-				break
-			case 'binary':
-				fileReader.readAsBinaryString(file)
-				break
-			case 'buffer':
-				fileReader.readAsArrayBuffer(file)
-				break
-		}
-	}
-
 	useEffect(() => {
-		targetRef.current.addEventListener('dragenter', () => setDragging(true))
-		targetRef.current.addEventListener('dragleave', () => setDragging(false))
-		targetRef.current.addEventListener('drop', () => setDragging(false))
+		targetRef.current?.addEventListener('dragenter', () => setDragging(true))
+		targetRef.current?.addEventListener('dragleave', () => setDragging(false))
+		targetRef.current?.addEventListener('drop', () => setDragging(false))
 	}, []);
 
 	return (
@@ -243,7 +239,7 @@ const FileDrop = ({ accept='*', readAs='text', multiple=true, message, className
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.from(e.target.files).forEach(file => handleFileChosen(file))}
+				onChange={e => Array.prototype.every.call(e.target.files, file => handleFileChosen(file, readAs, cb))}
 				className={`
 					absolute
 					w-full
@@ -252,13 +248,18 @@ const FileDrop = ({ accept='*', readAs='text', multiple=true, message, className
 					cursor-pointer
 				`} />
 			<div>
-				{message ? message : 'Drag and drop files here or click to select'}
+				{message}
 			</div>
 		</label>
 	)
 }
 
-const Select = ({ value, options, hint, onChange }) => (
+interface SelectProps {
+	value?: string,
+	options: { key: string, value: string }[],
+	onChange?: any
+}
+const Select = ({ value, options, onChange }: SelectProps) => (
 	<select
 		value={value}
 		onChange={onChange}
@@ -274,7 +275,12 @@ const Select = ({ value, options, hint, onChange }) => (
 	</select>
 )
 
-const Toggle = ({ checked, className='', onChange }) => (
+interface ToggleProps {
+	checked?: boolean,
+	className?: string,
+	onChange?: any
+}
+const Toggle = ({ checked, className='', onChange }: ToggleProps) => (
 	<label className="
 		relative
 		w-12
@@ -352,15 +358,13 @@ const textClassesDisabled = `
 	dark:border-slate-700
 `
 
-const Textarea = ({ value, rows, cols, disabled=false, className='', onChange }) => (
-	<textarea
-		value={value}
-		rows={rows} cols={cols}
-		disabled={disabled}
-		onChange={onChange}
-		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
-)
-const Textfield = ({ value, disabled=false, className='', onChange }) => (
+interface TextFieldProps {
+	value?: string,
+	disabled?: boolean,
+	className?: string,
+	onChange?: any
+}
+const TextField = ({ value, disabled=false, className='', onChange }: TextFieldProps) => (
 	<input
 		type="text"
 		value={value}
@@ -368,7 +372,24 @@ const Textfield = ({ value, disabled=false, className='', onChange }) => (
 		onChange={onChange}
 		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
 )
-const Number = ({ value, min=0, max, step=1, disabled=false, className='', onChange }) => (
+interface TextAreaProps extends TextFieldProps {
+	rows?: number,
+	cols?: number
+}
+const TextArea = ({ value, rows, cols, disabled=false, className='', onChange }: TextAreaProps) => (
+	<textarea
+		value={value}
+		rows={rows} cols={cols}
+		disabled={disabled}
+		onChange={onChange}
+		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
+)
+interface NumberProps extends TextFieldProps {
+	min?: number,
+	max?: number,
+	step?: number
+}
+const Number = ({ value, min=0, max, step=1, disabled=false, className='', onChange }: NumberProps) => (
 	<input
 		type="number"
 		value={value}
@@ -387,7 +408,14 @@ const Number = ({ value, min=0, max, step=1, disabled=false, className='', onCha
 		`} />
 )
 
-const Code = ({ value='', language='', editable=false, className='', onChange }) => {
+interface CodeProps {
+	value?: string,
+	language: Language,
+	editable?: boolean,
+	className?: string,
+	onChange?: any
+}
+const Code = ({ value='', language, editable=false, className='', onChange }: CodeProps) => {
 	const preRef = useRef<HTMLPreElement>(null)
 
 	// TODO: Sanitize this value!!
@@ -404,8 +432,10 @@ const Code = ({ value='', language='', editable=false, className='', onChange })
 			spellCheck={false}
 			onChange={onChange}
 			onScroll={(e) => {
-				preRef.current?.scrollTop = e.target.scrollTop
-				preRef.current?.scrollLeft = e.target.scrollLeft
+				if (preRef.current !== null){
+					preRef.current.scrollTop = 0 //e.target.scrollTop
+					preRef.current.scrollLeft = 0 //e.target.scrollLeft
+				}
 			}}
 			className={`
 				w-full
@@ -495,12 +525,12 @@ const Code = ({ value='', language='', editable=false, className='', onChange })
 
 export {
 	Button,
-	FileLoader,
+	FileButton,
 	FileDrop,
 	Select,
 	Toggle,
-	Textarea,
-	Textfield,
+	TextArea,
+	TextField,
 	Number,
 	Code
 }

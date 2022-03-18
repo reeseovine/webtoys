@@ -5,8 +5,12 @@ import {
 	mdiLoading,
 } from '@mdi/js'
 
+interface ToolTipProps {
+	text: string,
+	children: React.ReactNode
+}
 // The child element needs to have a `peer` class for this to work
-const ToolTip = ({ text, children }) => (
+const ToolTip = ({ text, children }: ToolTipProps) => (
 	<div className='relative'>
 		{children}
 		<div aria-hidden="true" className="
@@ -53,19 +57,23 @@ const ToolTip = ({ text, children }) => (
 )
 
 
-const StatusGood = ({ size=1, className='' }) => (
+interface StatusProps {
+	size?: number,
+	className?: string
+}
+const StatusGood = ({ size=1, className='' }: StatusProps) => (
 	<Icon
 		path={mdiCheck}
 		size={size}
 		className={`${className} text-lime-600 dark:text-lime-500`} />
 )
-const StatusBad = ({ size=1, className='' }) => (
+const StatusBad = ({ size=1, className='' }: StatusProps) => (
 	<Icon
 		path={mdiClose}
 		size={size}
 		className={`${className} text-red-500 dark:text-red-500`} />
 )
-const StatusLoading = ({ size=1, className='' }) => (
+const StatusLoading = ({ size=1, className='' }: StatusProps) => (
 	<Icon
 		path={mdiLoading}
 		size={size}

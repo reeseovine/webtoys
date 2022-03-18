@@ -14,11 +14,12 @@ import {
 	mdiFormatIndentIncrease
 } from '@mdi/js'
 
+import { Language } from 'prism-react-renderer'
 import YAML from 'yaml'
 
 
 const Tool = () => {
-	const [mode, setMode] = useState('yaml')
+	const [mode, setMode] = useState('yaml' as Language)
 	const [pretty, setPretty] = useState(true)
 	const [input, setInput] = useState('')
 	let output
@@ -39,7 +40,7 @@ const Tool = () => {
 		<Page title='Convert JSON to YAML and back'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiSwapHorizontal,
 						name: 'Conversion',
@@ -47,13 +48,13 @@ const Tool = () => {
 						control: <Select value={mode} options={[
 									{key: 'yaml', value: "JSON to YAML"},
 									{key: 'json', value: "YAML to JSON"}
-								]} onChange={e => setMode(e.target.value)} />
-					}, (mode === 'json' ? {
+								]} onChange={(e: Event) => setMode((e.target as HTMLSelectElement).value as Language)} />
+					}, {
 						icon: mdiFormatIndentIncrease,
 						name: 'Pretty print',
 						description: 'Format the result for readability',
-						control: <Toggle checked={pretty} onChange={(e) => setPretty(e.target.checked)} />
-					} : null)
+						control: <Toggle checked={pretty} onChange={(e: Event) => setPretty((e.target as HTMLInputElement).checked)} />
+					}
 				]} />
 
 			<div className={`
@@ -70,14 +71,14 @@ const Tool = () => {
 				<Segment
 					title={mode === 'yaml' ? 'JSON' : 'YAML'}
 					controls={[
-						{type: 'file', callback: data => setInput(data)},
+						{type: 'file', callback: (data: string) => setInput(data)},
 						{type: 'clear', onClick: () => setInput('')}
 					]}
 					body={<Code
 							value={input}
 							language={mode === 'yaml' ? 'json' : 'yaml'}
 							editable={true}
-							onChange={e => setInput(e.target.value)}
+							onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)}
 							className='grow' />}
 					className='grow flex flex-col basis-1/2 !m-0'
 				/>

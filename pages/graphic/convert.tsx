@@ -24,7 +24,8 @@ import {
 
 import { bytes } from '@/shared/math'
 
-const formats = [
+type Format = { mime: string; name: string; extension: string; }
+const formats: Format[] = [
 	{mime:'image/png', name:'PNG', extension:'png'},
 	{mime:'image/jpeg', name:'JPEG', extension:'jpg'},
 	{mime:'image/webp', name:'WEBP', extension:'webp'},
@@ -33,13 +34,15 @@ const formats = [
 	{mime:'image/gif', name:'GIF', extension:'gif'},
 	{mime:'image/tif', name:'TIFF', extension:'tif'}
 ]
-const testFormats = () => {
-	const canvas = document.createElement("canvas");
-	canvas.width = 1;
-	canvas.height = 1;
-	const ctx = canvas.getContext("2d");
-	ctx.fillStyle = "red";
-	ctx.fillRect(0, 0, 1, 1);
+const testFormats = (): Format[] => {
+	const canvas = document.createElement("canvas")
+	canvas.width = 1
+	canvas.height = 1
+	const ctx = canvas.getContext("2d")
+	if (ctx){
+		ctx.fillStyle = "red"
+		ctx.fillRect(0, 0, 1, 1)
+	}
 
 	return formats.filter(format => {
 		const data = canvas.toDataURL(format.mime);
@@ -47,7 +50,7 @@ const testFormats = () => {
 	})
 }
 
-const imgConvert = (contents, toFormat, cb) => {
+const imgConvert = (contents: string, format: Format, cb: any) => {
 	const canvas = document.createElement("canvas")
 	const ctx = canvas.getContext("2d")
 
@@ -55,13 +58,13 @@ const imgConvert = (contents, toFormat, cb) => {
 	img.onload = () => {
         canvas.width = img.width
         canvas.height = img.height
-        ctx.drawImage(img, 0, 0)
-		cb(canvas.toDataURL(toFormat))
+        if (ctx) ctx.drawImage(img, 0, 0)
+		cb(canvas.toDataURL(format.mime))
     }
 	img.src = contents
 }
 
-const downloadURI = (uri, name) => {
+const downloadURI = (uri: string, name: string) => {
 	const link = document.createElement('a')
 	link.download = name
 	link.href = uri
@@ -70,22 +73,26 @@ const downloadURI = (uri, name) => {
 	document.body.removeChild(link)
 }
 
-const changeExtension = (name, toFormat) => {
+const changeExtension = (name: string, format: Format) => {
 	name = name.slice(0, name.lastIndexOf('.'))
-	const newExt = formats.find(fmt => fmt.mime == toFormat).extension
-	return name + '.' + newExt
+	return name + '.' + format.extension
 }
 
 
-const Job = ({ contents, file, outFormat, removeSelf }) => {
+interface JobProps {
+	contents: string,
+	file: File,
+	format: Format,
+	removeSelf?: any
+}
+const Job = ({ contents, file, format, removeSelf }: JobProps) => {
 	const [done, setDone] = useState(false)
 	const [failed, setFailed] = useState(false)
 	const [output, setOutput] = useState('')
-	console.log(output)
 
 	useEffect(() => {
 		try {
-			imgConvert(contents, outFormat, (data) => {
+			imgConvert(contents, format, (data: string) => {
 				setOutput(data)
 				setDone(true)
 			})
@@ -132,7 +139,7 @@ const Job = ({ contents, file, outFormat, removeSelf }) => {
 				grow
 				text-right
 			'>
-				<div className=''>{outFormat}</div>
+				<div className=''>{format.name}</div>
 				{/*<div className='text-slate-600 dark:text-slate-300'>{outSize}</div>*/}
 			</div>
 			{failed ? null :
@@ -141,7 +148,7 @@ const Job = ({ contents, file, outFormat, removeSelf }) => {
 						style='flat'
 						hint='Save'
 						icon={mdiDownload}
-						onClick={() => downloadURI(output, changeExtension(file.name, outFormat))} />
+						onClick={() => downloadURI(output, changeExtension(file.name, format))} />
 					: <Button
 						style='flat'
 						hint='Cancel'
@@ -160,9 +167,9 @@ const Job = ({ contents, file, outFormat, removeSelf }) => {
 }
 
 const Tool = () => {
-	const [outFormat, setOutFormat] = useState('image/png')
-	const [validFormats, setValidFormats] = useState([])
-	const [jobs, setJobs] = useState([])
+	const [outFormat, setOutFormat] = useState(0)
+	const [validFormats, setValidFormats] = useState([] as Format[])
+	const [jobs, setJobs] = useState([] as JobProps[])
 
 	useEffect(() => {
 		setValidFormats(testFormats())
@@ -172,15 +179,15 @@ const Tool = () => {
 		<Page title='Image Converter'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiFileMoveOutline,
 						name: 'Convert to',
-						description: 'Select an output image format',
+						description: 'Select a format to convert the image to',
 						control: <Select
-									value={outFormat}
-									options={validFormats.map(format => ({key: format.mime, value: format.name}))}
-									onChange={e => setOutFormat(e.target.value)} />
+									value={outFormat.toString()}
+									options={validFormats.map((format, i) => ({key: i.toString(), value: format.name}))}
+									onChange={(e: Event) => setOutFormat(parseInt((e.target as HTMLSelectElement).value))} />
 					}
 				]} />
 
@@ -188,8 +195,18 @@ const Tool = () => {
 				<FileDrop
 					accept='image/*'
 					readAs='objectURL'
-					multiple='true'
-					cb={(contents, file) => setJobs([{contents, file, outFormat}].concat(jobs))}
+					multiple={true}
+					// TODO: Fix outFormat using old value for new jobs
+					cb={(contents: string, file: File) => setJobs(
+							[
+								{
+									contents,
+									file,
+									format: formats[outFormat],
+								},
+								...jobs
+							]
+						)}
 				/>
 			} />
 

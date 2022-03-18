@@ -41,7 +41,7 @@ const Tool = () => {
 		<Page title='JSON Formatter'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiFormatIndentIncrease,
 						name: 'Indentation',
@@ -50,7 +50,7 @@ const Tool = () => {
 									{key: '2', value: "2 spaces"},
 									{key: '4', value: "4 spaces"},
 									{key: 'tab', value: "Tab"}
-								]} onChange={e => setIndent(e.target.value)} />
+								]} onChange={(e: Event) => setIndent((e.target as HTMLSelectElement).value)} />
 					}
 				]} />
 
@@ -68,14 +68,14 @@ const Tool = () => {
 				<Segment
 					title='Input'
 					controls={[
-						{type: 'file', callback: data => setInput(data)},
+						{type: 'file', callback: (data: string) => setInput(data)},
 						{type: 'clear', onClick: () => setInput('')}
 					]}
 					body={<Code
 							value={input}
 							language='json'
 							editable={true}
-							onChange={e => setInput(e.target.value)}
+							onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)}
 							className='grow' />}
 					className='grow flex flex-col basis-1/2 !m-0'
 				/>

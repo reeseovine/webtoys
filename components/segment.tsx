@@ -6,7 +6,7 @@ import {
 
 import {
 	Button,
-	FileLoader
+	FileButton
 } from '@/components/inputs'
 import {
 	H2
@@ -14,7 +14,17 @@ import {
 
 import Clipboard from 'react-clipboard.js';
 
-const Config = ({ children }) => (
+
+type ConfigItem = {
+	icon: string,
+	name: string,
+	description?: string,
+	control: React.ReactNode
+}
+interface ConfigProps {
+	items: ConfigItem[]
+}
+const Config = ({ items }: ConfigProps) => (
 	<div className="
 		rounded-md
 		border
@@ -28,8 +38,8 @@ const Config = ({ children }) => (
 		divide-slate-300
 		dark:divide-slate-700
 	">
-		{children.filter(c => c !== null && typeof c === 'object').map(child => (
-			<div key={child.name} className="
+		{items.filter(i => i !== null && typeof i === 'object').map(item => (
+			<div key={item.name} className="
 				flex
 				items-center
 				gap-4
@@ -39,27 +49,49 @@ const Config = ({ children }) => (
 				text-sm
 			">
 				<Icon
-					path={child.icon}
+					path={item.icon}
 					size={1}
 					className='hidden sm:block shrink-0' />
 				<div className="grow">
-					<div className="font-semibold">{child.name}</div>
-					<div>{child.description}</div>
+					<div className="font-semibold">{item.name}</div>
+					<div>{item.description}</div>
 				</div>
-				{child.control}
+				{item.control}
 			</div>
 		))}
 	</div>
 )
 
-const Inline = ({ input, controls }) => (
+type Control = {
+	type:
+		| 'copy'
+		| 'clear'
+		| 'file'
+	callback?: any,
+	onClick?: any,
+	data?: string,
+	hint?: string,
+}
+interface InlineProps {
+	body: React.ReactNode,
+	controls: Control[] | React.ReactNode
+}
+const Inline = ({ body, controls }: InlineProps) => (
 	<div className="flex justify-between gap-4">
-		{input}
+		{body}
 		{controls}
 	</div>
 )
 
-const Segment = ({ type, title, controls, body, className='' }) => {
+interface SegmentProps {
+	type?: string,
+	title?: string,
+	controls?: Control[] | React.ReactNode,
+	body?: React.ReactNode,
+	items?: ConfigItem[],
+	className?: string
+}
+const Segment = ({ type, title, controls=[], body, items=[], className='' }: SegmentProps) => {
 	if (Array.isArray(controls)){
 		controls = controls.map((control, i) => {
 			switch (control.type){
@@ -73,7 +105,7 @@ const Segment = ({ type, title, controls, body, className='' }) => {
 					)
 				case 'file':
 					return (
-						<FileLoader key={i} cb={control.callback} />
+						<FileButton key={i} cb={control.callback} />
 					)
 			}
 		})
@@ -81,9 +113,9 @@ const Segment = ({ type, title, controls, body, className='' }) => {
 
 	if (type === 'config'){
 		if (typeof title === 'undefined') title = 'Configuration'
-		body = <Config children={body} />
+		body = <Config items={items} />
 	} else if (type === 'inline'){
-		body = <Inline input={body} controls={controls} />
+		body = <Inline body={body} controls={controls} />
 		controls = null
 	}
 	return (

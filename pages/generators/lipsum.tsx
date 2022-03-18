@@ -36,16 +36,15 @@ const Tool = () => {
 			if (unit === 'words') return lorem.generateWords(count)
 			if (unit === 'sentences') return lorem.generateSentences(count)
 			if (unit === 'paragraphs') return lorem.generateParagraphs(count)
-		} catch(e) {
-			return ''
-		}
+		} catch(e) {}
+		return ''
 	})()
 
 	return (
 		<Page title='Lorem Ipsum Generator'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiText,
 						name: 'Units',
@@ -54,15 +53,15 @@ const Tool = () => {
 									{key: 'words', value: "Words"},
 									{key: 'sentences', value: "Sentences"},
 									{key: 'paragraphs', value: "Paragraphs"}
-								]} onChange={e => setUnit(e.target.value)} />
+								]} onChange={(e: Event) => setUnit((e.target as HTMLSelectElement).value)} />
 					}, {
 						icon: mdiNumeric,
 						name: 'Count',
 						description: 'How many of the unit to generate',
 						control: <Number
-									value={count}
+									value={count.toString()}
 									min={1}
-									onChange={e => setCount(parseInt(e.target.value))} />
+									onChange={(e: Event) => setCount(parseInt((e.target as HTMLInputElement).value))} />
 					}
 				]} />
 

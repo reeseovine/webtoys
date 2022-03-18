@@ -36,23 +36,25 @@ const Tool = () => {
 	const iframeRef = useRef<HTMLIFrameElement>(null)
 
 	const output = marked.parse(input)
-	iframeRef.current?.contentWindow.document.documentElement.innerHTML = `
-		<html>
-			<head>
-				<style>${{
-					auto: githubMarkdownCSS,
-					dark: githubMarkdownCSSDark,
-					light: githubMarkdownCSSLight
-				}[theme]}</style>
-			</head>
-			<body class="markdown-body" style="padding: 24px">${output}</body>
-		</html>`
+	if (iframeRef?.current?.contentWindow?.document?.documentElement){
+		iframeRef.current.contentWindow.document.documentElement.innerHTML = `
+			<html>
+				<head>
+					<style>${{
+						auto: githubMarkdownCSS,
+						dark: githubMarkdownCSSDark,
+						light: githubMarkdownCSSLight
+					}[theme]}</style>
+				</head>
+				<body class="markdown-body" style="padding: 24px">${output}</body>
+			</html>`
+	}
 
 	return (
 		<Page title='Markdown Preview'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiThemeLightDark,
 						name: 'Theme',
@@ -61,7 +63,7 @@ const Tool = () => {
 									{key: 'light', value: "Light"},
 									{key: 'dark', value: "Dark"},
 									{key: 'auto', value: "Auto"}
-								]} onChange={e => setTheme(e.target.value)} />
+								]} onChange={(e: Event) => setTheme((e.target as HTMLSelectElement).value)} />
 					}
 				]} />
 
@@ -79,10 +81,10 @@ const Tool = () => {
 				<Segment
 					title='Markdown'
 					controls={[
-						{type: 'file', callback: data => setInput(data)},
+						{type: 'file', callback: (data: string) => setInput(data)},
 						{type: 'clear', onClick: () => setInput('')}
 					]}
-					body={<Code value={input} language='markdown' editable={true} onChange={e => setInput(e.target.value)} className='grow' />}
+					body={<Code value={input} language='markdown' editable={true} onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)} className='grow' />}
 					className='grow flex flex-col basis-1/2 !m-0'
 				/>
 

@@ -18,39 +18,35 @@ import {
 
 
 const Settings = () => {
-	const [language, setLanguage] = useState(storage.get('language', 'default'))
-	storage.set('language', language)
-
-	const [prismTheme, setPrismTheme] = useState(storage.get('prism-theme', 'duotoneDark'))
-	storage.set('prism-theme', prismTheme)
-	const [prismLineNumbers, setPrismLineNumbers] = useState(storage.get('prism-linenumbers', false))
-	storage.set('prism-linenumbers', prismLineNumbers)
+	const language = storage.get('language', 'default')
+	const prismTheme = storage.get('prism-theme', 'duotoneDark')
+	const prismLineNumbers = storage.get('prism-linenumbers', false)
 
 	return (
 		<Page title='Settings'>
 			<Segment
 				type='config'
 				title=''
-				body={[
+				items={[
 					{
 						icon: mdiTranslate,
 						name: 'Language',
 						control: <Select value={language} options={[
 									{key: 'default', value: "System default"},
 									{key: 'en-US', value: "English (United States)"}
-								]} onChange={e => setLanguage(e.target.value)} />
+								]} onChange={(e: Event) => storage.set('language', (e.target as HTMLSelectElement).value)} />
 					}
 				]} />
 
 			<Segment
 				type='config'
 				title='Accessibility'
-				body={[]} />
+				items={[]} />
 
 			<Segment
 				type='config'
 				title='Code editor'
-				body={[
+				items={[
 					{
 						icon: mdiPaletteOutline,
 						name: 'Color scheme',
@@ -69,13 +65,13 @@ const Settings = () => {
 									{key: 'ultramin', value: "Ultramin"},
 									{key: 'vsDark', value: "VSCode (Dark)"},
 									{key: 'vsLight', value: "VSCode (Light)"},
-								]} onChange={e => setPrismTheme(e.target.value)} />
+								]} onChange={(e: Event) => storage.set('prism-theme', (e.target as HTMLSelectElement).value)} />
 					}, {
 						icon: mdiNumeric,
 						name: 'Show line numbers',
 						control: <Toggle
-									value={prismLineNumbers}
-									onChange={e => setPrismLineNumbers(e.target.value)} />
+									checked={prismLineNumbers}
+									onChange={(e: Event) => storage.set('prism-linenumbers', (e.target as HTMLInputElement).checked)} />
 					}
 				]} />
 		</Page>

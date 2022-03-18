@@ -4,6 +4,7 @@ import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
 	Select,
+	Number,
 	Button,
 	FileDrop
 } from '@/components/inputs'
@@ -14,6 +15,8 @@ import {
 	mdiDownload,
 } from '@mdi/js'
 
+
+type CBType = 'protanopia' | 'deuteranopia' | 'tritanopia' | 'monochromacy' | null
 
 // Credit for these goes to Loren Petrich (lpetrich)
 // source: https://lpetrich.org/Science/ColorBlindnessSim/ColorBlindnessSim.html
@@ -37,7 +40,7 @@ const cbMatrices = {
 }
 
 
-const downloadURI = (uri, name) => {
+const downloadURI = (uri: string, name: string) => {
 	const link = document.createElement('a')
 	link.download = name
 	link.href = uri
@@ -46,18 +49,24 @@ const downloadURI = (uri, name) => {
 	document.body.removeChild(link)
 }
 
-const changeExtension = (name, toFormat) => {
-	name = name.slice(0, name.lastIndexOf('.'))
-	const newExt = formats.find(fmt => fmt.mime == toFormat).extension
-	return name + '.' + newExt
+const addTypeToFilename = (name: string, type: CBType) => {
+	const start = name.slice(0, name.lastIndexOf('.'))
+	const end   = name.slice(name.lastIndexOf('.'))
+	return start+'_'+(type as string)+end
 }
 
 
-const CBImage = ({ contents='', type=null, amount=0 }) => {
+interface CBImageProps {
+	contents?: string,
+	type?: CBType,
+	amount?: number,
+	title?: string
+}
+const CBImage = ({ contents='', type=null, amount=0, title='' }: CBImageProps) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null)
 
-	const draw = (ctx, blob) => {
-		if (blob !== null && blob.length > 0){
+	const draw = (ctx: CanvasRenderingContext2D | null | undefined, blob: string = '') => {
+		if (ctx !== undefined && ctx !== null && blob.length > 0){
 			const img = new Image()
 			img.onload = () => {
 				ctx.canvas.width = img.width
@@ -81,37 +90,35 @@ const CBImage = ({ contents='', type=null, amount=0 }) => {
 	}
 
 	useEffect(() => {
-		const canvas = canvasRef.current
-		const context = canvas.getContext('2d')
-		draw(context, contents)
+		draw(canvasRef.current?.getContext('2d'), contents)
 	}, [draw])
 
-	return <canvas ref={canvasRef} className='max-w-full' />
+	return <canvas ref={canvasRef} title={title} className='max-w-full' />
 }
 
 const Tool = () => {
-	const [type, setType] = useState('protanopia')
+	const [type, setType] = useState('protanopia' as CBType)
 	const [amount, setAmount] = useState(100)
-	const defaultImage = {blob:null, name:''}
+	const defaultImage = {blob:'', name:''}
 	const [image, setImage] = useState(defaultImage)
 
 	return (
 		<Page title='Color Blindness Simulator'>
 			<Segment
 				type='config'
-				body={[
+				items={[
 					{
 						icon: mdiEyeOutline,
 						name: 'Color Blindness Type',
 						control: <Select
-									value={type}
+									value={type as string}
 									options={[
 										{key: 'protanopia', value: 'Protanopia'},
 										{key: 'deuteranopia', value: 'Deuteranopia'},
 										{key: 'tritanopia', value: 'Tritanopia'},
 										{key: 'monochromacy', value: 'Monochromacy (rare)'},
 									]}
-									onChange={e => setType(e.target.value)} />
+									onChange={(e: Event) => setType((e.target as HTMLSelectElement).value as CBType)} />
 					}
 				]} />
 
@@ -120,7 +127,7 @@ const Tool = () => {
 					accept='image/*'
 					readAs='objectURL'
 					multiple={false}
-					cb={(blob, file) => setImage({blob, name:file.name})}
+					cb={(blob: string, file: File) => setImage({blob, name:file.name})}
 				/>
 			} />
 
@@ -150,7 +157,7 @@ const Tool = () => {
 					controls={<Button
 								hint='Save'
 								icon={mdiDownload}
-								onClick={() => downloadURI({...image})}
+								onClick={() => downloadURI(image.blob, addTypeToFilename(image.name, type))}
 							/>}
 					body={<CBImage contents={image.blob} type={type} amount={amount} title={`Image altered to simulate ${amount}% ${type}`} />}
 					className='grow flex flex-col basis-1/2 !m-0'

@@ -4,16 +4,24 @@ import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
 	Select,
-	Textarea
+	TextArea
 } from '@/components/inputs'
 
 
-const parseToken = (input) => {
+const parseToken = (input: string) => {
 	try {
-		let res = input.replaceAll('-','+').replaceAll('_','/')
-		res = res.split('.').slice(0,2).map(atob)
-		res = res.map(part => JSON.stringify(JSON.parse(part), null, '\t'))
-		return res
+		return input
+			.replaceAll('-','+')
+			.replaceAll('_','/')
+			.split('.')
+			.slice(0,2)
+			.map(atob)
+			.map(part => (
+				JSON.stringify(
+					JSON.parse(part),
+					null, '\t'
+				)
+			))
 	} catch(e) {
 		return ['','']
 	}
@@ -28,21 +36,21 @@ const Tool = () => {
 			<Segment
 				title='Input'
 				controls={[
-					{type: 'file', callback: data => setInput(data)},
+					{type: 'file', callback: (data: string) => setInput(data)},
 					{type: 'clear', onClick: () => setInput('')}
 				]}
-				body={<Textarea value={input} onChange={e => setInput(e.target.value)} rows={3} />}
+				body={<TextArea value={input} onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)} rows={3} />}
 			/>
 
 			<Segment
 				title='Header'
 				controls={[{type: 'copy', data: header}]}
-				body={<Textarea value={header} disabled={true} rows={5} />}
+				body={<TextArea value={header} disabled={true} rows={5} />}
 			/>
 			<Segment
 				title='Payload'
 				controls={[{type: 'copy', data: payload}]}
-				body={<Textarea value={payload} disabled={true} rows={5} />}
+				body={<TextArea value={payload} disabled={true} rows={5} />}
 			/>
 		</Page>
 	)
