@@ -1,5 +1,6 @@
 # Generated via Next.js
 .next
+out
 
 # Generated via Node.js
 node_modules
