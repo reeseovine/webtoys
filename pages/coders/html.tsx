@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -16,7 +17,7 @@ import he from 'he'
 
 
 const Tool = () => {
-	const [mode, setMode] = useState('encode')
+	const [mode, setMode] = useLocalStorage('html-mode', 'encode')
 	const [input, setInput] = useState('')
 	let output
 	if (mode === 'encode') output = he.encode(input)

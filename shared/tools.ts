@@ -38,7 +38,7 @@ export interface ToolType extends CategoryType {
 	keywords: string
 }
 
-const categories: CategoryType[] = [
+let categories: CategoryType[] = [
 	{
 		"name": "Converters",
 		"id": "converters",
@@ -65,7 +65,7 @@ const categories: CategoryType[] = [
 		"icon": mdiImageMultipleOutline
 	}
 ]
-const tools: ToolType[] = [
+let tools: ToolType[] = [
 	{
 		"name": "JSON to YAML",
 		"id": "json2yaml",
@@ -166,7 +166,7 @@ const tools: ToolType[] = [
 		"keywords": ""
 	}, {
 		"name": "Inspector & Case Converter",
-		"id": "",
+		"id": "case",
 		"category": "text",
 		"icon": mdiFormatLetterCase,
 		"description": "Analyze text and convert it to a different case",
@@ -216,6 +216,11 @@ const tools: ToolType[] = [
 		"keywords": "BMP GIF JPG PNG TIFF ICO WEBP"
 	}
 ]
+
+// if (process.env.NODE_ENV && process.env.NODE_ENV === 'production'){
+	tools = tools.filter(tool => process.env.pages!.includes(`pages/${tool.category}/${tool.id}.tsx`))
+// }
+
 
 export {
 	categories,

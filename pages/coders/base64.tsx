@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -15,8 +16,8 @@ import {
 
 
 const Tool = () => {
-	const [mode, setMode] = useState('encode')
-	const [encoding, setEncoding] = useState('utf-8')
+	const [mode, setMode] = useLocalStorage('base64-mode', 'encode')
+	const [encoding, setEncoding] = useLocalStorage('base64-encoding', 'utf-8')
 	const [input, setInput] = useState('')
 	let output = ((): string => {
 		try {

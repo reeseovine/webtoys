@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -35,8 +36,8 @@ const convert = (number: string, base: Base) => {
 }
 
 const Tool = () => {
-	const [pretty, setPretty] = useState(true)
-	const [base, setBase] = useState('dec' as Base)
+	const [pretty, setPretty] = useLocalStorage('base-pretty', true)
+	const [base, setBase] = useLocalStorage('base-base', 'dec' as Base)
 	const [input, setInput] = useState('')
 
 	let [resultBin, resultOct, resultDec, resultHex] = convert(input, base)

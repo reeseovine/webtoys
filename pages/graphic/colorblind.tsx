@@ -141,7 +141,7 @@ const Tool = () => {
 
 				items-stretch
 				gap-4
-				${image.blob === null ? 'hidden' : ''}
+				${image.blob.length === 0 ? 'hidden' : ''}
 			`}>
 				<Segment
 					title='Original'

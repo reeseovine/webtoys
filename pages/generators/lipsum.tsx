@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -29,8 +30,8 @@ const lorem = new LoremIpsum({
 
 
 const Tool = () => {
-	const [unit, setUnit] = useState('paragraphs')
-	const [count, setCount] = useState(1)
+	const [unit, setUnit] = useLocalStorage('lipsum-unit', 'paragraphs')
+	const [count, setCount] = useLocalStorage('lipsum-count', 1)
 	let output = (() => {
 		try {
 			if (unit === 'words') return lorem.generateWords(count)

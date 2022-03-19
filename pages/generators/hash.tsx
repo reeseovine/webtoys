@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -32,7 +33,7 @@ const hash = (input: string, caps: boolean) => {
 }
 
 const Tool = () => {
-	const [caps, setCaps] = useState(false)
+	const [caps, setCaps] = useLocalStorage('hash-caps', false)
 	const [input, setInput] = useState('')
 
 	let [resultMD5, resultSHA1, resultSHA256, resultSHA512] = hash(input, caps)

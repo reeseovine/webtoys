@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -14,7 +15,7 @@ import {
 
 
 const Tool = () => {
-	const [mode, setMode] = useState('encode')
+	const [mode, setMode] = useLocalStorage('url-mode', 'encode')
 	const [input, setInput] = useState('')
 	let output = (() => {
 		try {

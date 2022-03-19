@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -167,7 +168,7 @@ const Job = ({ contents, file, format, removeSelf }: JobProps) => {
 }
 
 const Tool = () => {
-	const [outFormat, setOutFormat] = useState(0)
+	const [outFormat, setOutFormat] = useLocalStorage('imgconvert-outFormat', 0)
 	const [validFormats, setValidFormats] = useState([] as Format[])
 	const [jobs, setJobs] = useState([] as JobProps[])
 

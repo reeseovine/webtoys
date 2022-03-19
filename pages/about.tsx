@@ -11,22 +11,23 @@ import {
 	mdiGithub
 } from '@mdi/js'
 
+import logo from '@/logo/logo-circular.svg'
+
 const About = () => (
-	<Page>
-		<div className='h-full flex flex-col justify-center items-center'>
-			<Image
-				src='/images/logo-circular.svg'
-				alt='circular logo'
-				className='w-32 mb-10 mx-auto' />
+	<Page className='justify-center items-center gap-10'>
+		<Image
+			src={logo}
+			alt='circular logo'
+			width={128}
+			height={128} />
 
-			<P className='mb-10'>
-				WebToys is made with <Icon path={mdiHeart} aria-label='love' size={1} className='inline-block text-pink-500' /> by <A href="https://github.com/reeseovine">Reese Sapphire</A>
-			</P>
+		<P className='text-center'>
+			WebToys is made with <Icon path={mdiHeart} aria-label='love' size={1} className='inline-block text-pink-500' /> by <A href='https://github.com/reeseovine'>Reese Sapphire</A>
+		</P>
 
-			<a href="https://github.com/reeseovine/webtoys">
-				<Icon path={mdiGithub} aria-label='github' size={1.5} className='inline-block text-slate-400 dark:text-slate-500' />
-			</a>
-		</div>
+		<a href='https://github.com/reeseovine/webtoys' className='mb-10'>
+			<Icon path={mdiGithub} aria-label='github' size={1.5} className='inline-block text-slate-400 dark:text-slate-500' />
+		</a>
 	</Page>
 )
 

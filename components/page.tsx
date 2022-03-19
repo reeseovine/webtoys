@@ -10,10 +10,11 @@ import { mdiMenu } from '@mdi/js';
 
 interface PageProps {
 	title?: string,
-	children: React.ReactNode
+	children: React.ReactNode,
+	className?: string
 }
 
-const Page = ({ title, children }: PageProps) => (
+const Page = ({ title, children, className='' }: PageProps) => (
 	<>
 		{title ? (
 			<Head>
@@ -39,7 +40,8 @@ const Page = ({ title, children }: PageProps) => (
 				bg-white
 				dark:bg-slate-900
 			'>
-				<div className='
+				<div className={`
+					${className}
 					min-h-full
 					2xl:max-w-5xl
 					flex
@@ -47,7 +49,7 @@ const Page = ({ title, children }: PageProps) => (
 
 					p-6
 					sm:p-12
-				'>
+				`}>
 					<label htmlFor='drawer-toggle' className='
 						block
 						mt-2

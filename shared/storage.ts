@@ -1,27 +1,31 @@
-const get = (name: string, fallback: any): any => {
+import { useState, useEffect } from "react";
+
+const get = (key: string, fallback: any): any => {
 	try {
-		const value = localStorage.getItem(name)
-		if (value === null) return fallback
-		else return JSON.parse(value)
+		const value = localStorage.getItem(key)
+		return JSON.parse(value) || fallback
 	} catch(e) {
 		return fallback
 	}
 }
-const set = (name: string, value: any) => {
+const set = (key: string, value: any) => {
 	if (typeof window !== 'undefined'){
-		localStorage.setItem(name, JSON.stringify(value))
+		localStorage.setItem(key, JSON.stringify(value))
 	}
 }
-// const useState = (name: string, fallback: any): any => {
-// 	let value = get(name, null)
-// 	if (value === null || value !== fallback){
-// 		value = fallback
-// 		set(name, fallback)
-// 	}
-// 	return value
-// }
+export const useLocalStorage = (key: string, fallback: any) => {
+	const [value, setValue] = useState(() => {
+		return get(key, fallback)
+	})
+
+	useEffect(() => {
+		set(key, value)
+	}, [key, value])
+
+	return [value, setValue]
+}
 
 const Storage = {
-	get, set //, useState
+	get, set, useLocalStorage
 }
 export default Storage

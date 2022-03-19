@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -19,8 +20,8 @@ import YAML from 'yaml'
 
 
 const Tool = () => {
-	const [mode, setMode] = useState('yaml' as Language)
-	const [pretty, setPretty] = useState(true)
+	const [mode, setMode] = useLocalStorage('json2yaml-mode', 'yaml' as Language)
+	const [pretty, setPretty] = useLocalStorage('json2yaml-pretty', true)
 	const [input, setInput] = useState('')
 	let output
 	try {

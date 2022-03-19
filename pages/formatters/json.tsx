@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -16,7 +17,7 @@ import YAML from 'yaml'
 
 
 const Tool = () => {
-	const [indent, setIndent] = useState('tab')
+	const [indent, setIndent] = useLocalStorage('json-indent', 'tab')
 	const [input, setInput] = useState('')
 	let output
 	try {

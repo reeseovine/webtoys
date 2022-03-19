@@ -1,5 +1,6 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
+const glob = require("glob")
 
 module.exports = withPWA({
 	experimental: {
@@ -8,6 +9,9 @@ module.exports = withPWA({
 	pwa: {
 		dest: 'public',
 		runtimeCaching,
+	},
+	env: {
+		pages: glob.sync('pages/**/*.tsx', { cwd: __dirname })
 	},
 	webpack: (config, { webpack }) => {
 		config.plugins.push(

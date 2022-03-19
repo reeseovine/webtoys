@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -31,7 +32,7 @@ import githubMarkdownCSSLight from '!!raw-loader!github-markdown-css/github-mark
 
 
 const Tool = () => {
-	const [theme, setTheme] = useState('auto')
+	const [theme, setTheme] = useLocalStorage('markdown-theme', 'auto')
 	const [input, setInput] = useState('')
 	const iframeRef = useRef<HTMLIFrameElement>(null)
 

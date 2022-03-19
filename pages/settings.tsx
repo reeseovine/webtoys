@@ -1,6 +1,4 @@
-import { useState } from 'react'
-
-import storage from '@/shared/storage'
+import { useLocalStorage } from '@/shared/storage'
 
 import Page from '@/components/page'
 import Segment from '@/components/segment'
@@ -18,15 +16,15 @@ import {
 
 
 const Settings = () => {
-	const language = storage.get('language', 'default')
-	const prismTheme = storage.get('prism-theme', 'duotoneDark')
-	const prismLineNumbers = storage.get('prism-linenumbers', false)
+	const [language, setLanguage] = useLocalStorage('language', 'default')
+	const [prismTheme, setPrismTheme] = useLocalStorage('prism-theme', 'duotoneDark')
+	const [prismLineNumbers, setPrismLineNumbers] = useLocalStorage('prism-linenumbers', false)
 
 	return (
 		<Page title='Settings'>
 			<Segment
 				type='config'
-				title=''
+				title='General'
 				items={[
 					{
 						icon: mdiTranslate,
@@ -34,14 +32,14 @@ const Settings = () => {
 						control: <Select value={language} options={[
 									{key: 'default', value: "System default"},
 									{key: 'en-US', value: "English (United States)"}
-								]} onChange={(e: Event) => storage.set('language', (e.target as HTMLSelectElement).value)} />
+								]} onChange={(e: Event) => setLanguage((e.target as HTMLSelectElement).value)} />
 					}
 				]} />
 
-			<Segment
+			{/*<Segment
 				type='config'
 				title='Accessibility'
-				items={[]} />
+				items={[]} />*/}
 
 			<Segment
 				type='config'
@@ -65,14 +63,14 @@ const Settings = () => {
 									{key: 'ultramin', value: "Ultramin"},
 									{key: 'vsDark', value: "VSCode (Dark)"},
 									{key: 'vsLight', value: "VSCode (Light)"},
-								]} onChange={(e: Event) => storage.set('prism-theme', (e.target as HTMLSelectElement).value)} />
-					}, {
+								]} onChange={(e: Event) => setPrismTheme((e.target as HTMLSelectElement).value)} />
+					}, /*{
 						icon: mdiNumeric,
 						name: 'Show line numbers',
 						control: <Toggle
 									checked={prismLineNumbers}
-									onChange={(e: Event) => storage.set('prism-linenumbers', (e.target as HTMLInputElement).checked)} />
-					}
+									onChange={(e: Event) => setPrismLineNumbers((e.target as HTMLInputElement).checked)} />
+					}*/
 				]} />
 		</Page>
 	)
