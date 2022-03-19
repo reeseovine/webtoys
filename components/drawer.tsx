@@ -85,10 +85,12 @@ const Entry = ({name, icon, url='', onClick, caret=false, collapsed, className='
 interface CategoryProps {
 	name: string,
 	icon: string,
+	id: string,
 	children: any
 }
-const Category = ({ name, icon, children }: CategoryProps) => {
-	const [collapsed, collapse] = useState(false);
+const Category = ({ name, icon, id, children }: CategoryProps) => {
+	const router = useRouter()
+	const [collapsed, collapse] = useState(router.pathname.split('/')[1] !== id)
 
 	return (<>
 		<Entry
@@ -171,6 +173,7 @@ const Drawer = () => {
 					{categories.map((category: CategoryType) => (
 						<Category
 							key={category.id}
+							id={category.id}
 							name={category.name}
 							icon={category.icon}>
 							{tools.filter((tool: ToolType) => tool.category === category.id).map(tool => (

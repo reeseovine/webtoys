@@ -41,11 +41,11 @@ const Tool = () => {
 		iframeRef.current.contentWindow.document.documentElement.innerHTML = `
 			<html>
 				<head>
-					<style>${{
+					<style>${theme !== null && typeof theme === 'string' ? {
 						auto: githubMarkdownCSS,
 						dark: githubMarkdownCSSDark,
 						light: githubMarkdownCSSLight
-					}[theme]}</style>
+					}[theme] : githubMarkdownCSS}</style>
 				</head>
 				<body class="markdown-body" style="padding: 24px">${output}</body>
 			</html>`
@@ -61,9 +61,9 @@ const Tool = () => {
 						name: 'Theme',
 						description: '',
 						control: <Select value={theme} options={[
+									{key: 'auto', value: "Auto"},
 									{key: 'light', value: "Light"},
-									{key: 'dark', value: "Dark"},
-									{key: 'auto', value: "Auto"}
+									{key: 'dark', value: "Dark"}
 								]} onChange={(e: Event) => setTheme((e.target as HTMLSelectElement).value)} />
 					}
 				]} />

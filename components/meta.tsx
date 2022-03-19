@@ -38,9 +38,9 @@ const Meta = () => (
 		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
 		<link rel="shortcut icon" href="/images/favicon.ico" />
 		<meta name="msapplication-TileColor" content="#0f172a" />
-		<meta name="msapplication-config" content="/images/browserconfig.xml" />
+		<meta name="msapplication-config" content="/browserconfig.xml" />
 		<meta name="theme-color" content="#64748b" />
-		<link rel="manifest" href="/images/site.webmanifest" />
+		<link rel="manifest" href="/manifest.json" />
 	</Head>
 )
 

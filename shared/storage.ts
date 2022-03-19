@@ -3,7 +3,11 @@ import { useState, useEffect } from "react";
 const get = (key: string, fallback: any): any => {
 	try {
 		const value = localStorage.getItem(key)
-		return JSON.parse(value) || fallback
+		if (value === null){
+			return fallback
+		} else {
+			return JSON.parse(value)
+		}
 	} catch(e) {
 		return fallback
 	}
@@ -14,9 +18,7 @@ const set = (key: string, value: any) => {
 	}
 }
 export const useLocalStorage = (key: string, fallback: any) => {
-	const [value, setValue] = useState(() => {
-		return get(key, fallback)
-	})
+	const [value, setValue] = useState(() => get(key, fallback))
 
 	useEffect(() => {
 		set(key, value)
@@ -26,6 +28,6 @@ export const useLocalStorage = (key: string, fallback: any) => {
 }
 
 const Storage = {
-	get, set, useLocalStorage
+	get, set
 }
 export default Storage
