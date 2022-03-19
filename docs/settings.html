@@ -1,0 +1,602 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta name="apple-mobile-web-app-title" content="WebToys"/><meta name="application-name" content="WebToys"/><meta name="description" content="A Swiss Army knife for developers."/><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, viewport-fit=cover"/><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png"/><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png"/><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png"/><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/><link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5"/><link rel="shortcut icon" href="/images/favicon.ico"/><meta name="msapplication-TileColor" content="#0f172a"/><meta name="msapplication-config" content="/browserconfig.xml"/><meta name="theme-color" content="#64748b"/><link rel="manifest" href="/manifest.json"/><title>Settings - WebToys</title><meta name="next-head-count" content="22"/><link rel="preload" href="/_next/static/css/ec14914442794aa1.css" as="style"/><link rel="stylesheet" href="/_next/static/css/ec14914442794aa1.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-5cd94c89d3acac5f.js"></script><script src="data:text/javascript;base64,IWZ1bmN0aW9uKCl7dHJ5IHt2YXIgZD1kb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuY2xhc3NMaXN0O2QucmVtb3ZlKCdsaWdodCcsJ2RhcmsnKTt2YXIgZT1sb2NhbFN0b3JhZ2UuZ2V0SXRlbSgndGhlbWUnKTtpZigic3lzdGVtIj09PWV8fCghZSYmdHJ1ZSkpe3ZhciB0PSIocHJlZmVycy1jb2xvci1zY2hlbWU6IGRhcmspIixtPXdpbmRvdy5tYXRjaE1lZGlhKHQpO2lmKG0ubWVkaWEhPT10fHxtLm1hdGNoZXMpe2Quc3R5bGUuY29sb3JTY2hlbWUgPSAnZGFyayc7ZC5hZGQoJ2RhcmsnKX1lbHNle2Quc3R5bGUuY29sb3JTY2hlbWUgPSAnbGlnaHQnO2QuYWRkKCdsaWdodCcpfX1lbHNlIGlmKGUpe2QuYWRkKGV8fCAnJyl9aWYoZT09PSdsaWdodCd8fGU9PT0nZGFyaycpZC5zdHlsZS5jb2xvclNjaGVtZT1lfWNhdGNoKGUpe319KCk=" id="next-themes-script" defer="" data-nscript="beforeInteractive"></script><script src="/_next/static/chunks/webpack-434fefa8f39d8fbc.js" defer=""></script><script src="/_next/static/chunks/framework-5f4595e5518b5600.js" defer=""></script><script src="/_next/static/chunks/main-f8f6b98ce0ba8865.js" defer=""></script><script src="/_next/static/chunks/pages/_app-3c774d3454c50a0a.js" defer=""></script><script src="/_next/static/chunks/b2e984c5-116e95e881acc740.js" defer=""></script><script src="/_next/static/chunks/534-7ffe9646bd062026.js" defer=""></script><script src="/_next/static/chunks/922-eee91c35b3af4bce.js" defer=""></script><script src="/_next/static/chunks/278-9b367d3edcfaf011.js" defer=""></script><script src="/_next/static/chunks/pages/settings-c07bbec3f084870a.js" defer=""></script><script src="/_next/static/h-cjujdapcUiBCPUnP_MC/_buildManifest.js" defer=""></script><script src="/_next/static/h-cjujdapcUiBCPUnP_MC/_ssgManifest.js" defer=""></script><script src="/_next/static/h-cjujdapcUiBCPUnP_MC/_middlewareManifest.js" defer=""></script></head><body><div id="__next" data-reactroot=""><div class=" h-screen w-full md:flex md:items-stretch "><input type="checkbox" id="drawer-toggle" class="hidden peer"/><label for="drawer-toggle" class=" z-20 fixed top-0 left-0 right-0 bottom-0 bg-slate-900 opacity-0 peer-checked:opacity-60 invisible peer-checked:visible transition-all duration-300 cursor-pointer lg:hidden "></label><div class=" h-full w-10/12 max-w-md z-30 fixed top-0 left-0 -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 peer-checked:shadow-2xl lg:w-auto lg:max-w-none lg:shrink-0 lg:basis-96 lg:transition-none lg:relative lg:translate-x-0 lg:!shadow-none 2xl:basis-1/3 overflow-y-auto bg-slate-100 dark:bg-slate-800 "><nav class=" p-6 sm:p-12 2xl:max-w-sm 2xl:ml-auto "><div class="
+				mb-8
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M12 5.69L17 10.19V18H15V12H9V18H7V10.19L12 5.69M12 3L2 12H5V20H11V14H13V20H19V12H22L12 3Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Home</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M12,18A6,6 0 0,1 6,12C6,11 6.25,10.03 6.7,9.2L5.24,7.74C4.46,8.97 4,10.43 4,12A8,8 0 0,0 12,20V23L16,19L12,15M12,4V1L8,5L12,9V6A6,6 0 0,1 18,12C18,13 17.75,13.97 17.3,14.8L18.76,16.26C19.54,15.03 20,13.57 20,12A8,8 0 0,0 12,4Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Converters</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M12 16C12.41 16 12.81 15.97 13.21 15.94C13.4 15.18 13.72 14.46 14.16 13.83C13.47 13.94 12.74 14 12 14C9.58 14 7.3 13.4 6 12.45V9.64C7.47 10.47 9.61 11 12 11S16.53 10.47 18 9.64V11.19C18.5 11.07 19 11 19.55 11C19.7 11 19.85 11 20 11.03V7C20 4.79 16.42 3 12 3S4 4.79 4 7V17C4 19.21 7.59 21 12 21C12.66 21 13.31 20.96 13.92 20.88C13.57 20.29 13.31 19.64 13.16 18.94C12.79 19 12.41 19 12 19C8.13 19 6 17.5 6 17V14.77C7.61 15.55 9.72 16 12 16M12 5C15.87 5 18 6.5 18 7S15.87 9 12 9 6 7.5 6 7 8.13 5 12 5M23 17.5C23 18.32 22.75 19.08 22.33 19.71L21.24 18.62C21.41 18.28 21.5 17.9 21.5 17.5C21.5 16.12 20.38 15 19 15V16.5L16.75 14.25L19 12V13.5C21.21 13.5 23 15.29 23 17.5M19 18.5L21.25 20.75L19 23V21.5C16.79 21.5 15 19.71 15 17.5C15 16.68 15.25 15.92 15.67 15.29L16.76 16.38C16.59 16.72 16.5 17.1 16.5 17.5C16.5 18.88 17.62 20 19 20V18.5Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">JSON to YAML</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M5.41,21L6.12,17H2.12L2.47,15H6.47L7.53,9H3.53L3.88,7H7.88L8.59,3H10.59L9.88,7H15.88L16.59,3H18.59L17.88,7H21.88L21.53,9H17.53L16.47,15H20.47L20.12,17H16.12L15.41,21H13.41L14.12,17H8.12L7.41,21H5.41M9.53,9L8.47,15H14.47L15.53,9H9.53Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Number Base</div></div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M2,6H4V18H2V6M5,6H6V18H5V6M7,6H10V18H7V6M11,6H12V18H11V6M14,6H16V18H14V6M17,6H20V18H17V6M21,6H22V18H21V6Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Encoders &amp; Decoders</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M4.4,16.5C4.4,15.6 4.7,14.7 5.2,13.9C5.7,13.1 6.7,12.2 8.2,11.2C7.3,10.1 6.8,9.3 6.5,8.7C6.1,8 6,7.4 6,6.7C6,5.2 6.4,4.1 7.3,3.2C8.2,2.3 9.4,2 10.9,2C12.2,2 13.3,2.4 14.2,3.2C15.1,4 15.5,5 15.5,6.1C15.5,6.9 15.3,7.6 14.9,8.3C14.5,9 13.8,9.7 12.8,10.4L11.4,11.5L15.7,16.7C16.3,15.5 16.6,14.3 16.6,12.8H18.8C18.8,15.1 18.3,17 17.2,18.5L20,21.8H17L15.7,20.3C15,20.9 14.3,21.3 13.4,21.6C12.5,21.9 11.6,22.1 10.7,22.1C8.8,22.1 7.3,21.6 6.1,20.6C5,19.5 4.4,18.2 4.4,16.5M10.7,20C12,20 13.2,19.5 14.3,18.5L9.6,12.8L9.2,13.1C7.7,14.2 7,15.3 7,16.5C7,17.6 7.3,18.4 8,19C8.7,19.6 9.5,20 10.7,20M8.5,6.7C8.5,7.6 9,8.6 10.1,9.9L11.7,8.8C12.3,8.4 12.7,8 12.9,7.6C13.1,7.2 13.2,6.7 13.2,6.2C13.2,5.6 13,5.1 12.5,4.7C12.1,4.3 11.5,4.1 10.8,4.1C10.1,4.1 9.5,4.3 9.1,4.8C8.7,5.3 8.5,5.9 8.5,6.7Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">HTML Entities</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">URL</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="m17 17h2v-10h-2v4h-2v-4h-2v6h4m-10-6a2 2 0 0 0-2 2v6c0 1.11 0.9 2 2 2h2a2 2 0 0 0 2-2v-2c0-1.11-0.9-2-2-2h-2v-2h4v-2zm0 6h2v2h-2zm-5-13c-1.108 0-2 0.892-2 2v20c0 1.108 0.892 2 2 2h20c1.108 0 2-0.892 2-2v-20c0-1.108-0.892-2-2-2zm0 2h20v20h-20z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Base64</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M7.5 3C5 3 3 5 3 7.5S5 12 7.5 12C9.5 12 11.1 10.8 11.7 9H15V12H18V9H21V6H11.7C11.1 4.2 9.5 3 7.5 3M7.5 6C8.3 6 9 6.7 9 7.5S8.3 9 7.5 9 6 8.3 6 7.5 6.7 6 7.5 6M12 14L10.9 16.6L8 16.9L10.2 18.8L9.5 21.6L12 20.1L14.4 21.6L13.8 18.8L16 16.9L13.1 16.7L12 14Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">JWT Decoder</div></div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M11,13H21V11H11M11,9H21V7H11M3,3V5H21V3M11,17H21V15H11M3,8V16L7,12M3,21H21V19H3V21Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Formatters</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M5,3H7V5H5V10A2,2 0 0,1 3,12A2,2 0 0,1 5,14V19H7V21H5C3.93,20.73 3,20.1 3,19V15A2,2 0 0,0 1,13H0V11H1A2,2 0 0,0 3,9V5A2,2 0 0,1 5,3M19,3A2,2 0 0,1 21,5V9A2,2 0 0,0 23,11H24V13H23A2,2 0 0,0 21,15V19A2,2 0 0,1 19,21H17V19H19V14A2,2 0 0,1 21,12A2,2 0 0,1 19,10V5H17V3H19M12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15M8,15A1,1 0 0,1 9,16A1,1 0 0,1 8,17A1,1 0 0,1 7,16A1,1 0 0,1 8,15M16,15A1,1 0 0,1 17,16A1,1 0 0,1 16,17A1,1 0 0,1 15,16A1,1 0 0,1 16,15Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">JSON</div></div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Generators</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M17.81,4.47C17.73,4.47 17.65,4.45 17.58,4.41C15.66,3.42 14,3 12,3C10.03,3 8.15,3.47 6.44,4.41C6.2,4.54 5.9,4.45 5.76,4.21C5.63,3.97 5.72,3.66 5.96,3.53C7.82,2.5 9.86,2 12,2C14.14,2 16,2.47 18.04,3.5C18.29,3.65 18.38,3.95 18.25,4.19C18.16,4.37 18,4.47 17.81,4.47M3.5,9.72C3.4,9.72 3.3,9.69 3.21,9.63C3,9.47 2.93,9.16 3.09,8.93C4.08,7.53 5.34,6.43 6.84,5.66C10,4.04 14,4.03 17.15,5.65C18.65,6.42 19.91,7.5 20.9,8.9C21.06,9.12 21,9.44 20.78,9.6C20.55,9.76 20.24,9.71 20.08,9.5C19.18,8.22 18.04,7.23 16.69,6.54C13.82,5.07 10.15,5.07 7.29,6.55C5.93,7.25 4.79,8.25 3.89,9.5C3.81,9.65 3.66,9.72 3.5,9.72M9.75,21.79C9.62,21.79 9.5,21.74 9.4,21.64C8.53,20.77 8.06,20.21 7.39,19C6.7,17.77 6.34,16.27 6.34,14.66C6.34,11.69 8.88,9.27 12,9.27C15.12,9.27 17.66,11.69 17.66,14.66A0.5,0.5 0 0,1 17.16,15.16A0.5,0.5 0 0,1 16.66,14.66C16.66,12.24 14.57,10.27 12,10.27C9.43,10.27 7.34,12.24 7.34,14.66C7.34,16.1 7.66,17.43 8.27,18.5C8.91,19.66 9.35,20.15 10.12,20.93C10.31,21.13 10.31,21.44 10.12,21.64C10,21.74 9.88,21.79 9.75,21.79M16.92,19.94C15.73,19.94 14.68,19.64 13.82,19.05C12.33,18.04 11.44,16.4 11.44,14.66A0.5,0.5 0 0,1 11.94,14.16A0.5,0.5 0 0,1 12.44,14.66C12.44,16.07 13.16,17.4 14.38,18.22C15.09,18.7 15.92,18.93 16.92,18.93C17.16,18.93 17.56,18.9 17.96,18.83C18.23,18.78 18.5,18.96 18.54,19.24C18.59,19.5 18.41,19.77 18.13,19.82C17.56,19.93 17.06,19.94 16.92,19.94M14.91,22C14.87,22 14.82,22 14.78,22C13.19,21.54 12.15,20.95 11.06,19.88C9.66,18.5 8.89,16.64 8.89,14.66C8.89,13.04 10.27,11.72 11.97,11.72C13.67,11.72 15.05,13.04 15.05,14.66C15.05,15.73 16,16.6 17.13,16.6C18.28,16.6 19.21,15.73 19.21,14.66C19.21,10.89 15.96,7.83 11.96,7.83C9.12,7.83 6.5,9.41 5.35,11.86C4.96,12.67 4.76,13.62 4.76,14.66C4.76,15.44 4.83,16.67 5.43,18.27C5.53,18.53 5.4,18.82 5.14,18.91C4.88,19 4.59,18.87 4.5,18.62C4,17.31 3.77,16 3.77,14.66C3.77,13.46 4,12.37 4.45,11.42C5.78,8.63 8.73,6.82 11.96,6.82C16.5,6.82 20.21,10.33 20.21,14.65C20.21,16.27 18.83,17.59 17.13,17.59C15.43,17.59 14.05,16.27 14.05,14.65C14.05,13.58 13.12,12.71 11.97,12.71C10.82,12.71 9.89,13.58 9.89,14.65C9.89,16.36 10.55,17.96 11.76,19.16C12.71,20.1 13.62,20.62 15.03,21C15.3,21.08 15.45,21.36 15.38,21.62C15.33,21.85 15.12,22 14.91,22Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Hash</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M15,20A1,1 0 0,0 16,19V4H8A1,1 0 0,0 7,5V16H5V5A3,3 0 0,1 8,2H19A3,3 0 0,1 22,5V6H20V5A1,1 0 0,0 19,4A1,1 0 0,0 18,5V9L18,19A3,3 0 0,1 15,22H5A3,3 0 0,1 2,19V18H13A2,2 0 0,0 15,20M9,6H14V8H9V6M9,10H14V12H9V10M9,14H14V16H9V14Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Lorem Ipsum</div></div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M18.5 2H5.5C3.6 2 2 3.6 2 5.5V18.5C2 20.4 3.6 22 5.5 22H16L22 16V5.5C22 3.6 20.4 2 18.5 2M20.1 15H18.6C16.7 15 15.1 16.6 15.1 18.5V20H5.8C4.8 20 4 19.2 4 18.2V5.8C4 4.8 4.8 4 5.8 4H18.3C19.3 4 20.1 4.8 20.1 5.8V15M7 7H17V9H7V7M7 11H17V13H7V11M7 15H13V17H7V15Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Text</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M20.56 18H3.44C2.65 18 2 17.37 2 16.59V7.41C2 6.63 2.65 6 3.44 6H20.56C21.35 6 22 6.63 22 7.41V16.59C22 17.37 21.35 18 20.56 18M3.44 6.94C3.18 6.94 2.96 7.15 2.96 7.41V16.6C2.96 16.85 3.18 17.06 3.44 17.06H20.56C20.82 17.06 21.04 16.85 21.04 16.6V7.41C21.04 7.15 20.82 6.94 20.56 6.94H3.44M4.89 15.19V8.81H6.81L8.73 11.16L10.65 8.81H12.58V15.19H10.65V11.53L8.73 13.88L6.81 11.53V15.19H4.89M16.9 15.19L14 12.09H15.94V8.81H17.86V12.09H19.79L16.9 15.19" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Markdown Preview</div></div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M21,17H7V3H21M21,1H7A2,2 0 0,0 5,3V17A2,2 0 0,0 7,19H21A2,2 0 0,0 23,17V3A2,2 0 0,0 21,1M3,5H1V21A2,2 0 0,0 3,23H19V21H3M15.96,10.29L13.21,13.83L11.25,11.47L8.5,15H19.5L15.96,10.29Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Graphic</div><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0 transition-transform "><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" style="fill:currentColor"></path></svg></div><div class="pl-8 overflow-y-hidden h-0"><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M23.5,17L18.5,22L15,18.5L16.5,17L18.5,19L22,15.5L23.5,17M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M12,4.5C17,4.5 21.27,7.61 23,12C22.75,12.65 22.44,13.26 22.08,13.85C21.5,13.5 20.86,13.25 20.18,13.12L20.82,12C19.17,8.64 15.76,6.5 12,6.5C8.24,6.5 4.83,8.64 3.18,12C4.83,15.36 8.24,17.5 12,17.5L13.21,17.43C13.07,17.93 13,18.46 13,19V19.46L12,19.5C7,19.5 2.73,16.39 1,12C2.73,7.61 7,4.5 12,4.5Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Color Blindness Simulator</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M13.18 19C13.35 19.72 13.64 20.39 14.03 21H5C3.9 21 3 20.11 3 19V5C3 3.9 3.9 3 5 3H19C20.11 3 21 3.9 21 5V11.18C20.5 11.07 20 11 19.5 11C19.33 11 19.17 11 19 11.03V5H5V19H13.18M11.21 15.83L9.25 13.47L6.5 17H13.03C13.14 15.54 13.73 14.22 14.64 13.19L13.96 12.29L11.21 15.83M19 13.5V12L16.75 14.25L19 16.5V15C20.38 15 21.5 16.12 21.5 17.5C21.5 17.9 21.41 18.28 21.24 18.62L22.33 19.71C22.75 19.08 23 18.32 23 17.5C23 15.29 21.21 13.5 19 13.5M19 20C17.62 20 16.5 18.88 16.5 17.5C16.5 17.1 16.59 16.72 16.76 16.38L15.67 15.29C15.25 15.92 15 16.68 15 17.5C15 19.71 16.79 21.5 19 21.5V23L21.25 20.75L19 18.5V20Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Image Converter</div></div></div><div class="
+				mt-8
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				bg-slate-200 dark:bg-slate-700
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.21,15.05 2.27,14.78 2.46,14.63L4.57,12.97L4.5,12L4.57,11L2.46,9.37C2.27,9.22 2.21,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.79,8.95 21.73,9.22 21.54,9.37L19.43,11L19.5,12L19.43,13L21.54,14.63C21.73,14.78 21.79,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.04 19.05,18.95L16.56,17.95C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.66L7.86,15.62C8.63,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.66L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">Settings</div></div><div class="
+				
+				flex
+				justify-between
+				items-center
+				gap-4
+
+				py-2
+				px-3
+				my-0.5
+
+				rounded-md
+
+				text-slate-800
+				dark:text-slate-100
+
+				
+
+				cursor-pointer
+				hover:text-slate-900
+				hover:dark:text-slate-90
+				hover:bg-slate-200
+				hover:dark:bg-slate-700
+				transition-colors
+				duration-100
+			"><svg viewBox="0 0 24 24" style="width:1.125rem;height:1.125rem" role="presentation" class="shrink-0"><path d="M13.5,4A1.5,1.5 0 0,0 12,5.5A1.5,1.5 0 0,0 13.5,7A1.5,1.5 0 0,0 15,5.5A1.5,1.5 0 0,0 13.5,4M13.14,8.77C11.95,8.87 8.7,11.46 8.7,11.46C8.5,11.61 8.56,11.6 8.72,11.88C8.88,12.15 8.86,12.17 9.05,12.04C9.25,11.91 9.58,11.7 10.13,11.36C12.25,10 10.47,13.14 9.56,18.43C9.2,21.05 11.56,19.7 12.17,19.3C12.77,18.91 14.38,17.8 14.54,17.69C14.76,17.54 14.6,17.42 14.43,17.17C14.31,17 14.19,17.12 14.19,17.12C13.54,17.55 12.35,18.45 12.19,17.88C12,17.31 13.22,13.4 13.89,10.71C14,10.07 14.3,8.67 13.14,8.77Z" style="fill:currentColor"></path></svg><div class="grow whitespace-normal">About</div></div></nav></div><section class=" h-full overflow-y-auto grow z-10 bg-white dark:bg-slate-900 "><div class="
+					
+					min-h-full
+					2xl:max-w-5xl
+					flex
+					flex-col
+
+					p-6
+					sm:p-12
+				"><label for="drawer-toggle" class=" block mt-2 mb-6 lg:hidden "><svg viewBox="0 0 24 24" style="width:1.5rem;height:1.5rem" role="presentation" class="cursor-pointer"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" style="fill:currentColor"></path></svg></label><h1 class="mb-6 
+	text-slate-800
+	dark:text-slate-200
+ text-3xl font-semibold">Settings</h1><div class="mb-6 "><div class="mb-2 flex items-end justify-between gap-2"><h2 class="grow 
+	text-slate-800
+	dark:text-slate-200
+ text-xl">General</h2></div><div class=" rounded-md border bg-slate-50 border-slate-300 dark:bg-slate-800 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 "><div class=" flex items-center gap-4 p-4 text-sm "><svg viewBox="0 0 24 24" style="width:1.5rem;height:1.5rem" role="presentation" class="hidden sm:block shrink-0"><path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z" style="fill:currentColor"></path></svg><div class="grow"><div class="font-semibold">Language</div><div></div></div><select class="
+			
+	
+	rounded-md
+	border
+
+	bg-white
+
+	text-sm
+	leading-none
+
+	transition-all
+
+	gap-3
+	p-2.5
+	cursor-pointer
+
+	border-slate-300
+	hover:border-slate-500
+	active:bg-slate-100
+
+	dark:bg-slate-700
+	dark:border-slate-600
+	dark:hover:bg-slate-600
+	dark:active:bg-slate-800
+
+			pl-2.5
+			pr-8
+			py-3
+		"><option selected="" value="default">System default</option><option value="en-US">English (United States)</option></select></div></div></div><div class="mb-6 "><div class="mb-2 flex items-end justify-between gap-2"><h2 class="grow 
+	text-slate-800
+	dark:text-slate-200
+ text-xl">Code editor</h2></div><div class=" rounded-md border bg-slate-50 border-slate-300 dark:bg-slate-800 dark:border-slate-700 divide-y divide-slate-300 dark:divide-slate-700 "><div class=" flex items-center gap-4 p-4 text-sm "><svg viewBox="0 0 24 24" style="width:1.5rem;height:1.5rem" role="presentation" class="hidden sm:block shrink-0"><path d="M12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2C17.5,2 22,6 22,11A6,6 0 0,1 16,17H14.2C13.9,17 13.7,17.2 13.7,17.5C13.7,17.6 13.8,17.7 13.8,17.8C14.2,18.3 14.4,18.9 14.4,19.5C14.5,20.9 13.4,22 12,22M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C12.3,20 12.5,19.8 12.5,19.5C12.5,19.3 12.4,19.2 12.4,19.1C12,18.6 11.8,18.1 11.8,17.5C11.8,16.1 12.9,15 14.3,15H16A4,4 0 0,0 20,11C20,7.1 16.4,4 12,4M6.5,10C7.3,10 8,10.7 8,11.5C8,12.3 7.3,13 6.5,13C5.7,13 5,12.3 5,11.5C5,10.7 5.7,10 6.5,10M9.5,6C10.3,6 11,6.7 11,7.5C11,8.3 10.3,9 9.5,9C8.7,9 8,8.3 8,7.5C8,6.7 8.7,6 9.5,6M14.5,6C15.3,6 16,6.7 16,7.5C16,8.3 15.3,9 14.5,9C13.7,9 13,8.3 13,7.5C13,6.7 13.7,6 14.5,6M17.5,10C18.3,10 19,10.7 19,11.5C19,12.3 18.3,13 17.5,13C16.7,13 16,12.3 16,11.5C16,10.7 16.7,10 17.5,10Z" style="fill:currentColor"></path></svg><div class="grow"><div class="font-semibold">Color scheme</div><div></div></div><select class="
+			
+	
+	rounded-md
+	border
+
+	bg-white
+
+	text-sm
+	leading-none
+
+	transition-all
+
+	gap-3
+	p-2.5
+	cursor-pointer
+
+	border-slate-300
+	hover:border-slate-500
+	active:bg-slate-100
+
+	dark:bg-slate-700
+	dark:border-slate-600
+	dark:hover:bg-slate-600
+	dark:active:bg-slate-800
+
+			pl-2.5
+			pr-8
+			py-3
+		"><option value="dracula">Dracula</option><option selected="" value="duotoneDark">Duotone (Dark)</option><option value="duotoneLight">Duotone (Light)</option><option value="github">GitHub</option><option value="nightOwl">Night Owl (Dark)</option><option value="nightOwlLight">Night Owl (Light)</option><option value="oceanicNext">Oceanic Next</option><option value="okaidia">Okaidia</option><option value="palenight">Pale Night</option><option value="shadesOfPurple">Shades of Purple</option><option value="synthwave84">Synthwave 84</option><option value="ultramin">Ultramin</option><option value="vsDark">VSCode (Dark)</option><option value="vsLight">VSCode (Light)</option></select></div></div></div></div></section></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/settings","query":{},"buildId":"h-cjujdapcUiBCPUnP_MC","nextExport":true,"autoExport":true,"isFallback":false,"scriptLoader":[]}</script></body></html>
