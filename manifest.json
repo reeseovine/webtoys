@@ -26,10 +26,10 @@
 			"purpose": "maskable"
 		}
 	],
-	"start_url": "/?source=pwa",
-	"background_color": "#0f172a",
+	"start_url": "/",
+	"background_color": "#1e293b",
 	"orientation": "portrait",
 	"display": "standalone",
 	"scope": "/",
-	"theme_color": "#64748b"
+	"theme_color": "#475569"
 }
