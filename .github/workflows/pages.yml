@@ -16,15 +16,11 @@ jobs:
       - run: |
           npm i
           npm run build
-
-      - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
+          touch out/.nojekyll
 
       - name: Next Pages
         uses: anorcle/next-pages@v1.0
 
-      - name: Add .nojekyll file
-        run: touch ./out/.nojekyll
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
