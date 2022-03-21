@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import Drawer from '@/components/drawer'
 import {
@@ -14,9 +15,11 @@ interface PageProps {
 	className?: string
 }
 
-const Page = ({ title, children, className='' }: PageProps) => (
-	<>
-		{title ? (
+const Page = ({ title, children, className='' }: PageProps) => {
+	const router = useRouter()
+
+	return <>
+		{title && router.pathname !== '/' ? (
 			<Head>
 				<title>{title} - WebToys</title>
 			</Head>
@@ -67,6 +70,6 @@ const Page = ({ title, children, className='' }: PageProps) => (
 			</section>
 		</div>
 	</>
-)
+}
 
 export default Page

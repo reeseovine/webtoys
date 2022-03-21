@@ -14,16 +14,6 @@ const Meta = () => (
 		<meta name='application-name' content='WebToys' />
 		<meta name='description' content='A Swiss Army knife for developers.' />
 		<meta
-			name='theme-color'
-			content='#f4f4f5'
-			media='(prefers-color-scheme: light)'
-		/>
-		<meta
-			name='theme-color'
-			content='#18181b'
-			media='(prefers-color-scheme: dark)'
-		/>
-		<meta
 			name='viewport'
 			content='width=device-width, initial-scale=1, user-scalable=0, viewport-fit=cover'
 		/>
@@ -35,11 +25,11 @@ const Meta = () => (
 		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
-		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5" />
+		<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#475569" />
 		<link rel="shortcut icon" href="/images/favicon.ico" />
-		<meta name="msapplication-TileColor" content="#0f172a" />
+		<meta name="msapplication-TileColor" content="#1e293b" />
 		<meta name="msapplication-config" content="/browserconfig.xml" />
-		<meta name="theme-color" content="#64748b" />
+		<meta name="theme-color" content="#475569" />
 		<link rel="manifest" href="/manifest.json" />
 	</Head>
 )

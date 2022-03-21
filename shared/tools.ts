@@ -148,7 +148,7 @@ let tools: ToolType[] = [
 		"id": "uuid",
 		"category": "generators",
 		"icon": mdiCardAccountDetailsOutline,
-		"description": "Generate UUIDs version 1 and 4",
+		"description": "Generate UUIDs of version 1, 3, 4, and 5",
 		"keywords": "GUID RFC 4122"
 	}, {
 		"name": "Lorem Ipsum",

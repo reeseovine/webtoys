@@ -22,6 +22,7 @@
 		"@types/prismjs": "^1.26.0",
 		"@types/react": "17.0.39",
 		"@types/sha.js": "^2.4.0",
+		"@types/uuid": "^8.3.4",
 		"autoprefixer": "10.4.2",
 		"eslint": "8.9.0",
 		"eslint-config-next": "12.1.0",
@@ -46,6 +47,7 @@
 		"tailwindcss": "3.0.23",
 		"tailwindcss-safe-area": "0.2.2",
 		"typescript": "4.5.5",
+		"uuid": "^8.3.2",
 		"yaml": "^1.10.2"
 	},
 	"prettier": {

@@ -94,6 +94,7 @@ interface SegmentProps {
 const Segment = ({ type, title, controls=[], body, items=[], className='' }: SegmentProps) => {
 	if (Array.isArray(controls)){
 		controls = controls.map((control, i) => {
+			if (control === null) return
 			switch (control.type){
 				case 'clear':
 					return <Button key={i} icon={mdiClose} hint={control.hint ? control.hint : 'Clear'} onClick={control.onClick} />
@@ -107,6 +108,8 @@ const Segment = ({ type, title, controls=[], body, items=[], className='' }: Seg
 					return (
 						<FileButton key={i} cb={control.callback} />
 					)
+				default:
+					return control
 			}
 		})
 	}

@@ -1,10 +1,6 @@
-name: Publish to Github Pages on release
+name: Publish to Github Pages on push
 
-on:
-  release:
-    types:
-      - published
-      - edited
+on: push
 
 jobs:
   build:
