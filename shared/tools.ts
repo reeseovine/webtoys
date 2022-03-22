@@ -217,9 +217,9 @@ let tools: ToolType[] = [
 	}
 ]
 
-// if (process.env.NODE_ENV && process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'production'){
 	tools = tools.filter(tool => process.env.pages!.includes(`pages/${tool.category}/${tool.id}.tsx`))
-// }
+}
 
 
 export {

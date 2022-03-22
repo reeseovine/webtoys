@@ -24,9 +24,52 @@ const baseMap = {
 	hex: 16
 }
 
-const convert = (number: string, base: Base) => {
+const prettyBin = (number: string): string => {
+	let out: string[] = []
+	if (number.length > 1){
+		for (var i = number.length; i > 0; i -= 4){
+			out.unshift(number.slice(i-4 >= 0 ? i-4 : 0, i))
+		}
+		return out.join(' ')
+	} else return number
+}
+const prettyOct = (number: string): string => {
+	let out: string[] = []
+	if (number.length > 1){
+		for (var i = number.length; i > 0; i -= 3){
+			out.unshift(number.slice(i-3 >= 0 ? i-3 : 0, i))
+		}
+		return out.join(' ')
+	} else return number
+}
+const prettyDec = (number: string): string => {
+	let out: string[] = []
+	if (number.length > 1){
+		for (var i = number.length; i > 0; i -= 3){
+			out.unshift(number.slice(i-3 >= 0 ? i-3 : 0, i))
+		}
+		return out.join(',')
+	} else return number
+}
+const prettyHex = (number: string): string => {
+	let out: string[] = []
+	if (number.length > 1){
+		for (var i = number.length; i > 0; i -= 2){
+			out.unshift(number.slice(i-2 >= 0 ? i-2 : 0, i))
+		}
+		return out.join(' ')
+	} else return number
+}
+
+const convert = (number: string, base: Base, pretty: boolean) => {
 	let input = parseInt(number, baseMap[base])
 	if (isNaN(input)) return ['','','','']
+	else if (pretty) return [
+		prettyBin(input.toString(2)),
+		prettyOct(input.toString(8)),
+		prettyDec(input.toString(10)),
+		prettyHex(input.toString(16))
+	]
 	else return [
 		input.toString(2),
 		input.toString(8),
@@ -40,7 +83,7 @@ const Tool = () => {
 	const [base, setBase] = useLocalStorage('base-base', 'dec' as Base)
 	const [input, setInput] = useState('')
 
-	let [resultBin, resultOct, resultDec, resultHex] = convert(input, base)
+	let [resultBin, resultOct, resultDec, resultHex] = convert(input, base, pretty)
 
 	return (
 		<Page title='Number Base Converter'>

@@ -21,6 +21,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
   - [x] converters
     - [x] json to yaml
     - [x] number base
+      - Bug: Doesn't support fractional numbers due to using `parseInt()`.
   - [ ] encoders & decoders
     - [x] html entities
     - [x] url
@@ -33,11 +34,11 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] xml
   - [ ] generators
     - [x] hash
-    - [ ] uuid
+    - [x] uuid
     - [x] lorem ipsum
     - [ ] checksum
   - [ ] text
-    - [ ] inspector / case converter
+    - [x] inspector / case converter
     - [ ] regex tester
     - [ ] text diff
     - [x] markdown preview
@@ -47,18 +48,19 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [x] image converter
 - [x] responsive navigation drawer
 - [x] syntax highlighting and line numbering for code-related tools
+- [x] automatically saves preferences in localStorage
 - [ ] search
 - [ ] translations
-- [x] automatically saves preferences in localStorage
+- [ ] help dialog for each tool
 
 ### code maintenance
 
 - [x] generalize components like buttons and sections for quick reusability
 - [x] make `className`s easier to read
-- [ ] standardize language used in help text
 - [x] write type declarations where needed so that it can build
   - [x] component props
   - [x] helper functions
+- [ ] standardize wording used in descriptions, etc.
 - [ ] remove unused imports (mdi icon paths, for example)
 - [ ] ensure responsiveness on every component
 - [ ] ensure accessibility on every component

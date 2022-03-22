@@ -6,19 +6,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repo
+      - name: Check out the repo 🔍
         uses: actions/checkout@v2
 
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
 
-      - run: |
+      - name: Build 🛠
+        run: |
           npm i
           npm run build
           touch out/.nojekyll
 
-      - name: Next Pages
+      - name: Next Pages 📃
         uses: anorcle/next-pages@v1.0
 
       - name: Deploy 🚀

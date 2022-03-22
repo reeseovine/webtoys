@@ -42,6 +42,8 @@ const clickyClasses = `
 	dark:border-slate-600
 	dark:hover:bg-slate-600
 	dark:active:bg-slate-800
+
+	whitespace-nowrap
 `
 const flatClasses = `
 	${sharedClasses}
@@ -52,11 +54,13 @@ const flatClasses = `
 	border-transparent
 	active:bg-slate-300
 	dark:active:bg-slate-700
+
+	whitespace-nowrap
 `
 
 interface ButtonProps {
 	style?: string,
-	icon: string,
+	icon?: string,
 	label?: string,
 	hint?: string,
 	className?: string,
@@ -85,27 +89,28 @@ const Button = ({ style='normal', icon, label, hint, className='', showSuccess=f
 				z-10
 				peer
 			`}>
-			<div className={`
-				grid
-			`}>
-				<Icon
-					path={icon}
-					size={style === 'flat' ? 1 : .75}
-					className={`
-						col-start-1
-						row-start-1
+			{ icon ?
+				<div className={`
+					grid
+				`}>
+					<Icon
+						path={icon}
+						size={style === 'flat' ? 1 : .75}
+						className={`
+							col-start-1
+							row-start-1
 
-						transition-opacity
-						${success ? 'opacity-0' : 'opacity-1'}`} />
-				<StatusGood
-					size={style === 'flat' ? 1 : .75}
-					className={`
-						col-start-1
-						row-start-1
+							transition-opacity
+							${success ? 'opacity-0' : 'opacity-1'}`} />
+					<StatusGood
+						size={style === 'flat' ? 1 : .75}
+						className={`
+							col-start-1
+							row-start-1
 
-						transition-opacity
-						${success ? 'opacity-1' : 'opacity-0'}`} />
-			</div>
+							transition-opacity
+							${success ? 'opacity-1' : 'opacity-0'}`} />
+				</div> : null}
 			{label}
 		</button>
 	)
