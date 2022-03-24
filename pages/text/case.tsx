@@ -21,12 +21,12 @@ const sentenceCase = (text: string): string => text.split('. ').map(sentence => 
 			? firstLetterUpper(word)
 			: word.toLowerCase()
 ).join(' ')).join('. ')
-const titleCase = (text: string): string => text.split('. ').map(sentence => sentence.split(' ').map(
+const titleCase = (text: string): string => text.match(/(?<=[.?!]|[.?!]\s|^)[^.?!]+?([.?!]\s?|$)/g)?.map(sentence => sentence.trim().split(' ').map(
 	(word, i) =>
 		i === 0 || !titleCaseExclusions.includes(word.toLowerCase())
 			? firstLetterUpper(word)
 			: word.toLowerCase()
-).join(' ')).join('. ')
+).join(' ')).join('. ') || ''
 const camelCase = (text: string): string => text.split(' ').map((word, i) => i === 0 ? word.toLowerCase() : firstLetterUpper(word)).join('')
 const pascalCase = (text: string): string => text.split(' ').map(firstLetterUpper).join('')
 const snakeCase = (text: string): string => text.toLowerCase().replaceAll(' ', '_')
@@ -106,7 +106,7 @@ const Tool = () => {
 	return (
 		<Page title='Text Inspector and Case Converter'>
 			<Segment
-				title='Convert'
+				title='Convert case'
 				body={<div className='flex flex-wrap gap-2'>
 					<Button label='lowercase' onClick={() => setInput(lowerCase(input))} />
 					<Button label='UPPERCASE' onClick={() => setInput(upperCase(input))} />

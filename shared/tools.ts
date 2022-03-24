@@ -107,21 +107,21 @@ let tools: ToolType[] = [
 		"category": "coders",
 		"icon": mdiZipBoxOutline,
 		"description": "Compress or decompress strings",
-		"keywords": ""
+		"keywords": "zlib gunzip"
 	}, {
 		"name": "JWT Decoder",
 		"id": "jwt",
 		"category": "coders",
 		"icon": mdiKeyStar,
-		"description": "Decode a JWT header, payload and signature",
-		"keywords": "RFC 7519"
+		"description": "Decode a JWT header and payload",
+		"keywords": "RFC 7519 json web token"
 	}, {
 		"name": "JSON",
 		"id": "json",
 		"category": "formatters",
 		"icon": mdiCodeJson,
 		"description": "Indent or minify JSON data",
-		"keywords": ""
+		"keywords": "javascript object notation"
 	}, {
 		"name": "SQL",
 		"id": "sql",
@@ -135,7 +135,7 @@ let tools: ToolType[] = [
 		"category": "formatters",
 		"icon": mdiXml,
 		"description": "Indent or minify XML data",
-		"keywords": ""
+		"keywords": "extensible markup language"
 	}, {
 		"name": "Hash",
 		"id": "hash",
@@ -149,7 +149,7 @@ let tools: ToolType[] = [
 		"category": "generators",
 		"icon": mdiCardAccountDetailsOutline,
 		"description": "Generate UUIDs of version 1, 3, 4, and 5",
-		"keywords": "GUID RFC 4122"
+		"keywords": "GUID RFC 4122 namespace random"
 	}, {
 		"name": "Lorem Ipsum",
 		"id": "lipsum",

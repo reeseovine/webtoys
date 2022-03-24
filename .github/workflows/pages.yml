@@ -20,7 +20,7 @@ jobs:
           touch out/.nojekyll
 
       - name: Next Pages 📃
-        uses: anorcle/next-pages@v1.0
+        uses: reeseovine/next-pages@main
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5

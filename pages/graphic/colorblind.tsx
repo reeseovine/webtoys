@@ -92,6 +92,7 @@ const CBImage = ({ contents='', type=null, amount=0, title='' }: CBImageProps) =
 	useEffect(() => {
 		draw(canvasRef.current?.getContext('2d'), contents)
 	}, [draw, contents])
+	// The line above causes an ESLint warning. I don't really understand how it works so if you can make it go away then please do.
 
 	return <canvas ref={canvasRef} title={title} className='max-w-full' />
 }
