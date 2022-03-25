@@ -179,8 +179,8 @@ let tools: ToolType[] = [
 		"description": "Validate and test regular expressions",
 		"keywords": "regexp grep sed awk"
 	}, {
-		"name": "Text Comparer",
-		"id": "compare",
+		"name": "Text Difference",
+		"id": "diff",
 		"category": "text",
 		"icon": mdiFileCompare,
 		"description": "Compare two pieces of text",

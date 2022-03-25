@@ -62,8 +62,6 @@ const Tool = () => {
 				grow
 				flex
 				flex-col
-				md:flex-row
-				lg:flex-col
 				xl:flex-row
 
 				items-stretch
@@ -81,7 +79,7 @@ const Tool = () => {
 							editable={true}
 							onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)}
 							className='grow' />}
-					className='grow flex flex-col basis-1/2 !m-0'
+					className='grow xl:basis-1/2 !m-0 flex flex-col'
 				/>
 
 				<Segment
@@ -92,7 +90,7 @@ const Tool = () => {
 							language={mode}
 							editable={false}
 							className='grow' />}
-					className='grow flex flex-col basis-1/2 !m-0'
+					className='grow xl:basis-1/2 !m-0 flex flex-col'
 				/>
 			</div>
 		</Page>

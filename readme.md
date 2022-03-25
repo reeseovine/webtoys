@@ -15,6 +15,8 @@ WebToys is in the very early stages of development and most tools are not yet im
 
 Below is a list of things to do. Feel free to contribute if any of them appeal to you and don't be afraid to ask for help! Make sure to read through [`contributing.md`](contributing.md) first before getting in too deep.
 
+\* = not in DevToys but would be good to add later
+
 ### features
 
 - [ ] tools
@@ -37,11 +39,14 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [x] uuid
     - [x] lorem ipsum
     - [ ] checksum
+    - [ ] QR code\*
+    - [ ] random number\*
   - [ ] text
     - [x] inspector / case converter
     - [ ] regex tester
-    - [ ] text diff
+    - [x] text diff
     - [x] markdown preview
+    - [ ] escape and unescape
   - [ ] graphic
     - [x] color blindness simulator
     - [ ] lossless image optimizer (probably not possible with just the browser)
@@ -65,4 +70,4 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
 - [ ] ensure responsiveness on every component
 - [ ] ensure accessibility on every component
 - [ ] ensure everything looks good in light and dark mode
-- [ ] test PWA and make sure it works offline
+- [x] test PWA and make sure it works offline

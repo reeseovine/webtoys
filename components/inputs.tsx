@@ -386,6 +386,7 @@ const TextArea = ({ value, rows, cols, disabled=false, className='', onChange }:
 		value={value}
 		rows={rows} cols={cols}
 		disabled={disabled}
+		spellCheck={false}
 		onChange={onChange}
 		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
 )
@@ -443,15 +444,11 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 				}
 			}}
 			className={`
-				w-full
-				h-full
+				relative z-20
 
-				absolute
-				top-0
-				left-0
-				right-0
-				bottom-0
-				z-20
+				col-start-1
+				row-start-1
+
 				overflow-y-auto
 				resize-none
 
@@ -474,9 +471,7 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 	return (
 		<div className={`
 			${className}
-			${editable ? `
-				relative
-			` : ''}
+			grid
 		`}>
 			{editable ? textbox : null}
 			<Highlight {...defaultProps}
@@ -487,17 +482,11 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 			    {({ className, style, tokens, getLineProps, getTokenProps }) => (
 					<pre ref={preRef} style={style} className={`
 						${className}
-						${editable ? `
-							absolute
-							top-0
-							left-0
-							right-0
-							bottom-0
-							z-10
-						` : 'select-text'}
+						${editable ? '' : 'select-text'}
 
-						w-full
-						h-full
+						relative z-10
+						col-start-1
+						row-start-1
 
 						overflow-y-auto
 
