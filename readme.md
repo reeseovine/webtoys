@@ -38,7 +38,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [x] hash
     - [x] uuid
     - [x] lorem ipsum
-    - [ ] checksum
+    - [x] checksum
     - [ ] QR code\*
     - [ ] random number\*
   - [ ] text

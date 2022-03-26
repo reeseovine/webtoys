@@ -5,7 +5,7 @@ import Page from '@/components/page'
 import Segment from '@/components/segment'
 import {
 	Toggle,
-	TextArea,
+	FileDrop,
 	TextField
 } from '@/components/inputs'
 
@@ -22,12 +22,8 @@ const toHex = (buffer: ArrayBuffer) =>
 	.map(x => x.toString(16).padStart(2, '0'))
 	.join('')
 
-const toBuf = (input: string) => {
-	const enc = new TextEncoder()
-	return enc.encode(input).buffer
-}
-
 const hash = async (input: ArrayBuffer, caps: boolean): Promise<string[]> => {
+	if (input.byteLength === 0) return ['','','','']
 	let results = [
 		md5(input),
 		toHex(await crypto.subtle.digest('SHA-1', input)),
@@ -41,16 +37,16 @@ const hash = async (input: ArrayBuffer, caps: boolean): Promise<string[]> => {
 }
 
 const Tool = () => {
-	const [caps, setCaps] = useLocalStorage('hash-caps', false)
-	const [input, setInput] = useState('')
+	const [caps, setCaps] = useLocalStorage('checksum-caps', false)
+	const [data, setData] = useState(new ArrayBuffer(0))
 	const [output, setOutput] = useState(['','','',''])
 
 	useEffect(() => {
-		hash(toBuf(input), caps).then(setOutput)
-	}, [input, caps])
+		hash(data, caps).then(setOutput)
+	}, [data, caps])
 
 	return (
-		<Page title='Hash Generator'>
+		<Page title='File Checksum'>
 			<Segment
 				type='config'
 				items={[
@@ -62,14 +58,13 @@ const Tool = () => {
 					}
 				]} />
 
-			<Segment
-				title='Input'
-				controls={[
-					{type: 'file', callback: (data: string) => setInput(data)},
-					{type: 'clear', onClick: () => setInput('')}
-				]}
-				body={<TextArea value={input} onChange={(e: Event) => setInput((e.target as HTMLTextAreaElement).value)} rows={6} />}
-			/>
+			<Segment body={
+				<FileDrop
+					readAs='arrayBuffer'
+					multiple={true}
+					cb={(contents: ArrayBuffer, file: File) => setData(contents)}
+				/>
+			} />
 
 			<Segment
 				type='inline'

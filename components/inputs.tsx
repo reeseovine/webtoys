@@ -143,7 +143,7 @@ const handleFileChosen = (file: File, readAs: string, cb: any) => {
 		case 'binary':
 			fileReader.readAsBinaryString(file)
 			break
-		case 'buffer':
+		case 'arrayBuffer':
 			fileReader.readAsArrayBuffer(file)
 			break
 	}
