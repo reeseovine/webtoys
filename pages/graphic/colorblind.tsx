@@ -141,7 +141,7 @@ const Tool = () => {
 				xl:flex-row
 
 				items-stretch
-				gap-4
+				gap-6
 				${image.blob.length === 0 ? 'hidden' : ''}
 			`}>
 				<Segment

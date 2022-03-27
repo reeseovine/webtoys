@@ -23,21 +23,6 @@ const Tool = () => {
 
 	return (
 		<Page title='Text Difference'>
-			{/*<Segment
-				type='config'
-				items={[
-					{
-						icon: mdiThemeLightDark,
-						name: 'Theme',
-						description: '',
-						control: <Select value={theme} options={[
-									{key: 'auto', value: "Auto"},
-									{key: 'light', value: "Light"},
-									{key: 'dark', value: "Dark"}
-								]} onChange={(e: Event) => setTheme((e.target as HTMLSelectElement).value)} />
-					}
-				]} />*/}
-
 			<div className={`
 				grow
 				flex
@@ -47,7 +32,7 @@ const Tool = () => {
 				xl:flex-row
 
 				items-stretch
-				gap-4
+				gap-6
 			`}>
 				<Segment
 					title='Input A'

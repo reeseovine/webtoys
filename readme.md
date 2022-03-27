@@ -34,7 +34,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [x] json
     - [ ] sql
     - [ ] xml
-  - [ ] generators
+  - [x] generators
     - [x] hash
     - [x] uuid
     - [x] lorem ipsum
@@ -43,7 +43,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [ ] random number\*
   - [ ] text
     - [x] inspector / case converter
-    - [ ] regex tester
+    - [x] regex tester
     - [x] text diff
     - [x] markdown preview
     - [ ] escape and unescape
@@ -71,3 +71,9 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
 - [ ] ensure accessibility on every component
 - [ ] ensure everything looks good in light and dark mode
 - [x] test PWA and make sure it works offline
+
+## issues
+
+WebToys relies on several relatively modern browser APIs for some things to work. If something seems broken, make sure you're using the latest version of Firefox or Chrome.
+
+If it's still broken across multiple browsers then I would greatly appreciate if you opened an issue!

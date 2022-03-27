@@ -107,7 +107,7 @@ const Job = ({ contents, file, format, removeSelf }: JobProps) => {
 		<div className='
 			flex
 			items-center
-			gap-4
+			gap-6
 			mb-2
 			p-4
 

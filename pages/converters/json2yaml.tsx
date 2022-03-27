@@ -65,7 +65,7 @@ const Tool = () => {
 				xl:flex-row
 
 				items-stretch
-				gap-4
+				gap-6
 			`}>
 				<Segment
 					title={mode === 'yaml' ? 'JSON' : 'YAML'}

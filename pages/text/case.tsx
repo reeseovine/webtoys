@@ -131,7 +131,7 @@ const Tool = () => {
 				md:flex-row
 
 				items-stretch
-				gap-4
+				gap-6
 			`}>
 				<Segment
 					title='Input'

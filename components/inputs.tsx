@@ -344,7 +344,7 @@ const textClasses = `
 	${sharedClasses}
 	p-2.5
 
-	leading-normal
+	leading-relaxed
 `
 const textClassesEnabled = `
 	${textClasses}
