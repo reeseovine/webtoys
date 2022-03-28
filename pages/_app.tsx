@@ -5,10 +5,7 @@ import '@/styles/globals.css'
 
 const App = ({ Component, pageProps }: AppProps) => {
 	return (
-		<ThemeProvider
-			attribute='class'
-			defaultTheme='system'
-			disableTransitionOnChange>
+		<ThemeProvider attribute='class' defaultTheme='system' disableTransitionOnChange>
 			<Meta />
 			<Component {...pageProps} />
 		</ThemeProvider>

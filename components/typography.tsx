@@ -1,5 +1,5 @@
 interface Props {
-	className?: string,
+	className?: string
 	children: React.ReactNode
 }
 
@@ -7,31 +7,27 @@ const headingClasses = `
 	text-slate-800
 	dark:text-slate-200
 `
-const H1 = ({className, children}: Props) => (
-	<h1 className={`${className} ${headingClasses} text-3xl font-semibold`}>
-		{children}
-	</h1>
+const H1 = ({ className, children }: Props) => (
+	<h1 className={`${className} ${headingClasses} text-3xl font-semibold`}>{children}</h1>
 )
-const H2 = ({className, children}: Props) => (
-	<h2 className={`${className} ${headingClasses} text-xl`}>
-		{children}
-	</h2>
+const H2 = ({ className, children }: Props) => (
+	<h2 className={`${className} ${headingClasses} text-xl`}>{children}</h2>
 )
-const H3 = ({className, children}: Props) => (
-	<h3 className={`${className} ${headingClasses} text-lg`}>
-		{children}
-	</h3>
+const H3 = ({ className, children }: Props) => (
+	<h3 className={`${className} ${headingClasses} text-lg`}>{children}</h3>
 )
 
-const P = ({className, children}: Props) => (
-	<p className={`
-		${className}
-		max-w-prose
-		mx-auto
+const P = ({ className, children }: Props) => (
+	<p
+		className={`
+			${className}
+			max-w-prose
+			mx-auto
 
-		text-base
-		leading-relaxed
-	`}>
+			text-base
+			leading-relaxed
+		`}
+	>
 		{children}
 	</p>
 )
@@ -39,7 +35,7 @@ const P = ({className, children}: Props) => (
 interface AProps extends Props {
 	href: string
 }
-const A = ({href, className, children}: AProps) => (
+const A = ({ href, className, children }: AProps) => (
 	<a
 		href={href}
 		className={`
@@ -56,10 +52,4 @@ const A = ({href, className, children}: AProps) => (
 	</a>
 )
 
-export {
-	H1,
-	H2,
-	H3,
-	A,
-	P
-}
+export { H1, H2, H3, P, A }

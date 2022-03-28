@@ -2,18 +2,10 @@ import { useRef, useState, useEffect } from 'react'
 import storage from '@/shared/storage'
 
 import Icon from '@mdi/react'
-import {
-	mdiFileOutline
-} from '@mdi/js';
+import { mdiFileOutline } from '@mdi/js'
 
-import {
-	H2
-} from '@/components/typography'
-import {
-	ToolTip,
-	StatusGood,
-	StatusBad
-} from '@/components/utility'
+import { H2 } from '@/components/typography'
+import { ToolTip, StatusGood, StatusBad } from '@/components/utility'
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 
@@ -59,21 +51,29 @@ const flatClasses = `
 `
 
 interface ButtonProps {
-	style?: string,
-	icon?: string,
-	label?: string,
-	hint?: string,
-	className?: string,
-	showSuccess?: boolean,
+	style?: string
+	icon?: string
+	label?: string
+	hint?: string
+	className?: string
+	showSuccess?: boolean
 	onClick?: any
 }
-const Button = ({ style='normal', icon, label, hint, className='', showSuccess=false, onClick }: ButtonProps) => {
+const Button = ({
+	style = 'normal',
+	icon,
+	label,
+	hint,
+	className = '',
+	showSuccess = false,
+	onClick,
+}: ButtonProps) => {
 	const [success, setSuccess] = useState(false)
 
 	let button = (
 		<button
 			onClick={(e) => {
-				if (showSuccess){
+				if (showSuccess) {
 					setSuccess(true)
 					setTimeout(() => setSuccess(false), 3000)
 				}
@@ -88,52 +88,55 @@ const Button = ({ style='normal', icon, label, hint, className='', showSuccess=f
 
 				z-10
 				peer
-			`}>
-			{ icon ?
-				<div className={`
+			`}
+		>
+			{icon ? (
+				<div
+					className={`
 					grid
-				`}>
+				`}
+				>
 					<Icon
 						path={icon}
-						size={style === 'flat' ? 1 : .75}
+						size={style === 'flat' ? 1 : 0.75}
 						className={`
 							col-start-1
 							row-start-1
 
 							transition-opacity
-							${success ? 'opacity-0' : 'opacity-1'}`} />
+							${success ? 'opacity-0' : 'opacity-1'}
+						`}
+					/>
 					<StatusGood
-						size={style === 'flat' ? 1 : .75}
+						size={style === 'flat' ? 1 : 0.75}
 						className={`
 							col-start-1
 							row-start-1
 
 							transition-opacity
-							${success ? 'opacity-1' : 'opacity-0'}`} />
-				</div> : null}
+							${success ? 'opacity-1' : 'opacity-0'}
+						`}
+					/>
+				</div>
+			) : null}
 			{label}
 		</button>
 	)
 
-	if (hint){
-		return (
-			<ToolTip text={hint}>
-				{button}
-			</ToolTip>
-		)
+	if (hint) {
+		return <ToolTip text={hint}>{button}</ToolTip>
 	} else {
 		return button
 	}
 }
 
-
 const handleFileChosen = (file: File, readAs: string, cb: any) => {
-	if (readAs === 'objectURL'){
+	if (readAs === 'objectURL') {
 		return cb(URL.createObjectURL(file), file)
 	}
 	const fileReader = new FileReader()
 	fileReader.onloadend = () => cb(fileReader.result, file)
-	switch (readAs){
+	switch (readAs) {
 		case 'text':
 			fileReader.readAsText(file)
 			break
@@ -150,38 +153,50 @@ const handleFileChosen = (file: File, readAs: string, cb: any) => {
 }
 
 interface FileProps {
-	accept?: string,
-	readAs?: string,
-	multiple?: boolean,
-	className?: string,
-	cb: any,
+	accept?: string
+	readAs?: string
+	multiple?: boolean
+	className?: string
+	cb: any
 }
-const FileButton = ({ accept='*', readAs='text', multiple=false, className='', cb }: FileProps) => {
+const FileButton = ({
+	accept = '*',
+	readAs = 'text',
+	multiple = false,
+	className = '',
+	cb,
+}: FileProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 
 	return (
-		<div className={`
+		<div
+			className={`
 			${className}
 			relative
-		`}>
+		`}
+		>
 			<input
 				type='file'
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.prototype.every.call(e.target.files, file => handleFileChosen(file, readAs, cb))}
+				onChange={(e) =>
+					Array.prototype.every.call(e.target.files, (file) => handleFileChosen(file, readAs, cb))
+				}
 				className={`
 					absolute
 					w-full
 					h-full
 					z-10
 					opacity-0
-				`} />
+				`}
+			/>
 			<Button
 				className='relative z-20'
 				icon={mdiFileOutline}
 				hint='Load from file'
-				onClick={() => inputRef.current?.click()} />
+				onClick={() => inputRef.current?.click()}
+			/>
 		</div>
 	)
 }
@@ -189,7 +204,14 @@ const FileButton = ({ accept='*', readAs='text', multiple=false, className='', c
 interface FileDropProps extends FileProps {
 	message?: string
 }
-const FileDrop = ({ accept='*', readAs='text', multiple=true, message='Drag and drop files here or click to select', className='', cb }: FileDropProps) => {
+const FileDrop = ({
+	accept = '*',
+	readAs = 'text',
+	multiple = true,
+	message = 'Drag and drop files here or click to select',
+	className = '',
+	cb,
+}: FileDropProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 	const targetRef = useRef<HTMLLabelElement>(null)
 	const [dragging, setDragging] = useState(false)
@@ -198,70 +220,78 @@ const FileDrop = ({ accept='*', readAs='text', multiple=true, message='Drag and 
 		targetRef.current?.addEventListener('dragenter', () => setDragging(true))
 		targetRef.current?.addEventListener('dragleave', () => setDragging(false))
 		targetRef.current?.addEventListener('drop', () => setDragging(false))
-	}, []);
+	}, [])
 
 	return (
-		<label ref={targetRef} className={`
-			${className}
-			w-full
-			h-48
-			flex
-			justify-center
-			items-center
-			relative
+		<label
+			ref={targetRef}
+			className={`
+				${className}
+				w-full
+				h-48
+				flex
+				justify-center
+				items-center
+				relative
 
-			rounded-lg
-			outline
-			outline-4
-			outline-dashed
+				rounded-lg
+				outline
+				outline-4
+				outline-dashed
 
-			transition-all
+				transition-all
 
-			${dragging ? `
-				bg-sky-300
-				outline-white
-				text-slate-50
+				${
+					dragging
+						? `
+						bg-sky-300
+						outline-white
+						text-slate-50
 
-				dark:bg-sky-500
-				dark:outline-slate-50
-				dark:text-slate-50
+						dark:bg-sky-500
+						dark:outline-slate-50
+						dark:text-slate-50
 
-				outline-offset-[-8px]
-			` : `
-				bg-slate-50
-				outline-slate-300
-				text-slate-500
+						outline-offset-[-8px]
+					`
+						: `
+						bg-slate-50
+						outline-slate-300
+						text-slate-500
 
-				dark:bg-slate-800
-				dark:outline-slate-700
-				dark:text-slate-400
+						dark:bg-slate-800
+						dark:outline-slate-700
+						dark:text-slate-400
 
-				outline-offset-[-4px]
+						outline-offset-[-4px]
+					`
+				}
 			`}
-		`}>
+		>
 			<input
 				type='file'
 				accept={accept}
 				multiple={multiple}
 				ref={inputRef}
-				onChange={e => Array.prototype.every.call(e.target.files, file => handleFileChosen(file, readAs, cb))}
+				onChange={(e) =>
+					Array.prototype.every.call(e.target.files, (file) => handleFileChosen(file, readAs, cb))
+				}
 				className={`
 					absolute
 					w-full
 					h-full
 					opacity-0
 					cursor-pointer
-				`} />
-			<div>
-				{message}
-			</div>
+				`}
+			/>
+			<div>{message}</div>
 		</label>
 	)
 }
 
 interface SelectProps {
-	value?: string,
-	options: { key: string, value: string }[],
+	value?: string
+	options: { key: string; value: string }[]
 	onChange?: any
 }
 const Select = ({ value, options, onChange }: SelectProps) => (
@@ -273,25 +303,31 @@ const Select = ({ value, options, onChange }: SelectProps) => (
 			pl-2.5
 			pr-8
 			py-3
-		`}>
-		{options.map(opt => (
-			<option key={opt.key} value={opt.key}>{opt.value}</option>
+		`}
+	>
+		{options.map((opt) => (
+			<option key={opt.key} value={opt.key}>
+				{opt.value}
+			</option>
 		))}
 	</select>
 )
 
 interface ToggleProps {
-	checked?: boolean,
-	className?: string,
+	checked?: boolean
+	className?: string
 	onChange?: any
 }
-const Toggle = ({ checked, className='', onChange }: ToggleProps) => (
-	<label className="
-		relative
-		w-12
-		h-6
-	">
-		<input type="checkbox"
+const Toggle = ({ checked, className = '', onChange }: ToggleProps) => (
+	<label
+		className='
+			relative
+			w-12
+			h-6
+		'
+	>
+		<input
+			type='checkbox'
 			checked={checked}
 			onChange={onChange}
 			className='
@@ -302,43 +338,49 @@ const Toggle = ({ checked, className='', onChange }: ToggleProps) => (
 				h-full
 				z-10
 				opacity-0
-			' />
+			'
+		/>
 		{/* track */}
-		<div aria-hidden="true" className="
-			w-full
-			h-full
-			z-20
-			absolute
+		<div
+			aria-hidden='true'
+			className='
+				w-full
+				h-full
+				z-20
+				absolute
 
-			rounded-full
-			cursor-pointer
+				rounded-full
+				cursor-pointer
 
-			bg-slate-300
-			dark:bg-slate-500
-			peer-checked:bg-sky-500
+				bg-slate-300
+				dark:bg-slate-500
+				peer-checked:bg-sky-500
 
-			transition-colors
-		" />
+				transition-colors
+			'
+		/>
 		{/* slider */}
-		<div aria-hidden="true" className="
-			w-4
-			h-4
-			z-30
-			absolute
-			top-1
-			left-1
+		<div
+			aria-hidden='true'
+			className='
+				w-4
+				h-4
+				z-30
+				absolute
+				top-1
+				left-1
 
-			rounded-full
-			cursor-pointer
+				rounded-full
+				cursor-pointer
 
-			peer-checked:translate-x-6
-			transition-transform
+				peer-checked:translate-x-6
+				transition-transform
 
-			bg-white
-		" />
+				bg-white
+			'
+		/>
 	</label>
 )
-
 
 const textClasses = `
 	${sharedClasses}
@@ -364,40 +406,58 @@ const textClassesDisabled = `
 `
 
 interface TextFieldProps {
-	value?: string,
-	disabled?: boolean,
-	className?: string,
+	value?: string
+	disabled?: boolean
+	className?: string
 	onChange?: any
 }
-const TextField = ({ value, disabled=false, className='', onChange }: TextFieldProps) => (
+const TextField = ({ value, disabled = false, className = '', onChange }: TextFieldProps) => (
 	<input
-		type="text"
+		type='text'
 		value={value}
 		disabled={disabled}
 		onChange={onChange}
-		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
+		className={className + ' w-full ' + (disabled ? textClassesDisabled : textClassesEnabled)}
+	/>
 )
 interface TextAreaProps extends TextFieldProps {
-	rows?: number,
+	rows?: number
 	cols?: number
 }
-const TextArea = ({ value, rows, cols, disabled=false, className='', onChange }: TextAreaProps) => (
+const TextArea = ({
+	value,
+	rows,
+	cols,
+	disabled = false,
+	className = '',
+	onChange,
+}: TextAreaProps) => (
 	<textarea
 		value={value}
-		rows={rows} cols={cols}
+		rows={rows}
+		cols={cols}
 		disabled={disabled}
 		spellCheck={false}
 		onChange={onChange}
-		className={className +' w-full '+ (disabled ? textClassesDisabled : textClassesEnabled)} />
+		className={className + ' w-full ' + (disabled ? textClassesDisabled : textClassesEnabled)}
+	/>
 )
 interface NumberProps extends TextFieldProps {
-	min?: number,
-	max?: number,
+	min?: number
+	max?: number
 	step?: number
 }
-const Number = ({ value, min=0, max, step=1, disabled=false, className='', onChange }: NumberProps) => (
+const Number = ({
+	value,
+	min = 0,
+	max,
+	step = 1,
+	disabled = false,
+	className = '',
+	onChange,
+}: NumberProps) => (
 	<input
-		type="number"
+		type='number'
 		value={value}
 		min={min}
 		max={max}
@@ -411,24 +471,27 @@ const Number = ({ value, min=0, max, step=1, disabled=false, className='', onCha
 
 			pl-3
 			py-2
-		`} />
+		`}
+	/>
 )
 
 interface CodeProps {
-	value?: string,
-	language: Language,
-	editable?: boolean,
-	className?: string,
+	value?: string
+	language: Language
+	editable?: boolean
+	className?: string
 	onChange?: any
 }
-const Code = ({ value='', language, editable=false, className='', onChange }: CodeProps) => {
+const Code = ({ value = '', language, editable = false, className = '', onChange }: CodeProps) => {
 	const preRef = useRef<HTMLPreElement>(null)
 
 	// TODO: Sanitize this value!!
-	const prismTheme = require('prism-react-renderer/themes/' + storage.get('prism-theme', 'duotoneDark')).default
+	const prismTheme = require('prism-react-renderer/themes/' +
+		storage.get('prism-theme', 'duotoneDark')).default
+	const lineNumbers = storage.get('prism-linenumbers', false)
 
 	let caretColor
-	if (typeof prismTheme !== undefined){
+	if (typeof prismTheme !== undefined) {
 		caretColor = prismTheme?.plain.color
 	}
 
@@ -438,8 +501,8 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 			spellCheck={false}
 			onChange={onChange}
 			onScroll={(e: React.UIEvent<HTMLTextAreaElement>) => {
-				if (preRef?.current){
-					preRef.current.scrollTop  = e.currentTarget.scrollTop
+				if (preRef?.current) {
+					preRef.current.scrollTop = e.currentTarget.scrollTop
 					preRef.current.scrollLeft = e.currentTarget.scrollLeft
 				}
 			}}
@@ -465,45 +528,48 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 				!text-transparent
 				caret-neutral-400
 			`}
-			style={{caretColor: caretColor+' !important'}} />
+			style={{ caretColor: caretColor + ' !important' }}
+		/>
 	)
 
 	return (
-		<div className={`
-			${className}
-			grid
-		`}>
+		<div
+			className={`
+				${className}
+				grid
+			`}
+		>
 			{editable ? textbox : null}
-			<Highlight {...defaultProps}
-				theme={prismTheme}
-				code={value}
-				language={language}
-			>
-			    {({ className, style, tokens, getLineProps, getTokenProps }) => (
-					<pre ref={preRef} style={style} className={`
-						${className}
-						${editable ? '' : 'select-text'}
+			<Highlight {...defaultProps} theme={prismTheme} code={value} language={language}>
+				{({ className, style, tokens, getLineProps, getTokenProps }) => (
+					<pre
+						ref={preRef}
+						style={style}
+						className={`
+							${className}
+							${editable ? '' : 'select-text'}
 
-						relative z-10
-						col-start-1
-						row-start-1
+							relative z-10
+							col-start-1
+							row-start-1
 
-						overflow-y-auto
+							overflow-y-auto
 
-						!m-0
-						!p-4
+							!m-0
+							!p-4
 
-						border
-						rounded-md
-						border-slate-600
+							border
+							rounded-md
+							border-slate-600
 
-						!whitespace-pre-wrap
-						no-whitespace-normalization
+							!whitespace-pre-wrap
+							no-whitespace-normalization
 
-						!font-mono
-						!text-base
-					`}>
-				        {tokens.map((line, i) => (
+							!font-mono
+							!text-base
+						`}
+					>
+						{tokens.map((line, i) => (
 							<div key={i} {...getLineProps({ line, key: i })}>
 								{line.map((token, key) => (
 									<span key={key} {...getTokenProps({ token, key })} />
@@ -511,20 +577,10 @@ const Code = ({ value='', language, editable=false, className='', onChange }: Co
 							</div>
 						))}
 					</pre>
-			    )}
+				)}
 			</Highlight>
 		</div>
 	)
 }
 
-export {
-	Button,
-	FileButton,
-	FileDrop,
-	Select,
-	Toggle,
-	TextArea,
-	TextField,
-	Number,
-	Code
-}
+export { Button, FileButton, FileDrop, Select, Toggle, TextArea, TextField, Number, Code }
