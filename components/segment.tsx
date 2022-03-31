@@ -11,7 +11,8 @@ type ConfigItem = {
 	name: string
 	description?: string
 	control: React.ReactNode
-}
+} | null
+export type { ConfigItem }
 interface ConfigProps {
 	items: ConfigItem[]
 }
@@ -31,9 +32,8 @@ const Config = ({ items }: ConfigProps) => (
 			dark:divide-slate-700
 		'
 	>
-		{items
-			.filter((i) => i !== null && typeof i === 'object')
-			.map((item) => (
+		{items.map((item) =>
+			item === null ? null : (
 				<div
 					key={item.name}
 					className='
@@ -53,7 +53,8 @@ const Config = ({ items }: ConfigProps) => (
 					</div>
 					{item.control}
 				</div>
-			))}
+			)
+		)}
 	</div>
 )
 
