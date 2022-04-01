@@ -23,7 +23,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
   - [x] converters
     - [x] json to yaml
     - [x] number base
-      - ~~Bug: Doesn't support fractional numbers due to using `parseInt()`.~~ Fixed with `shared/tools.ts/parseFloat()`
+      - [x] supports fractional numbers
   - [ ] encoders & decoders
     - [x] html entities
     - [x] url
@@ -53,6 +53,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
     - [x] color blindness simulator
     - [ ] lossless image optimizer (probably not possible with just the browser)
     - [x] image converter
+	    - [ ] allow drag-and-drop non-file images and pasting images from the clipboard
 - [x] responsive navigation drawer
 - [x] syntax highlighting and line numbering for code-related tools
 - [x] automatically saves preferences in localStorage
