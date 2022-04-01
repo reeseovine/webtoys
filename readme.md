@@ -15,7 +15,7 @@ WebToys is in the very early stages of development and most tools are not yet im
 
 Below is a list of things to do. Feel free to contribute if any of them appeal to you and don't be afraid to ask for help! Make sure to read through [`contributing.md`](contributing.md) first before getting in too deep.
 
-\* = not in DevToys but would be good to add later
+\* = not in DevToys but good to have
 
 ### features
 
@@ -23,7 +23,7 @@ Below is a list of things to do. Feel free to contribute if any of them appeal t
   - [x] converters
     - [x] json to yaml
     - [x] number base
-      - Bug: Doesn't support fractional numbers due to using `parseInt()`.
+      - ~~Bug: Doesn't support fractional numbers due to using `parseInt()`.~~ Fixed with `shared/tools.ts/parseFloat()`
   - [ ] encoders & decoders
     - [x] html entities
     - [x] url

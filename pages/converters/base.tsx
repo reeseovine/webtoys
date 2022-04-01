@@ -8,6 +8,8 @@ import { Select, Toggle, TextField } from '@/components/inputs'
 import Icon from '@mdi/react'
 import { mdiNumeric, mdiHexadecimal } from '@mdi/js'
 
+import { parseFloat } from '@/shared/math'
+
 type Base = 'bin' | 'oct' | 'dec' | 'hex'
 const baseMap = {
 	bin: 2,
@@ -53,8 +55,8 @@ const prettyHex = (number: string): string => {
 	} else return number
 }
 
-const convert = (number: string, base: Base, pretty: boolean) => {
-	let input = parseInt(number, baseMap[base])
+const convert = (x: string, base: Base, pretty: boolean) => {
+	const input = parseFloat(x, baseMap[base])
 	if (isNaN(input)){
 		return ['', '', '', '']
 	} else if (pretty){

@@ -12,4 +12,24 @@ const bytes = (bytes: number): string => {
 	return "that's HUGE!!!"
 }
 
-export { floor, ceil, round, bytes }
+const parseFloat = (x: string, radix: number) => {
+	// Split the string at the decimal point
+	const parts = x.split(/\./).map(s => s.trim())
+
+	// If there is nothing before the decimal point, make it 0
+	if (parts[0] == ''){
+		parts[0] = '0'
+	}
+
+	// If there was a decimal point & something after it
+	if (parts.length > 1 && parts[1] != ''){
+		const fractionLength = parts[1].length
+		const mantissa = parseInt(parts[1], radix) * Math.pow(radix, -fractionLength)
+		return parseInt(parts[0], radix) + mantissa
+	}
+
+	// If there wasn't a decimal point or there was but nothing was after it
+	return parseInt(parts[0], radix)
+}
+
+export { floor, ceil, round, bytes, parseFloat }
