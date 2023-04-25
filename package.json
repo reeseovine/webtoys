@@ -50,7 +50,7 @@
 		"tailwindcss-safe-area": "0.2.2",
 		"typescript": "4.5.5",
 		"uuid": "8.3.2",
-		"yaml": "1.10.2"
+		"yaml": "2.2.2"
 	},
 	"prettier": {
 		"printWidth": 100,
