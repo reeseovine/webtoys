@@ -83,6 +83,7 @@ const Tool = () => {
 
 							text-base
 							leading-normal
+							overflow-x-auto
 						`}
 					>
 						{output.map((part, i) => {
