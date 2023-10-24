@@ -9,7 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"next": "12.1.0"
+		"next": "13.5.0"
 	},
 	"devDependencies": {
 		"@mdi/js": "6.5.95",
