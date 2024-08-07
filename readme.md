@@ -1,3 +1,7 @@
+**UPDATE**: This repository has moved! [You can follow all future development at its new home.](https://git.cyberia.club/reese/webtoys)
+
+<hr>
+
 <div align="center">
 	<img src="logo/logo-circle-128.png" alt="WebToys logo">
 	<h1>WebToys</h1>
